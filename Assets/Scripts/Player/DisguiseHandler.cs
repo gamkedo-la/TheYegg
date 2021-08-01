@@ -16,7 +16,6 @@ public class DisguiseHandler : MonoBehaviour
 
     //required components
     [Header("Required components")]
-    [SerializeField] Collider2D actionCollider;
     [SerializeField] SpriteRenderer spriteRenderer;
 
     void Start()

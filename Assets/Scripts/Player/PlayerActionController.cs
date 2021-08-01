@@ -8,11 +8,13 @@ public class PlayerActionController : MonoBehaviour
     [Header("Action inputs")]
     [SerializeField] KeyCode incapacitateInput;
     [SerializeField] KeyCode equipDisguiseInput;
+    [SerializeField] KeyCode openDoorInput;
 
 
     [Header("Required components")]
     [SerializeField] NPCHandler nPCHandler;
     [SerializeField] DisguiseHandler disguiseHandler;
+    [SerializeField] KeyHandler keyHandler;
     
         // Start is called before the first frame update
     void Start()
@@ -33,6 +35,10 @@ public class PlayerActionController : MonoBehaviour
                 npc.IncapacitateNPC();
             }
             
+        }
+
+        if(Input.GetKeyDown(openDoorInput)){
+            keyHandler.OpenDoor();
         }
     }
 }
