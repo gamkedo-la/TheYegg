@@ -9,10 +9,15 @@ public class NPC : MonoBehaviour
     [SerializeField] GameObject deathMark;
     [SerializeField] GameObject downedMark;
 
+    [Header("References to other Gameobjects")]
+    [SerializeField] GameObject fov;
+    [SerializeField] GameObject outlineGameObject;
+
     [Header("Required Components")]
     [SerializeField] SpriteRenderer spriteRenderer;
+    
+    [Header("NPC settings")]
     [SerializeField] Color defaultNPCColor;
-    [SerializeField] GameObject outlineGameObject;
 
     //private variables
     private Color NPCColor;
@@ -43,7 +48,10 @@ public class NPC : MonoBehaviour
         Debug.Log("Incapacitated NPC " + name);
         isDown = true;
         //spawn a downed mark on NPC
-        Instantiate<GameObject>(downedMark, transform.position, Quaternion.identity);
+        Instantiate<GameObject>(downedMark, this.transform);
+        //when NPC is incapacitated, disable FOV
+        fov.SetActive(false);
+
     }
 
     public void RemoveNPCOutfit(){

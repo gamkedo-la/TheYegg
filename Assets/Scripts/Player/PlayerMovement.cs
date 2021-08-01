@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [Header("Player Movement Settings")]
+    [SerializeField] bool isLookAtMouse = false;
     [SerializeField] float walkSpeed = 2f;
     [SerializeField] float runSpeed = 4f;
     [SerializeField] float sneakSpeed = 1f;
@@ -72,20 +73,28 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void RotatePlayer(){
-        //cast a ray from the camera to the scene
-        Ray screenRay = mainCamera.ScreenPointToRay(mousePos);
-        RaycastHit hit;
-        if(Physics.Raycast(screenRay, out hit)){
-            if(hit.collider.gameObject.GetComponent<PlayerMovement>()){
-                return;
-            } else {
-                lookAtPos = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        if(isLookAtMouse){
+            //controls so that player always faces the mouse position
+            //cast a ray from the camera to the scene
+
+            Ray screenRay = mainCamera.ScreenPointToRay(mousePos);
+            RaycastHit hit;
+            if(Physics.Raycast(screenRay, out hit)){
+                if(hit.collider.gameObject.GetComponent<PlayerMovement>()){
+                    return;
+                } else {
+                    lookAtPos = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+                }
+
             }
-            
+            //look at hit position
+            transform.LookAt(lookAtPos, Vector3.up);
+
+        } else {
+            //controls so that player faces the movement direction
+            transform.LookAt(transform.position + movementVector, Vector3.up);
         }
 
-        //look at hit position
-        transform.LookAt(lookAtPos, Vector3.up);
         
     }
 }

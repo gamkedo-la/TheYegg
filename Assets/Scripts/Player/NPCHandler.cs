@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPCHandler : MonoBehaviour
 {
     [Header("Required components")]
-    [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] BoxCollider boxCollider;
 
     //private
 
@@ -43,7 +43,7 @@ public class NPCHandler : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter(Collider other) {
         //if a new NPC enters the trigger, add it to list
         if(other.TryGetComponent<NPC>(out NPC n)){
             if(!npcList.Contains(n)){
@@ -52,7 +52,7 @@ public class NPCHandler : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
+    private void OnTriggerExit(Collider other) {
         //remove from list when exits trigger
         if(other.TryGetComponent<NPC>(out NPC n)){
             n.SetOutlineActive(false);
