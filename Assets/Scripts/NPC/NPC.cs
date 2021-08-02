@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    [Header("NPC settings")]
+    [SerializeField] Color defaultNPCColor;
 
     [Header("Required Prefabs")]
     [SerializeField] GameObject deathMark;
@@ -12,12 +14,13 @@ public class NPC : MonoBehaviour
     [Header("References to other Gameobjects")]
     [SerializeField] GameObject fov;
     [SerializeField] GameObject outlineGameObject;
+    
 
     [Header("Required Components")]
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] KeySpawner keySpawner;
     
-    [Header("NPC settings")]
-    [SerializeField] Color defaultNPCColor;
+
 
     //private variables
     private Color NPCColor;
@@ -51,7 +54,7 @@ public class NPC : MonoBehaviour
         Instantiate<GameObject>(downedMark, this.transform);
         //when NPC is incapacitated, disable FOV
         fov.SetActive(false);
-
+        keySpawner.SpawnKey();
     }
 
     public void RemoveNPCOutfit(){

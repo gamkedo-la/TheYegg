@@ -14,17 +14,30 @@ public class KeyHandler : MonoBehaviour
 
     //private
     private bool isNearDoor = false;
-    private Door door;
+    private bool isNearKey = false;
+
+    public Door door;
+    public Key key;
 
     private void OnTriggerStay(Collider other) {
         if(other.TryGetComponent<Door>(out door)){
             isNearDoor = true;
+        }
+
+        if(other.TryGetComponent<Key>(out key)){
+            isNearKey = true;
         }
     }
     
     private void OnTriggerExit(Collider other) {
         if(other.TryGetComponent<Door>(out door)){
             isNearDoor = false;
+            door = null;
+        }
+
+        if(other.TryGetComponent<Key>(out key)){
+            isNearKey = false;
+            key = null;
         }
     }
 
@@ -43,6 +56,13 @@ public class KeyHandler : MonoBehaviour
             }
         } else {
             Debug.Log("Not able to open door");
+        }
+    }
+
+    public void PickUpKey(){
+        if(isNearKey && key != null){
+            keys.Add(key.PickUpKey());
+            key.DestroyKey();
         }
     }
 }

@@ -9,6 +9,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] KeyCode incapacitateInput;
     [SerializeField] KeyCode equipDisguiseInput;
     [SerializeField] KeyCode openDoorInput;
+    [SerializeField] KeyCode pickUpKeyInput;
 
 
     [Header("Required components")]
@@ -34,11 +35,14 @@ public class PlayerActionController : MonoBehaviour
             if(npc.isNPCDown == false){
                 npc.IncapacitateNPC();
             }
-            
         }
 
         if(Input.GetKeyDown(openDoorInput)){
             keyHandler.OpenDoor();
+        }
+
+        if(Input.GetKeyDown(pickUpKeyInput)){
+            keyHandler.PickUpKey();
         }
     }
 }
