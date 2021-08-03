@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7481216167195155655}
   - component: {fileID: 7560580863650888104}
   - component: {fileID: 3452820194326708370}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KeySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8100647898920291293}
   - component: {fileID: 2638893076338412864}
   - component: {fileID: 8068448598344113037}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GreenKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}

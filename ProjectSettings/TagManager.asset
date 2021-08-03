@@ -14,8 +14,8 @@ TagManager:
   - Wall
   - Player
   - NPC
-  - 
-  - 
+  - Interactable
+  - PlayerAction
   - 
   - 
   - 

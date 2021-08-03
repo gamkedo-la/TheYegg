@@ -20,6 +20,7 @@ public class KeyHandler : MonoBehaviour
     public Key key;
 
     private void OnTriggerStay(Collider other) {
+        //Debug.Log("Trigger collission with " + other.name);
         if(other.TryGetComponent<Door>(out door)){
             isNearDoor = true;
         }
@@ -30,6 +31,7 @@ public class KeyHandler : MonoBehaviour
     }
     
     private void OnTriggerExit(Collider other) {
+        //Debug.Log("Trigger exited!");
         if(other.TryGetComponent<Door>(out door)){
             isNearDoor = false;
             door = null;

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4692478502478259533}
   - component: {fileID: 1579491657426183120}
   - component: {fileID: -7438174649075930519}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlueKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 6243922547963114071}
   - component: {fileID: 6456143379740874552}
   - component: {fileID: 2206378584712719874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: KeySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
