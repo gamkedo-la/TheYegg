@@ -7,7 +7,7 @@ public class Key : MonoBehaviour
     [Header("Key Properties")]
     public DoorKey keyType;
 
-    public DoorKey PickUpKey(){
+    public DoorKey GetKeyType(){
         return keyType;
     }
 

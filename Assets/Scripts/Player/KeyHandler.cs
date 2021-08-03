@@ -6,11 +6,11 @@ using UnityEngine;
 public class KeyHandler : MonoBehaviour
 {
 
+    [Header("Interaction area settings")]
+    [SerializeField] LayerMask interactLayerMask;
+
     [Header("Collected Keys")]
     public List<DoorKey> keys = new List<DoorKey>();
-
-    [Header("Required Components")]
-    [SerializeField] Collider actionCollider;
 
     //private
     private bool isNearDoor = false;
@@ -19,52 +19,40 @@ public class KeyHandler : MonoBehaviour
     public Door door;
     public Key key;
 
-    private void OnTriggerStay(Collider other) {
-        //Debug.Log("Trigger collission with " + other.name);
-        if(other.TryGetComponent<Door>(out door)){
-            isNearDoor = true;
-        }
-
-        if(other.TryGetComponent<Key>(out key)){
-            isNearKey = true;
-        }
-    }
-    
-    private void OnTriggerExit(Collider other) {
-        //Debug.Log("Trigger exited!");
-        if(other.TryGetComponent<Door>(out door)){
-            isNearDoor = false;
-            door = null;
-        }
-
-        if(other.TryGetComponent<Key>(out key)){
-            isNearKey = false;
-            key = null;
-        }
-    }
 
     public void OpenDoor()
     {
         //if close enough to a door
-        if(isNearDoor && door != null){
-            //get correct door key from door
-            DoorKey correctKey = door.GetCorrectDoorKey();
-            foreach (DoorKey key in keys)
-            {
-                if(key == correctKey){
-                    Debug.Log("Matching key found, opening door");
-                    door.OpenDoor();
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, interactLayerMask);
+        foreach(Collider hit in hitColliders){
+            if(hit.gameObject.TryGetComponent<Door>(out door)){
+                DoorKey correctKey = door.GetCorrectDoorKey();
+                foreach (DoorKey key in keys)
+                {
+                    if(key == correctKey){
+                        door.OpenDoor();
+                    }
                 }
+            } else {
+                Debug.Log("No door in vicinity");
             }
-        } else {
-            Debug.Log("Not able to open door");
         }
     }
 
     public void PickUpKey(){
-        if(isNearKey && key != null){
-            keys.Add(key.PickUpKey());
-            key.DestroyKey();
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, interactLayerMask);
+        foreach(Collider hit in hitColliders){
+            if(hit.gameObject.TryGetComponent<Key>(out key)){
+                keys.Add(key.GetKeyType());
+                key.DestroyKey();
+            } else {
+                Debug.Log("No key in vicinity");
+            }
         }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, transform.localScale);
     }
 }
