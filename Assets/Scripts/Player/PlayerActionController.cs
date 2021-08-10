@@ -16,8 +16,12 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] NPCHandler nPCHandler;
     [SerializeField] DisguiseHandler disguiseHandler;
     [SerializeField] KeyHandler keyHandler;
+
+    [Header("Interface to detection")]
+    public bool isCompromisedDisguise;
+    public bool isDoingIllegalAction;
     
-        // Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
         

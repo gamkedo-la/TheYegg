@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    [Header("FOV settings")]
     [SerializeField] float viewRadius;
     [SerializeField] [Range(0f, 360f)] float viewAngle;
 
@@ -18,9 +20,14 @@ public class FieldOfView : MonoBehaviour
 
     [SerializeField] MeshFilter fovMeshFilter;
 
+    [Header("Interface to GuardFSM")]
+    [SerializeField] GuardFSM guardFSM;
+    [SerializeField] GuardStateAlerted guardStateAlerted;
+    public Vector3 lastKnownPlayerLocation;
+
     private Mesh viewMesh;
 
-    private List<Transform> targetsInRadiusEarlier = new List<Transform>(); 
+    private List<Transform> targetsInRadiusEarlier = new List<Transform>();
 
     private void Start() {
         viewMesh = new Mesh();
@@ -38,6 +45,45 @@ public class FieldOfView : MonoBehaviour
         while(true) {
             yield return new WaitForSeconds(delay);
             FindVisibleTargets();
+            ScanTargets();
+        }
+    }
+
+    private void ScanTargets()
+    {
+        //do not scan if the guard is alerted by another
+        if(!guardStateAlerted.isAlertedByAnother){
+            if(targetsInFieldOfView.Count > 0){
+                //if there are targets, go through them and check if one of them is either an incapacitated NPC or the player who is exposed/compromised
+                PlayerActionController playerActionController;
+                NPC nPC;
+                foreach(Transform t in targetsInFieldOfView){
+                    if(t.TryGetComponent<PlayerActionController>(out playerActionController)){
+                        if(playerActionController.isCompromisedDisguise || playerActionController.isDoingIllegalAction){
+                            //Debug.Log("Player has been detected, moving to alerted state");
+                            lastKnownPlayerLocation = playerActionController.transform.position;
+                            //start alerted state
+                            guardStateAlerted.SetLastKnownLocation(lastKnownPlayerLocation);
+                            if(guardFSM.activeState != guardFSM.alertState){
+                                //Debug.Log("active state was not alert state for " + transform.parent.name);
+                                guardFSM.PushState(guardFSM.alertState);
+                                guardFSM.activeState.EndGuardState();
+                            }
+                        }
+                    } else if(t.TryGetComponent<NPC>(out nPC)){
+                        if(nPC.isNPCDown == true){
+                            //saw a downed NPC
+                            //get rid of the NPC in the scene, or mark them as "seen" so that the NPC does not fall into a loop of detecting the same downed NPC
+                            Debug.Log("An incapacitated NPC detected, moving to alerted state");
+                            if(guardFSM.activeState != guardFSM.alertState){
+                                //Debug.Log("active state was not alert state for " + transform.parent.name);
+                                guardFSM.PushState(guardFSM.alertState);
+                                guardFSM.activeState.EndGuardState();
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

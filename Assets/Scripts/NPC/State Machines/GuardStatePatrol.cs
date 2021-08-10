@@ -21,7 +21,9 @@ public class GuardStatePatrol : GuardState
 
     public override void EndGuardState()
     {
+        Debug.Log("Ending Patrol state");
         base.EndGuardState();
+        
     }
 
 
