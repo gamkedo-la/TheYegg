@@ -79,7 +79,7 @@ MonoBehaviour:
   viewAngle: 80
   detectableTargetMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
@@ -89,6 +89,9 @@ MonoBehaviour:
   edgeResolveIterations: 3
   edgeDistanceThreshold: 0.1
   fovMeshFilter: {fileID: 8304663008152641393}
+  guardFSM: {fileID: 8304663008673374455}
+  guardStateAlerted: {fileID: 7935545533546093925}
+  lastKnownPlayerLocation: {x: 0, y: 0, z: 0}
 --- !u!33 &8304663008152641393
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -237,6 +240,7 @@ GameObject:
   - component: {fileID: 7935545533546093925}
   - component: {fileID: 8304663008673374458}
   - component: {fileID: 8304663008673374460}
+  - component: {fileID: 1571682958}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
@@ -274,7 +278,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -339,7 +343,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
-  patrolPoints: []
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  allowedDistanceFromPoint: 0.5
+  patrolSpeed: 2
+  navMeshAgent: {fileID: 1571682958}
 --- !u!114 &7935545533546093925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,12 +361,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c0fb96ffe4fc64d855b5519b471294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guardFSM: {fileID: 0}
-  lastKnownLocation: {fileID: 0}
-  alertRadius: 0
+  guardFSM: {fileID: 8304663008673374455}
+  lastKnownLocation: {x: 0, y: 0, z: 0}
+  isAlertedByAnother: 0
+  alertRadius: 50
   alertLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
 --- !u!114 &8304663008673374458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +408,28 @@ MonoBehaviour:
   redKey: {fileID: 3354292694775443284, guid: 82d401ccc6ebf1449868984db67509b2, type: 3}
   yellowKey: {fileID: 4461124982762036425, guid: 5215baf30faf54b41b0ffab5ff7ed16c, type: 3}
   greenKey: {fileID: 2366175086989178330, guid: ac40333384f3ca543b3f2819ab2b3c1d, type: 3}
+--- !u!195 &1571682958
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8304663008673374452}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.3
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8304663009899576403
 GameObject:
   m_ObjectHideFlags: 0
