@@ -19,6 +19,7 @@ public class NPC : MonoBehaviour
     [Header("Required Components")]
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] KeySpawner keySpawner;
+    [SerializeField] GuardFSM guardFSM;
     
 
 
@@ -26,6 +27,7 @@ public class NPC : MonoBehaviour
     private Color NPCColor;
     private bool isDown = false;
     private bool hasOutfit = true;
+    private GameObject downedMarkObject;
 
     //public variables
     public bool isNPCDown{
@@ -51,10 +53,12 @@ public class NPC : MonoBehaviour
         Debug.Log("Incapacitated NPC " + name);
         isDown = true;
         //spawn a downed mark on NPC
-        Instantiate<GameObject>(downedMark, this.transform);
+        downedMarkObject = Instantiate<GameObject>(downedMark, this.transform);
         //when NPC is incapacitated, disable FOV
         fov.SetActive(false);
         keySpawner.SpawnKey();
+        guardFSM.PushState(guardFSM.incapacitatedState);
+        guardFSM.activeState.EndGuardState();
     }
 
     public void RemoveNPCOutfit(){
@@ -64,6 +68,13 @@ public class NPC : MonoBehaviour
 
     public void SetOutlineActive(bool t){
         outlineGameObject.SetActive(t);
+    }
+
+    public void ReactivateNPC(){
+        isDown = false;
+        Destroy(downedMarkObject);
+        fov.SetActive(true);
+        //reset some outfit?
     }
 
 }

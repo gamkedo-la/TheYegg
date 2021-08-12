@@ -22,6 +22,7 @@ public class GuardStatePatrol : GuardState
     {
         base.StartGuardState();
         navMeshAgent.autoBraking = false;
+        navMeshAgent.isStopped = false;
         navMeshAgent.speed = patrolSpeed;
         GoToNextPatrolPoint();
     }
@@ -31,9 +32,7 @@ public class GuardStatePatrol : GuardState
         if(patrolPoints.Count == 0){
             return;
         }
-
         navMeshAgent.destination = patrolPoints[currentPatrolPointIndex].position;
-
         currentPatrolPointIndex = (currentPatrolPointIndex + 1) % patrolPoints.Count;
     }
 
@@ -42,13 +41,16 @@ public class GuardStatePatrol : GuardState
         base.RunGuardState();
         //TODO create pathfinding between patrolpoints so that we can set random patrolpoints when player is detected
         if(!navMeshAgent.pathPending && navMeshAgent.remainingDistance < allowedDistanceFromPoint){
-            GoToNextPatrolPoint();
+            //has reached a patrol point, stay idle for x seconds
+            guardFSM.PushState(guardFSM.idleState);
+            navMeshAgent.isStopped = true;
+            EndGuardState();
+            //GoToNextPatrolPoint();
         }
     }
 
     public override void EndGuardState()
     {
-        Debug.Log("Ending Patrol state");
         base.EndGuardState();
         
     }

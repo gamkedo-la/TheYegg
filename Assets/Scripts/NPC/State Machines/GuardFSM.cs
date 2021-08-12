@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class GuardFSM : MonoBehaviour
 {
-
     public GuardState activeState;
     public GuardState defaultState;
     public GuardState patrolState;
     public GuardState alertState;
+    public GuardState idleState;
+    public GuardState incapacitatedState;
     public List<GuardState> stateStack;
     [HideInInspector]
     public GuardFSM guardFSM;

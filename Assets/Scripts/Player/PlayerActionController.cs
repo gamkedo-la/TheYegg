@@ -36,7 +36,7 @@ public class PlayerActionController : MonoBehaviour
 
         if(Input.GetKeyDown(incapacitateInput)){
             NPC npc = nPCHandler.GetClosestNPC();
-            if(npc.isNPCDown == false){
+            if(npc != null && npc.isNPCDown == false){
                 npc.IncapacitateNPC();
             }
         }
