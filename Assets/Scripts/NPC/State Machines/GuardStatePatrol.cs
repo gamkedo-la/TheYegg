@@ -11,20 +11,35 @@ public class GuardStatePatrol : GuardState
     [SerializeField] List<Transform> patrolPoints;
     [SerializeField] float allowedDistanceFromPoint = .5f;
     [SerializeField] float patrolSpeed = 5f;
+    [Header("Parent object for global patrol points")]
+    [SerializeField] Transform patrolPointParent;
     [Header("Required components")] 
     [SerializeField] NavMeshAgent navMeshAgent;
 
 
     //private
     private int currentPatrolPointIndex;
+    public List<Transform> globalPatrolPoints = new List<Transform>();
 
     public override void StartGuardState()
     {
         base.StartGuardState();
+        if(globalPatrolPoints.Count <= 0){
+            CreateSpawnPoints();
+        }
         navMeshAgent.autoBraking = false;
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = patrolSpeed;
         GoToNextPatrolPoint();
+    }
+
+    private void CreateSpawnPoints(){
+        //creates spawnpoints under a global parent for easier placing and debugging of patrol points
+        foreach (Transform t in patrolPoints)
+        {
+            Transform globalPoint = Instantiate<Transform>(t, patrolPointParent, true);
+            globalPatrolPoints.Add(globalPoint);
+        }
     }
 
     private void GoToNextPatrolPoint()
@@ -32,7 +47,7 @@ public class GuardStatePatrol : GuardState
         if(patrolPoints.Count == 0){
             return;
         }
-        navMeshAgent.destination = patrolPoints[currentPatrolPointIndex].position;
+        navMeshAgent.destination = globalPatrolPoints[currentPatrolPointIndex].position;
         currentPatrolPointIndex = (currentPatrolPointIndex + 1) % patrolPoints.Count;
     }
 
