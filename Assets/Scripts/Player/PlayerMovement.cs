@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 movementVector;
     private float currentSpeed;
     private Vector3 lookAtPos;
-    public Vector3 mousePos;
+    private Vector3 mousePos;
 
     //public
 
@@ -54,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         movementVector = new Vector3(Mathf.Clamp(horizontalInput, -0.7f, 0.7f), 0f, Mathf.Clamp(verticalInput, -0.7f, 0.7f));
+        movementVector.Normalize();
+        Debug.Log("MovementVector is " + movementVector);
         //mouse input
         mousePos = Input.mousePosition;
         
