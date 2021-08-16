@@ -52,7 +52,7 @@ public class FieldOfView : MonoBehaviour
     private void ScanTargets()
     {
         //do not scan if the guard is alerted by another
-        if(!guardStateAlerted.isAlertedByAnother){
+        //if(!guardStateAlerted.isAlertedByAnother){
             if(targetsInFieldOfView.Count > 0){
                 //if there are targets, go through them and check if one of them is either an incapacitated NPC or the player who is exposed/compromised
                 PlayerActionController playerActionController;
@@ -84,7 +84,7 @@ public class FieldOfView : MonoBehaviour
                     }
                 }
             }
-        }
+        //}
     }
 
     void FindVisibleTargets(){

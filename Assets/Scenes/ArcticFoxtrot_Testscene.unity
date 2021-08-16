@@ -2278,6 +2278,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 868270974747810937, guid: 33b3000df2612a942952110749d795db, type: 3}
   m_PrefabInstance: {fileID: 1576335341}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &122422971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8304663008673374458, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+  m_PrefabInstance: {fileID: 2050052784}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edfd52c1b748df4ead54b2adad2d48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &170516865
 GameObject:
   m_ObjectHideFlags: 0
@@ -9363,6 +9374,10 @@ PrefabInstance:
       propertyPath: m_AngularSpeed
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 7935545533546093925, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: alertMaxTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8304663008673374452, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: m_Name
       value: Guard (2)
@@ -10595,7 +10610,6 @@ MonoBehaviour:
   sneakSpeed: 1
   rotateSpeed: 10
   mainCamera: {fileID: 1549754613}
-  mousePos: {x: 0, y: 0, z: 0}
 --- !u!208 &1079979546
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -11777,6 +11791,10 @@ PrefabInstance:
     - target: {fileID: 1571682958, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: m_AngularSpeed
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935545533546093925, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: alertMaxTime
+      value: 5.6
       objectReference: {fileID: 0}
     - target: {fileID: 8304663008673374452, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: m_Name
@@ -16950,10 +16968,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7935545533546093925, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: nPC
+      value: 
+      objectReference: {fileID: 122422971}
+    - target: {fileID: 7935545533546093925, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: alertMaxTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8304663008673374452, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: m_Name
       value: Guard
       objectReference: {fileID: 0}
+    - target: {fileID: 8304663008673374453, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: nPC
+      value: 
+      objectReference: {fileID: 122422971}
     - target: {fileID: 8304663008673374453, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: patrolPointParent
       value: 
@@ -17009,6 +17039,10 @@ PrefabInstance:
     - target: {fileID: 8304663008673374457, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304663008673374458, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: npcSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8304663008673374459, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: m_Mass

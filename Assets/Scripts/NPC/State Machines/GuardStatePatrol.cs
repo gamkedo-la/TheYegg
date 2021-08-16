@@ -10,11 +10,11 @@ public class GuardStatePatrol : GuardState
     [Header("Patrol pathfinding settings")]
     [SerializeField] List<Transform> patrolPoints;
     [SerializeField] float allowedDistanceFromPoint = .5f;
-    [SerializeField] float patrolSpeed = 5f;
     [Header("Parent object for global patrol points")]
     [SerializeField] Transform patrolPointParent;
     [Header("Required components")] 
     [SerializeField] NavMeshAgent navMeshAgent;
+    [SerializeField] NPC nPC;
 
 
     //private
@@ -33,7 +33,7 @@ public class GuardStatePatrol : GuardState
 
         navMeshAgent.autoBraking = false;
         navMeshAgent.isStopped = false;
-        navMeshAgent.speed = patrolSpeed;
+        navMeshAgent.speed = nPC.npcSpeed;
         GoToNextPatrolPoint();
     }
 

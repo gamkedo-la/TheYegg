@@ -55,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         movementVector = new Vector3(Mathf.Clamp(horizontalInput, -0.7f, 0.7f), 0f, Mathf.Clamp(verticalInput, -0.7f, 0.7f));
         movementVector.Normalize();
-        Debug.Log("MovementVector is " + movementVector);
         //mouse input
         mousePos = Input.mousePosition;
         

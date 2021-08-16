@@ -28,6 +28,7 @@ public class NPC : MonoBehaviour
     private bool isDown = false;
     private bool hasOutfit = true;
     private GameObject downedMarkObject;
+    public float npcSpeed;
 
     //public variables
     public bool isNPCDown{

@@ -403,8 +403,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   allowedDistanceFromPoint: 0.5
-  patrolSpeed: 2
+  patrolPointParent: {fileID: 0}
   navMeshAgent: {fileID: 1571682958}
+  nPC: {fileID: 8304663008673374458}
+  globalPatrolPoints: []
 --- !u!114 &7935545533546093925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,7 +425,11 @@ MonoBehaviour:
   alertRadius: 50
   alertLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
+  alertMaxTime: 0
+  allowedDistanceFromPlayer: 1
+  navMeshAgent: {fileID: 1571682958}
+  nPC: {fileID: 8304663008673374458}
 --- !u!114 &5114384222650809296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +464,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8304663009899576405}
   keySpawner: {fileID: 8304663008673374460}
   guardFSM: {fileID: 8304663008673374455}
+  npcSpeed: 2
 --- !u!114 &8304663008673374460
 MonoBehaviour:
   m_ObjectHideFlags: 0
