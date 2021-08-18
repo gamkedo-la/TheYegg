@@ -20,12 +20,18 @@ public class SurveillanceCamera : MonoBehaviour
 
     [SerializeField] MeshFilter fovMeshFilter;
 
+    [Header("Alert settings")]
+    [SerializeField] float alertRadius;
+    [SerializeField] LayerMask alertLayerMask;
+
     private Mesh viewMesh;
 
     private List<Transform> targetsInRadiusEarlier = new List<Transform>();
+    private Vector3 lastKnownPlayerLocation;
+
 
     // Start is called before the first frame update
-   private void Start() {
+    private void Start() {
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         fovMeshFilter.mesh = viewMesh;
@@ -41,7 +47,56 @@ public class SurveillanceCamera : MonoBehaviour
         while(true) {
             yield return new WaitForSeconds(delay);
             FindVisibleTargets();
-            //ScanTargets();
+            ScanTargets();
+        }
+    }
+
+    private void ScanTargets(){
+        //loop through the targets in the field of view and check if there's an incapacitated guard or the player
+        if(targetsInFieldOfView.Count > 0){
+            Debug.Log("Camera scanning targets");
+            PlayerActionController playerActionController;
+            NPC nPC;
+            foreach(Transform t in targetsInFieldOfView){
+                if(t.TryGetComponent<PlayerActionController>(out playerActionController)){
+                    if(playerActionController.isCompromisedDisguise || playerActionController.isDoingIllegalAction){
+                        //Debug.Log("Player has been detected, moving to alerted state");
+                        lastKnownPlayerLocation = playerActionController.transform.position;
+                        //start alerted state for guards in the vicinity of the camera
+                        Debug.Log("Camera spotted player and tries to alert");
+                        AlertGuards();
+                    }
+                } else if(t.TryGetComponent<NPC>(out nPC)){
+                    if(nPC.isNPCDown == true){
+                        //saw a downed NPC
+                        //get rid of the NPC in the scene, or mark them as "seen" so that the NPC does not fall into a loop of detecting the same downed NPC
+                        Debug.Log("An incapacitated NPC detected, moving to alerted state");
+                        AlertGuards();
+                    }
+                }
+            }
+        }
+    }
+
+    private void AlertGuards()
+    {
+        GuardFSM[] allGuards = FindObjectsOfType<GuardFSM>();
+        foreach(GuardFSM g in allGuards){
+            if(Vector3.Distance(g.transform.position, lastKnownPlayerLocation) <= alertRadius){
+                //raycast to the guard in the radius to see if there is a wall in between
+                Vector3 dirToGuard = g.transform.position - transform.position;
+                Ray ray = new Ray(transform.position, (dirToGuard));
+                if(Physics.Raycast(ray, alertRadius, alertLayerMask)){
+                    //alert others
+                    if(g.activeState != g.alertState){
+                        g.gameObject.GetComponent<GuardStateAlerted>().SetIsAlertedByAnother(true);
+                        g.gameObject.GetComponent<GuardStateAlerted>().SetLastKnownLocation(lastKnownPlayerLocation);
+                        g.PushState(g.alertState);
+                        g.activeState.EndGuardState();
+                    }
+                    
+                }
+            }
         }
     }
 

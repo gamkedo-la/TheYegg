@@ -77,7 +77,6 @@ public class GuardStatePatrol : GuardState
 
     private void OnCollisionStay(Collision other) {
         if(other.gameObject.CompareTag("Floor")){
-            Debug.Log("Guard is on floor");
             navMeshAgent.enabled = false;
             navMeshAgent.enabled = true;                
         }
