@@ -6,28 +6,28 @@ public class SurveillanceCameraRotator : MonoBehaviour
 {
     
     [Header("Rotation settings")]
-    [SerializeField] float maxAngleLimit = 45f;
-    [SerializeField] float minAngleLimit = 45f;
+    [SerializeField] float rotationToRight;
+    [SerializeField] float rotationToLeft;
     [SerializeField] float rotationSpeed = 1f;
     [SerializeField] float directionChangeController = 1f;
 
     
 
     //private
-    private float adjustedMinAngleLimit;
+    public float adjustedMinAngleLimit;
     public bool canChangeDirection = false;
     private float startAngle;
 
     public float localRotationY;
-
+    public bool isMovingRight = true;
+    public Vector3 fwVector = Vector3.zero;
+    public float diffAngle;
     
     // Start is called before the first frame update
     void Start()
     {
         startAngle = transform.localEulerAngles.y;
-        adjustedMinAngleLimit = 360 - Mathf.Abs(minAngleLimit);
-        minAngleLimit = startAngle - minAngleLimit;
-        maxAngleLimit = startAngle + maxAngleLimit;
+        fwVector = transform.forward;
     }
 
     // Update is called once per frame
@@ -39,37 +39,28 @@ public class SurveillanceCameraRotator : MonoBehaviour
 
     private void RotateCamera(){
         localRotationY = transform.localRotation.eulerAngles.y;
+
+        //start by moving right
+        //Debug.Log("Reached angle is "+ Vector3.Angle(fwVector, transform.forward));
+        diffAngle = Vector3.Angle(fwVector, transform.forward);
         transform.RotateAround(transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
-        if(localRotationY > maxAngleLimit && canChangeDirection){
-            //turn rotation direction by adjusting rotationspeed
-            rotationSpeed = rotationSpeed * -1;
-            canChangeDirection = false;
-        }
-
-        if(localRotationY < minAngleLimit && canChangeDirection){
-            rotationSpeed = rotationSpeed * -1;
-            canChangeDirection = false;
-        }
-
-        if(localRotationY < maxAngleLimit && localRotationY > minAngleLimit){
-            canChangeDirection = true;
-        }
-
-    }
-
-/*
-        if(canChangeDirection)
-        {
-            if(transform.localRotation.eulerAngles.y > maxAngleLimit && transform.localRotation.eulerAngles.y < adjustedMinAngleLimit)
-            {
-                canChangeDirection = false;
-                rotationSpeed = -rotationSpeed;
+        if(isMovingRight){
+            if(Vector3.Angle(fwVector, transform.forward) >= rotationToRight + rotationToLeft){
+                //change direction
+                rotationSpeed = rotationSpeed * -1;
+                isMovingRight = false;
+                fwVector = transform.forward;
+            }
+        } else {
+            //moving left until local y rotation is non-negative and bigger than min angle limit
+            
+            if(Vector3.Angle(fwVector, transform.forward) >= rotationToRight + rotationToLeft){
+                //change direction
+                rotationSpeed = rotationSpeed * -1;
+                isMovingRight = true;
+                fwVector = transform.forward;
             }
         }
 
-        if(Mathf.DeltaAngle(transform.localRotation.eulerAngles.y, (maxAngleLimit + minAngleLimit) / 2) < directionChangeController && Mathf.DeltaAngle(transform.localRotation.eulerAngles.y, (maxAngleLimit + minAngleLimit) / 2) > -directionChangeController){
-            canChangeDirection = true;
-        }
     }
-    */
 }
