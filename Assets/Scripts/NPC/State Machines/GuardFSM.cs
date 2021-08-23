@@ -33,7 +33,8 @@ public class GuardFSM : MonoBehaviour
 
     public void PushState(GuardState state){
         //protect against duplicates of the same state in the stack
-        if(GetCurrentState() != state){
+        //if incapacitated, prevent new states from being added
+        if(GetCurrentState() != state && GetCurrentState() != incapacitatedState){ 
             stateStack.Insert(0, state);
             stateStack[0].StartGuardState();
         }             

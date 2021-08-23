@@ -25,7 +25,7 @@ public class NPC : MonoBehaviour
 
     //private variables
     private Color NPCColor;
-    private bool isDown = false;
+    public bool isDown = false;
     private bool hasOutfit = true;
     private GameObject downedMarkObject;
     public float npcSpeed;
@@ -75,6 +75,7 @@ public class NPC : MonoBehaviour
         isDown = false;
         Destroy(downedMarkObject);
         fov.SetActive(true);
+        fov.gameObject.GetComponent<FieldOfView>().ReactivateFOV();
         //reset some outfit?
     }
 

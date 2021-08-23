@@ -10,6 +10,7 @@ public class GuardStateIncapacitated : GuardState
 
     private float startTime;
     private NPC npc;
+    public bool canExitState = false;
 
     public override void StartGuardState(){
         //start a timer which is compared to timeToReset which will bring the guard back to life
@@ -26,12 +27,18 @@ public class GuardStateIncapacitated : GuardState
             //reset to default state
             Debug.Log("Reactivating guard");
             guardFSM.PushState(guardFSM.defaultState);
-            npc.ReactivateNPC();
             EndGuardState();
+            canExitState = true;
+        } else {
+            canExitState = false;
         }
     }
 
     public override void EndGuardState(){
-        base.EndGuardState();
+        //this may be called from other methods, therefore reactivate here too
+        if(canExitState){
+            npc.ReactivateNPC();
+            base.EndGuardState();
+        }
     }
 }

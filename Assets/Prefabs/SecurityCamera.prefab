@@ -321,12 +321,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e410c8805ac1e42bff879d5527df66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAngleLimit: 45
-  minAngleLimit: 45
+  rotationToRight: 0
+  rotationToLeft: 0
   rotationSpeed: 1
   directionChangeController: 1
+  adjustedMinAngleLimit: 0
   canChangeDirection: 0
   localRotationY: 0
+  isMovingRight: 1
+  fwVector: {x: 0, y: 0, z: 0}
+  diffAngle: 0
 --- !u!1 &9141513210279798742
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,57 +2022,9 @@ MonoBehaviour:
   assetGuid: 
   m_Mesh: {fileID: 0}
   m_IsSelectable: 1
-  m_SelectedFaces: 0a0000000b0000000e00000009000000080000000f0000000d0000000c000000
-  m_SelectedEdges:
-  - a: 46
-    b: 45
-  - a: 45
-    b: 44
-  - a: 44
-    b: 46
-  - a: 52
-    b: 51
-  - a: 51
-    b: 50
-  - a: 50
-    b: 52
-  - a: 70
-    b: 69
-  - a: 69
-    b: 68
-  - a: 68
-    b: 70
-  - a: 40
-    b: 39
-  - a: 39
-    b: 38
-  - a: 38
-    b: 40
-  - a: 34
-    b: 33
-  - a: 33
-    b: 32
-  - a: 32
-    b: 34
-  - a: 76
-    b: 75
-  - a: 75
-    b: 74
-  - a: 74
-    b: 76
-  - a: 64
-    b: 63
-  - a: 63
-    b: 62
-  - a: 62
-    b: 64
-  - a: 58
-    b: 57
-  - a: 57
-    b: 56
-  - a: 56
-    b: 58
-  m_SelectedVertices: 2e0000002d0000002c0000003400000033000000320000004600000045000000440000002800000027000000260000002200000021000000200000004c0000004b0000004a000000400000003f0000003e0000003a0000003900000038000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!23 &2573858822695095427
 MeshRenderer:
   m_ObjectHideFlags: 0

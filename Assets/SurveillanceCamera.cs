@@ -54,7 +54,6 @@ public class SurveillanceCamera : MonoBehaviour
     private void ScanTargets(){
         //loop through the targets in the field of view and check if there's an incapacitated guard or the player
         if(targetsInFieldOfView.Count > 0){
-            Debug.Log("Camera scanning targets");
             PlayerActionController playerActionController;
             NPC nPC;
             foreach(Transform t in targetsInFieldOfView){

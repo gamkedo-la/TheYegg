@@ -37,6 +37,7 @@ public class KeySpawner : MonoBehaviour
             else if(key == DoorKey.Yellow){
                 spawnedKey = Instantiate<GameObject>(yellowKey, keySpawnPoint.transform.position, Quaternion.identity);
             }
+            hasKey = false;
         }
 
         //throw the key to a random direction a tiny bit

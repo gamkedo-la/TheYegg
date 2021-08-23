@@ -7,13 +7,15 @@ public class GuardStateIdle : GuardState
 {
 
     [SerializeField] float idleTimeInSeconds = 3f;
-
+    
     public float timeSpentIdle = 0f;
 
     public override void StartGuardState()
     {
         //start counting down seconds that the guard stays idle
         timeSpentIdle = 0f;
+        //if the FOV is not active, activate it
+        
     }
 
     public override void RunGuardState()

@@ -37,6 +37,10 @@ public class FieldOfView : MonoBehaviour
 
     }
 
+    public void ReactivateFOV(){
+        StartCoroutine("FindTargetsWithDelay", .2f);
+    }
+
     private void LateUpdate() {
         DrawFieldOfView();
     }
@@ -100,10 +104,13 @@ public class FieldOfView : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
                 if(!Physics.Raycast(transform.position, dirToTarget, distanceToTarget, obstacleMask)){
                     //no obstacles in the way, so the target is visible
+                    Debug.Log("Raycasting here did not work");
                     if(!tempList.Contains(target)){
                         tempList.Add(target);
                     } 
                    
+                } else {
+                    Debug.Log("there was an obstacle between FOV source and target");
                 }
             }
         }
