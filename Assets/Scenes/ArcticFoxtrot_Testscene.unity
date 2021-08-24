@@ -10854,7 +10854,10 @@ MonoBehaviour:
   interactLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  timeToOpenWithKey: 2
+  timeToOpenWithLockpick: 5
   keys: 00000000
+  lockpickCount: 1
   door: {fileID: 0}
   key: {fileID: 0}
 --- !u!114 &1139043618 stripped

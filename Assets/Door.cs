@@ -5,7 +5,9 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [Header("Door Settings")]
-    public DoorKey correctKey;
+    [SerializeField] DoorKey correctKey;
+ 
+    
 
     [Header("Required Components")]
     [SerializeField] Collider interactionAreaCollider;
@@ -13,14 +15,18 @@ public class Door : MonoBehaviour
     [Header("References to other Gameobjects")]
     [SerializeField] BoxCollider parentCollider;
 
+    
+
+
     public DoorKey GetCorrectDoorKey(){
         return correctKey;
     }
 
-    public void OpenDoor(){
+    public bool OpenDoor(){
         //disable the collider from the parent object
         parentCollider.enabled = false;
         //TODO add an actual door and animations and sounds
+        return true;
     }
 
 }
