@@ -21,10 +21,9 @@ public class PlayerActionController : MonoBehaviour
     public bool isCompromisedDisguise;
     public bool isDoingIllegalAction;
 
-    public float openDoorStartTime;
-
     //private
     private bool canOpenDoor;
+    private float openDoorStartTime;
     
     // Start is called before the first frame update
     void Start()
@@ -58,7 +57,6 @@ public class PlayerActionController : MonoBehaviour
 
         if(Input.GetKeyUp(openDoorInput) && canOpenDoor){
             keyHandler.OpenDoor(Time.time - openDoorStartTime);
-            Debug.Log("Tried time was " + (Time.time - openDoorStartTime).ToString());
             openDoorStartTime = 0f;
         }
 

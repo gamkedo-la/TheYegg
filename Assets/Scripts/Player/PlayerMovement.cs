@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed;
     private Vector3 lookAtPos;
     private Vector3 mousePos;
-
     //public
 
     // Start is called before the first frame update
@@ -40,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if(!mainCamera || mainCamera == null){
             Debug.LogWarning("PlayerMovement component could not find a Main Camera");
         }
+
     }
 
     // Update is called once per frame
@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         movementVector = new Vector3(Mathf.Clamp(horizontalInput, -0.7f, 0.7f), 0f, Mathf.Clamp(verticalInput, -0.7f, 0.7f));
         movementVector.Normalize();
+
         //mouse input
         mousePos = Input.mousePosition;
         
@@ -96,5 +97,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         
+    }
+
+    public float GetPlayerMovementMagnitude(){
+        return movementVector.magnitude;
     }
 }
