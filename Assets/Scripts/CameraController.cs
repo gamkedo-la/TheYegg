@@ -18,9 +18,6 @@ public class CameraController : MonoBehaviour
     private CinemachineVirtualCamera cm;
     private CinemachineOrbitalTransposer cmot;
     private PlayerMovement playerMovement;
-    private bool zoomIn = false;
-    private float zoomOutFov;
-    private float zoomInFov;
     private float zoom;
     private bool idleTimerStarted;
     private float idleStartTime;

@@ -17,11 +17,8 @@ public class KeyHandler : MonoBehaviour
     public int lockpickCount;
 
     //private
-    private bool isNearDoor = false;
-    private bool isNearKey = false;
     private bool hasMatchingKey = false;
-    private float startTime = 0f;
-    private float stopTime = 0f;
+
 
     public Door door;
     public Key key;

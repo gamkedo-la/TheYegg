@@ -12925,7 +12925,7 @@ MonoBehaviour:
     m_Bits: 512
   timeToOpenWithKey: 2
   timeToOpenWithLockpick: 5
-  keys: 00000000
+  keys: 
   lockpickCount: 1
   door: {fileID: 0}
   key: {fileID: 0}

@@ -8,10 +8,7 @@ public class SurveillanceCameraRotator : MonoBehaviour
     [Header("Rotation settings")]
     [SerializeField] float rotationToRight;
     [SerializeField] float rotationToLeft;
-    [SerializeField] float rotationSpeed = 1f;
-    [SerializeField] float directionChangeController = 1f;
-
-    
+    [SerializeField] float rotationSpeed = 1f;    
 
     //private
     public float adjustedMinAngleLimit;
