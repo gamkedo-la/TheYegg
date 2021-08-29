@@ -41,7 +41,10 @@ public class KeySpawner : MonoBehaviour
         }
 
         //throw the key to a random direction a tiny bit
-        spawnedKey.GetComponent<Rigidbody>().AddForce(Random.Range(0f, throwMaxDistance), Random.Range(0f, throwMaxDistance), Random.Range(0f, throwMaxDistance), ForceMode.Impulse);
+        if(spawnedKey){
+            spawnedKey.GetComponent<Rigidbody>().AddForce(Random.Range(0f, throwMaxDistance), Random.Range(0f, throwMaxDistance), Random.Range(0f, throwMaxDistance), ForceMode.Impulse);
+        }
+        
     }
 
 
