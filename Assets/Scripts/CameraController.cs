@@ -50,7 +50,6 @@ public class CameraController : MonoBehaviour
 
         if(!isMovement && idleTimerStarted == false){
             //movement stopped, start idle timer
-            Debug.Log("Player is idle");
             //start timer for idling
             idleStartTime = Time.time;
             idleTimerStarted = true;
@@ -58,11 +57,9 @@ public class CameraController : MonoBehaviour
         }
 
         if(Time.time - idleStartTime > playerIdleThreshold && playerMovement.GetPlayerMovementMagnitude() == 0f){
-            Debug.Log("Zooming in!");
             zoom = Mathf.SmoothDamp(zoom, zoomInLimit, ref yVelocity, zoomInDuration);
             cmot.m_FollowOffset.y  = zoom;
         } else {
-            Debug.Log("Zooming out!");
             zoom = Mathf.SmoothDamp(zoom, zoomOutLimit, ref yVelocity, zoomOutDuration);
             cmot.m_FollowOffset.y = zoom;
         }

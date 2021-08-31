@@ -12,13 +12,12 @@ public class SurveillanceCameraRotator : MonoBehaviour
 
     //private
     public float adjustedMinAngleLimit;
-    public bool canChangeDirection = false;
     private float startAngle;
 
-    public float localRotationY;
+    private float localRotationY;
     public bool isMovingRight = true;
-    public Vector3 fwVector = Vector3.zero;
-    public float diffAngle;
+    private Vector3 fwVector = Vector3.zero;
+    private float diffAngle;
     
     // Start is called before the first frame update
     void Start()
