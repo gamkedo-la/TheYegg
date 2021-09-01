@@ -10,12 +10,14 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] KeyCode equipDisguiseInput;
     [SerializeField] KeyCode openDoorInput;
     [SerializeField] KeyCode pickUpKeyInput;
+    [SerializeField] KeyCode openSafeInput;
 
 
     [Header("Required components")]
     [SerializeField] NPCHandler nPCHandler;
     [SerializeField] DisguiseHandler disguiseHandler;
     [SerializeField] KeyHandler keyHandler;
+    [SerializeField] SafeHandler safeHandler;
 
     [Header("Interface to detection")]
     public bool isCompromisedDisguise;
@@ -24,6 +26,8 @@ public class PlayerActionController : MonoBehaviour
     //private
     private bool canOpenDoor;
     private float openDoorStartTime;
+    private bool canOpenSafe;
+    private float openSafeStartTime;
     
     // Start is called before the first frame update
     void Start()
@@ -64,5 +68,20 @@ public class PlayerActionController : MonoBehaviour
         if(Input.GetKeyDown(pickUpKeyInput)){
             keyHandler.PickUpKey();
         }
+
+        if(Input.GetKeyDown(openSafeInput)){
+            if(safeHandler.StartOpenSafe() == true){
+                openSafeStartTime = Time.time;
+                canOpenSafe = true;
+            } else {
+                canOpenSafe = false;
+            }
+        }
+
+        if(Input.GetKeyUp(openSafeInput) && canOpenSafe){
+            safeHandler.OpenSafe(Time.time - openSafeStartTime);
+            openSafeStartTime = 0f;
+        }
+
     }
 }
