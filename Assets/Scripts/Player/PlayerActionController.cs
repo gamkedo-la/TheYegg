@@ -83,5 +83,15 @@ public class PlayerActionController : MonoBehaviour
             openSafeStartTime = 0f;
         }
 
+        if(Input.GetKeyDown(KeyCode.P)) {
+            pauseOrResumeGame();
+        }
+
+    }
+
+    // Pause or Resume Game
+    void pauseOrResumeGame() 
+    {
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     }
 }
