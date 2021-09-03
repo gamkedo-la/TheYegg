@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 3321952403952502144}
   - component: {fileID: 3321952403952502151}
   - component: {fileID: 3321952403952502150}
+  - component: {fileID: -3169490519667154114}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -194,6 +195,25 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!95 &-3169490519667154114
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321952403952502153}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7245b362e146be24a961ef47cd8217d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3321952404266471980
 GameObject:
   m_ObjectHideFlags: 0

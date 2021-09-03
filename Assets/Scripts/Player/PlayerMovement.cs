@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Required components")]
     private Rigidbody playerRb;
     public Camera mainCamera;
+    Animator playerAnimator;
 
     //private
     private float horizontalInput;
@@ -38,6 +39,11 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = Camera.main;
         if(!mainCamera || mainCamera == null){
             Debug.LogWarning("PlayerMovement component could not find a Main Camera");
+        }
+
+        playerAnimator = GetComponent<Animator>();
+        if(!playerAnimator || playerAnimator == null) {
+            Debug.LogWarning("playerAnimator component could not find a Main Camera");
         }
 
     }
@@ -101,5 +107,30 @@ public class PlayerMovement : MonoBehaviour
 
     public float GetPlayerMovementMagnitude(){
         return movementVector.magnitude;
+    }
+
+    // TODO: modify once final animations are developed
+    // determine how incapacitate shoud operate vs other movement
+    // may need to reference PlayerActionController
+    // add to update
+
+    private void animatePlayer() 
+    {
+        if(currentSpeed == runSpeed) {
+            playerAnimator.SetBool("run", true);
+            playerAnimator.SetBool("walk", false);
+            playerAnimator.SetBool("idle", false);
+            playerAnimator.SetBool("incapacitate", false);
+        } else if (currentSpeed == 0) {
+            playerAnimator.SetBool("run", false);
+            playerAnimator.SetBool("walk", false);
+            playerAnimator.SetBool("idle", true);
+            playerAnimator.SetBool("incapacitate", false);
+        } else if (currentSpeed < runSpeed) {
+            playerAnimator.SetBool("run", false);
+            playerAnimator.SetBool("walk", true);
+            playerAnimator.SetBool("idle", false);
+            playerAnimator.SetBool("incapacitate", false);
+        }
     }
 }
