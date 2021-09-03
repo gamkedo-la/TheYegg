@@ -30,8 +30,10 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //get the upper zoom limit from the cinemachine component
         cm = GetComponent<CinemachineVirtualCamera>();
+        cm.m_Follow = FindObjectOfType<PlayerMovement>().transform;
         cmot = cm.GetCinemachineComponent<CinemachineOrbitalTransposer>();
         //get y offset from virtual camera body
         zoomOutLimit = cmot.m_FollowOffset.y;

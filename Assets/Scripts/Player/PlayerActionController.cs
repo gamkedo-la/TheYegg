@@ -11,6 +11,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] KeyCode openDoorInput;
     [SerializeField] KeyCode pickUpKeyInput;
     [SerializeField] KeyCode openSafeInput;
+    [SerializeField] KeyCode levelTransitionInput;
 
 
     [Header("Required components")]
@@ -18,6 +19,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] DisguiseHandler disguiseHandler;
     [SerializeField] KeyHandler keyHandler;
     [SerializeField] SafeHandler safeHandler;
+    [SerializeField] LevelTransitionHandler levelTransitionHandler;
 
     [Header("Interface to detection")]
     public bool isCompromisedDisguise;
@@ -85,6 +87,10 @@ public class PlayerActionController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.P)) {
             pauseOrResumeGame();
+        }
+
+        if(Input.GetKeyDown(levelTransitionInput)){
+            levelTransitionHandler.UseLevelTransition();
         }
 
     }
