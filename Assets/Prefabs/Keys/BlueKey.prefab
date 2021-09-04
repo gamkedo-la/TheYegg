@@ -1890,6 +1890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyType: 1
+  keyName: Blue
 --- !u!65 &2785335752808546502
 BoxCollider:
   m_ObjectHideFlags: 0

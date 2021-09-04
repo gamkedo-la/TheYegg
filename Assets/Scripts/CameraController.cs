@@ -6,8 +6,6 @@ using System;
 
 public class CameraController : MonoBehaviour
 {
-    [Range(0f, 1f)]
-    [SerializeField] float zoomInSpeed = 1f;
     [SerializeField] float zoomInLimit = 3f;
     [SerializeField] float zoomInDuration = 2f;
     [SerializeField] float zoomOutDuration = 2f;
@@ -24,30 +22,26 @@ public class CameraController : MonoBehaviour
     private bool isMovement = false;
     private float yVelocity = 0f;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
-
         //get the upper zoom limit from the cinemachine component
         cm = GetComponent<CinemachineVirtualCamera>();
-        cm.m_Follow = FindObjectOfType<PlayerMovement>().transform;
+        if(cm.m_Follow == null){
+            cm.m_Follow = PlayerMovement.GetPlayer().transform;
+        }
         cmot = cm.GetCinemachineComponent<CinemachineOrbitalTransposer>();
         //get y offset from virtual camera body
         zoomOutLimit = cmot.m_FollowOffset.y;
-        //zoomOutLimit = cm.m_Lens.FieldOfView;
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         zoom = zoomOutLimit;
     }
 
     private void Update() {
+
         isMovement = playerMovement.GetPlayerMovementMagnitude() != 0f;
-        
         if(isMovement){
             idleTimerStarted = false;
-            //zoomInFov = zoomInLimit;
         }
 
         if(!isMovement && idleTimerStarted == false){
@@ -55,7 +49,6 @@ public class CameraController : MonoBehaviour
             //start timer for idling
             idleStartTime = Time.time;
             idleTimerStarted = true;
-            //zoomOutFov = zoomOutLimit;
         }
 
         if(Time.time - idleStartTime > playerIdleThreshold && playerMovement.GetPlayerMovementMagnitude() == 0f){

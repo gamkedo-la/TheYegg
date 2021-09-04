@@ -19,10 +19,33 @@ public class KeyHandler : MonoBehaviour
     //private
     private bool hasMatchingKey = false;
 
-
     public Door door;
     public Key key;
 
+    private void Start() {
+        //GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
+        //foreach (DoorKey key in keys)
+        //{
+           // GameObject.FindObjectOfType<HUDHandler>().SetCollectedKeys(key.ToString());
+        //}
+        
+    }
+
+    public string GetKeyString()
+    {
+        String s = "";
+        foreach (DoorKey key in keys)
+        {
+            if(s.Length < 1){
+                s = key.ToString();
+            } else {
+                s = s + ", " + key.ToString();
+            }
+            
+        }
+
+        return s;
+    }
 
     public void OpenDoor(float inputTime)
     {
@@ -36,6 +59,7 @@ public class KeyHandler : MonoBehaviour
             if(inputTime > timeToOpenWithLockpick){
                 door.OpenDoor();
                 lockpickCount -= 1;
+                GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
             }
         }
 
@@ -73,7 +97,10 @@ public class KeyHandler : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, interactLayerMask);
         foreach(Collider hit in hitColliders){
             if(hit.gameObject.TryGetComponent<Key>(out key)){
-                keys.Add(key.GetKeyType());
+                if(!keys.Contains(key.GetKeyType())){
+                    keys.Add(key.GetKeyType());
+                    GameObject.FindObjectOfType<HUDHandler>().SetCollectedKeys(key.GetKeyType().ToString());
+                }
                 key.DestroyKey();
             } else {
                 Debug.Log("No key in vicinity");
@@ -81,8 +108,21 @@ public class KeyHandler : MonoBehaviour
         }
     }
 
+    public int GetLockPickCount(){
+        return lockpickCount;
+    }
+
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, transform.localScale);
+    }
+
+    private void HandleLevelTransitioned(){
+        GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
+        Debug.Log("setting lock pick count to " + lockpickCount);
+        foreach (DoorKey key in keys)
+        {
+            GameObject.FindObjectOfType<HUDHandler>().SetCollectedKeys(key.ToString());
+        }
     }
 }

@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float walkSpeed = 2f;
     [SerializeField] float runSpeed = 4f;
     [SerializeField] float sneakSpeed = 1f;
-    [SerializeField] float rotateSpeed = 1f;
 
     //required components
     [Header("Required components")]
@@ -27,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lookAtPos;
     private Vector3 mousePos;
     //public
+
+    public static PlayerMovement GetPlayer(){
+        PlayerMovement playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+        return playerMovement;
+    }
 
     // Start is called before the first frame update
     void Start()

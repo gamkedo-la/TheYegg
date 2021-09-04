@@ -16,6 +16,7 @@ public class LevelTransition : MonoBehaviour
     [SerializeField] float yOffset;
     [SerializeField] float smoothTime = .3f;
     [SerializeField] float maxSmoothSpeed = 2f;
+    [SerializeField] Transform spawnPosition;
 
 
     private RectTransform textRectTransform;
@@ -35,7 +36,6 @@ public class LevelTransition : MonoBehaviour
         if(!mainCamera || mainCamera == null){
             Debug.LogWarning("Level Transition for " + gameObject.name + " could not find a Main Camera!");
         }
-
         //set elevator text UI pos to starting position
         Vector3 elevatorPositionOnScreen = mainCamera.WorldToScreenPoint(this.transform.position);
         Vector2 elevatorPos = new Vector2(elevatorPositionOnScreen.x + xOffset, elevatorPositionOnScreen.y + yOffset);
@@ -61,7 +61,7 @@ public class LevelTransition : MonoBehaviour
     }
 
     public void TransitionToLevel(){
-         SceneManager.LoadScene(toLevelIndex);
+        SceneManager.LoadScene(toLevelIndex);
     }
 
     private void OnTriggerEnter(Collider other) {
