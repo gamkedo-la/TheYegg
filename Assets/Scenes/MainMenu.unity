@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167c5271bf1c54f41b57d7fc3ae3de0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScenePath: Scenes/ArcticFoxtrot_Testscene
+  startScenePath: Scenes/Level2_Office_Entrance 1
 --- !u!4 &311338609
 Transform:
   m_ObjectHideFlags: 0

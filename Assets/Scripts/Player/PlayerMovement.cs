@@ -60,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetInput()
     {
-        //keyboard input
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         movementVector = new Vector3(Mathf.Clamp(horizontalInput, -0.7f, 0.7f), 0f, Mathf.Clamp(verticalInput, -0.7f, 0.7f));
