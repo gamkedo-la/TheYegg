@@ -51,7 +51,7 @@ public class NPC : MonoBehaviour
     }
 
     public void IncapacitateNPC(){
-        Debug.Log("Incapacitated NPC " + name);
+        //Debug.Log("Incapacitated NPC " + name);
         isDown = true;
         //spawn a downed mark on NPC
         downedMarkObject = Instantiate<GameObject>(downedMark, this.transform);

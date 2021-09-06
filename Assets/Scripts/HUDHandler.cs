@@ -10,6 +10,7 @@ public class HUDHandler : MonoBehaviour
     [Header("UI text objects:")]
     [SerializeField] TextMeshProUGUI keysText;
     [SerializeField] TextMeshProUGUI lockpickText;
+    [SerializeField] TextMeshProUGUI visibilityText;
 
     [Header("UI Text starts")]
     [SerializeField] string keysTextStart;
@@ -21,9 +22,7 @@ public class HUDHandler : MonoBehaviour
     void Start()
     {
         SetLockPickCount(FindObjectOfType<KeyHandler>().GetLockPickCount());
-        Debug.Log("Setting lock pick count to " + FindObjectOfType<KeyHandler>().GetLockPickCount() );
         SetCollectedKeys(FindObjectOfType<KeyHandler>().GetKeyString());
-        Debug.Log("Setting key string to " + FindObjectOfType<KeyHandler>().GetKeyString());
     }
 
 
@@ -41,5 +40,18 @@ public class HUDHandler : MonoBehaviour
         
         keysText.text = keysTextStart + keysString;
 
+    }
+
+    public void ToggleHUDVisibility(bool t){
+        if(t == false){
+            //make HUD objects invisible
+            keysText.alpha = 0f;
+            lockpickText.alpha = 0f;
+            visibilityText.alpha = 0f;
+        } else {
+            keysText.alpha = 255f;
+            lockpickText.alpha = 255f;
+            visibilityText.alpha = 0f;
+        }
     }
 }

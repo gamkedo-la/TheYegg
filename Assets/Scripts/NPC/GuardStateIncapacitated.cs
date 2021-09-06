@@ -25,7 +25,6 @@ public class GuardStateIncapacitated : GuardState
         base.RunGuardState();
         if(Time.time - startTime > timeToReset){
             //reset to default state
-            Debug.Log("Reactivating guard");
             guardFSM.PushState(guardFSM.defaultState);
             EndGuardState();
             canExitState = true;

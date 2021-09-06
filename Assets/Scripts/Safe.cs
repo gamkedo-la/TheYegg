@@ -11,6 +11,8 @@ public class Safe : MonoBehaviour
 
     public void OpenSafe(){
         Debug.Log("Safe opened!");
+        FindObjectOfType<LevelManager>().LevelCleared();
+
     }
 
     public float GetTimeToOpen()

@@ -75,7 +75,6 @@ public class KeyHandler : MonoBehaviour
                 foreach (DoorKey key in keys)
                 {
                     if(key == correctKey){
-                        Debug.Log("Matching key found");
                         hasMatchingKey = true;
                         return true;
                     }
@@ -83,7 +82,6 @@ public class KeyHandler : MonoBehaviour
 
                 if(hasMatchingKey == false){
                     if(lockpickCount > 0){
-                        Debug.Log("Need to use lockpicks");
                         hasMatchingKey = false;
                         return true;
                     }
@@ -119,7 +117,6 @@ public class KeyHandler : MonoBehaviour
 
     private void HandleLevelTransitioned(){
         GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
-        Debug.Log("setting lock pick count to " + lockpickCount);
         foreach (DoorKey key in keys)
         {
             GameObject.FindObjectOfType<HUDHandler>().SetCollectedKeys(key.ToString());
