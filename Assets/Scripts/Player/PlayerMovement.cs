@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float walkSpeed = 2f;
     [SerializeField] float runSpeed = 4f;
     [SerializeField] float sneakSpeed = 1f;
+    [SerializeField] bool enableMouseMovement = false;
 
     //required components
     [Header("Required components")]
@@ -67,6 +68,9 @@ public class PlayerMovement : MonoBehaviour
 
         //mouse input
         mousePos = Input.mousePosition;
+        if (Input.GetMouseButtonUp(1) && enableMouseMovement) {
+            MovePlayerToMouse();
+        }
         
         //TODO add checks for sprinting/sneaking
         currentSpeed = runSpeed;
@@ -104,8 +108,25 @@ public class PlayerMovement : MonoBehaviour
             //controls so that player faces the movement direction
             transform.LookAt(transform.position + movementVector, Vector3.up);
         }
+    }
 
-        
+    private void MovePlayerToMouse() {
+        Ray screenRay = mainCamera.ScreenPointToRay(mousePos);
+        RaycastHit hit;
+        Vector3 updatedPos = playerRb.position;
+        if (Physics.Raycast(screenRay, out hit))
+        {
+            if (hit.collider.gameObject.GetComponent<PlayerMovement>())
+            {
+                return;
+            }
+            else
+            {
+                updatedPos = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+            }
+
+        }
+        playerRb.MovePosition(playerRb.position + updatedPos * Time.fixedDeltaTime * currentSpeed);
     }
 
     public float GetPlayerMovementMagnitude(){
