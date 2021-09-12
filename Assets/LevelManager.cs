@@ -21,6 +21,20 @@ public class LevelManager : MonoBehaviour
     [Header("UI Gameobjects")]
     [SerializeField] GameObject loseUI;
     [SerializeField] GameObject winUI;
+
+    [Header("Scene fade parameters")]
+    [SerializeField] Animator animator;
+
+
+    private int levelToLoad;
+
+    private void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable(){
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     
     private void Start() {
         if(winUI){
@@ -30,7 +44,6 @@ public class LevelManager : MonoBehaviour
         if(loseUI){
             loseUI.SetActive(false);
         }
-        
     }
 
 
@@ -62,10 +75,8 @@ public class LevelManager : MonoBehaviour
     public void LoadNextLevel(){
         int sceneIndex = levelStartIndeces[nextLevelIndex];
         Debug.Log("Loading scene " + sceneIndex);
-        SceneManager.LoadScene(sceneIndex);
-        if(PlayerMovement.GetPlayer()){
-            PlayerMovement.GetPlayer().transform.position = levelStartPositions[0];
-        }
+        //SceneManager.LoadScene(sceneIndex);
+        FadeToLevel(sceneIndex);
         ChangeLevelIndeces();
         winUI.SetActive(false);
         //reset player parameters for lockpicks, keys, disguise and position in the game
@@ -74,10 +85,8 @@ public class LevelManager : MonoBehaviour
     public void ReloadCurrentLevel(){
         int sceneIndex = levelStartIndeces[currentLevelIndex];
         Debug.Log("Loading scene " + sceneIndex);
-        SceneManager.LoadScene(sceneIndex);
-        if(PlayerMovement.GetPlayer()){
-            PlayerMovement.GetPlayer().transform.position = levelStartPositions[0];
-        }
+        //SceneManager.LoadScene(sceneIndex);
+        FadeToLevel(sceneIndex);
         winUI.SetActive(false);
         loseUI.SetActive(false);
         //reset player parameters for lockpicks, keys and disguise
@@ -85,11 +94,30 @@ public class LevelManager : MonoBehaviour
 
     public void LoadMainMenu(){
         Debug.Log("Loading scene " + mainMenuSceneIndex);
-        SceneManager.LoadScene(mainMenuSceneIndex);
         currentLevelIndex = 0;
         nextLevelIndex = 0;
         winUI.SetActive(false);
         loseUI.SetActive(false);
+        //SceneManager.LoadScene(mainMenuSceneIndex);
+        FadeToLevel(mainMenuSceneIndex);
+    }
+
+    public void FadeToLevel(int levelIndex){
+        animator.SetTrigger("FadeOut");
+        levelToLoad = levelIndex;
+    }
+
+    public void OnFadeComplete(){
+        SceneManager.LoadScene(levelToLoad);
+        if(PlayerMovement.GetPlayer()){
+            PlayerMovement.GetPlayer().transform.position = levelStartPositions[currentLevelIndex]; //NB main menu scene does not have a starting position
+            //TODO make sure that when restarting from the first level the currentLevelIndex is reset correctly
+        }
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+        Debug.Log("OnSceneLoaded called!");
+        animator.SetTrigger("FadeIn");
     }
 
 }
