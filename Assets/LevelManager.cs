@@ -116,7 +116,6 @@ public class LevelManager : MonoBehaviour
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode){
-        Debug.Log("OnSceneLoaded called!");
         animator.SetTrigger("FadeIn");
     }
 
