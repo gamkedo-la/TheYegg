@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -80,6 +81,15 @@ public class LevelManager : MonoBehaviour
         ChangeLevelIndeces();
         winUI.SetActive(false);
         //reset player parameters for lockpicks, keys, disguise and position in the game
+        ResetPlayer();
+    }
+
+    private void ResetPlayer()
+    {
+        if(GameObject.FindObjectOfType<PlayerMovement>()){
+            GameObject.FindObjectOfType<KeyHandler>().ResetKeyHandler();
+            GameObject.FindObjectOfType<DisguiseHandler>().ResetDisguiseHandler();
+        }
     }
 
     public void ReloadCurrentLevel(){
@@ -89,6 +99,7 @@ public class LevelManager : MonoBehaviour
         FadeToLevel(sceneIndex);
         winUI.SetActive(false);
         loseUI.SetActive(false);
+        ResetPlayer();
         //reset player parameters for lockpicks, keys and disguise
     }
 

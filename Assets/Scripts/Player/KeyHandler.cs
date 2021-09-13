@@ -15,6 +15,7 @@ public class KeyHandler : MonoBehaviour
     public List<DoorKey> keys = new List<DoorKey>();
     [Tooltip("Number of lockpicks left")]
     public int lockpickCount;
+    public int lockpickCountAtStartOfLevel = 2;
 
     //private
     private bool hasMatchingKey = false;
@@ -115,8 +116,10 @@ public class KeyHandler : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, transform.localScale);
     }
 
-    private void HandleLevelTransitioned(){
+    public void ResetKeyHandler(){
+        lockpickCount = lockpickCountAtStartOfLevel;
         GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
+        keys.Clear();
         foreach (DoorKey key in keys)
         {
             GameObject.FindObjectOfType<HUDHandler>().SetCollectedKeys(key.ToString());

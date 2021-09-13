@@ -20,8 +20,7 @@ public class DisguiseHandler : MonoBehaviour
 
     void Start()
     {
-        currentOutfitColour = defaultOutfitColour;
-        spriteRenderer.color = currentOutfitColour;
+        ResetDisguiseHandler();
 
     }
 
@@ -39,5 +38,10 @@ public class DisguiseHandler : MonoBehaviour
             Debug.Log("Downed NPC does not have an outfit anymore!");
         }
 
+    }
+
+    public void ResetDisguiseHandler(){
+        currentOutfitColour = defaultOutfitColour;
+        spriteRenderer.color = currentOutfitColour;
     }
 }
