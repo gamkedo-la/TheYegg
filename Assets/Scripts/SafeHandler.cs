@@ -20,15 +20,19 @@ public class SafeHandler : MonoBehaviour
             if(hit.TryGetComponent<Safe>(out safe)){
                 timeToOpenSafe = safe.GetTimeToOpen();
                 return true;
+            } else {
+                safe = null;
             }
-        }
+        } 
 
         return false;
     }
 
     public void OpenSafe(float inputTime){
         if(inputTime > timeToOpenSafe){
-            safe.OpenSafe();
+            if(safe){
+                safe.OpenSafe();
+            }
         }
     }
 }

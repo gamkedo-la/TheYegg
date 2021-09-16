@@ -12,6 +12,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] KeyCode pickUpKeyInput;
     [SerializeField] KeyCode openSafeInput;
     [SerializeField] KeyCode levelTransitionInput;
+    [SerializeField] KeyCode surveillanceCameraSwitchInput;
 
 
     [Header("Required components")]
@@ -20,6 +21,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] KeyHandler keyHandler;
     [SerializeField] SafeHandler safeHandler;
     [SerializeField] LevelTransitionHandler levelTransitionHandler;
+    [SerializeField] SurveillanceSystemHandler surveillanceSystemHandler;
 
     [Header("Interface to detection")]
     public bool isCompromisedDisguise;
@@ -30,6 +32,8 @@ public class PlayerActionController : MonoBehaviour
     private float openDoorStartTime;
     private bool canOpenSafe;
     private float openSafeStartTime;
+    private float switchCameraTime;
+    private bool canSwitchCamera;
     
     // Start is called before the first frame update
     void Start()
@@ -91,6 +95,19 @@ public class PlayerActionController : MonoBehaviour
 
         if(Input.GetKeyDown(levelTransitionInput)){
             levelTransitionHandler.UseLevelTransition();
+        }
+
+        if(Input.GetKeyDown(surveillanceCameraSwitchInput)){
+            if(surveillanceSystemHandler.StartSurveillanceCameraSwitchHandling() == true){
+                switchCameraTime = Time.time;
+                canSwitchCamera = true;
+            } else {
+                canSwitchCamera = false;
+            }
+        }
+
+        if(Input.GetKeyUp(surveillanceCameraSwitchInput)){
+            surveillanceSystemHandler.SwitchCameras(Time.time - switchCameraTime);
         }
 
     }

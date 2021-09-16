@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
 
     [Header("Scene settings")]
     [SerializeField] int currentLevelIndex;
+
+ 
     [SerializeField] int nextLevelIndex;
     [SerializeField] int mainMenuSceneIndex;
     [Tooltip("Set the level starting scenes' indeces for all the possible levels")]
@@ -26,7 +28,7 @@ public class LevelManager : MonoBehaviour
     [Header("Scene fade parameters")]
     [SerializeField] Animator animator;
 
-
+    private bool areCamerasDisabled;
     private int levelToLoad;
 
     private void OnEnable() {
@@ -36,7 +38,18 @@ public class LevelManager : MonoBehaviour
     private void OnDisable(){
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    
+
+    public bool GetCamerasDisabled()
+    {
+        return areCamerasDisabled;
+    }
+
+    public void SetCamerasDisabled(bool t)
+    {
+        areCamerasDisabled = t;
+    }
+
+
     private void Start() {
         if(winUI){
             winUI.SetActive(false);
@@ -90,6 +103,7 @@ public class LevelManager : MonoBehaviour
             GameObject.FindObjectOfType<KeyHandler>().ResetKeyHandler();
             GameObject.FindObjectOfType<DisguiseHandler>().ResetDisguiseHandler();
         }
+        areCamerasDisabled = false;
     }
 
     public void ReloadCurrentLevel(){

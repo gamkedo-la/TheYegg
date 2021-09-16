@@ -50,6 +50,7 @@ MonoBehaviour:
   timeToOpenWithLockpick: 5
   keys: 00000000
   lockpickCount: 1
+  lockpickCountAtStartOfLevel: 2
   door: {fileID: 0}
   key: {fileID: 0}
 --- !u!1 &3321952403952502153
@@ -63,11 +64,11 @@ GameObject:
   - component: {fileID: 3321952403952502148}
   - component: {fileID: 3321952403952502155}
   - component: {fileID: 3321952403952502154}
+  - component: {fileID: 3321952403952502150}
+  - component: {fileID: -3169490519667154114}
   - component: {fileID: 3321952403952502149}
   - component: {fileID: 3321952403952502144}
   - component: {fileID: 3321952403952502151}
-  - component: {fileID: 3321952403952502150}
-  - component: {fileID: -3169490519667154114}
   - component: {fileID: 4697710633266393813}
   m_Layer: 7
   m_Name: Player
@@ -123,62 +124,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3321952403952502149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3321952403952502153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6597fa4b967617d4786b3936494ffebb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isLookAtMouse: 0
-  walkSpeed: 2
-  runSpeed: 4
-  sneakSpeed: 1
-  mainCamera: {fileID: 0}
---- !u!114 &3321952403952502144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3321952403952502153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 720788190961d944ba705c4f0d61d10a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  incapacitateInput: 113
-  equipDisguiseInput: 113
-  openDoorInput: 101
-  pickUpKeyInput: 116
-  openSafeInput: 103
-  levelTransitionInput: 101
-  nPCHandler: {fileID: 3321952404266471983}
-  disguiseHandler: {fileID: 3321952403952502151}
-  keyHandler: {fileID: 3321952403935609023}
-  safeHandler: {fileID: 3321952404266471976}
-  levelTransitionHandler: {fileID: 3321952404266471977}
-  isCompromisedDisguise: 1
-  isDoingIllegalAction: 1
---- !u!114 &3321952403952502151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3321952403952502153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10c708b2c38728141b0eedcff8729e87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultOutfitColour: {r: 1, g: 1, b: 1, a: 1}
-  spriteRenderer: {fileID: 3321952404356015022}
 --- !u!208 &3321952403952502150
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -214,6 +159,65 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3321952403952502149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321952403952502153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6597fa4b967617d4786b3936494ffebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLookAtMouse: 0
+  walkSpeed: 2
+  runSpeed: 4
+  sneakSpeed: 1
+  enableMouseMovement: 0
+  mainCamera: {fileID: 0}
+--- !u!114 &3321952403952502144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321952403952502153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720788190961d944ba705c4f0d61d10a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  incapacitateInput: 113
+  equipDisguiseInput: 113
+  openDoorInput: 101
+  pickUpKeyInput: 116
+  openSafeInput: 103
+  levelTransitionInput: 101
+  surveillanceCameraSwitchInput: 101
+  nPCHandler: {fileID: 3321952404266471983}
+  disguiseHandler: {fileID: 3321952403952502151}
+  keyHandler: {fileID: 3321952403935609023}
+  safeHandler: {fileID: 3321952404266471976}
+  levelTransitionHandler: {fileID: 3321952404266471977}
+  surveillanceSystemHandler: {fileID: 7334584792678367904}
+  isCompromisedDisguise: 1
+  isDoingIllegalAction: 1
+--- !u!114 &3321952403952502151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321952403952502153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c708b2c38728141b0eedcff8729e87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultOutfitColour: {r: 1, g: 1, b: 1, a: 1}
+  spriteRenderer: {fileID: 3321952404356015022}
 --- !u!114 &4697710633266393813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +243,7 @@ GameObject:
   - component: {fileID: 3321952404266471983}
   - component: {fileID: 3321952404266471976}
   - component: {fileID: 3321952404266471977}
+  - component: {fileID: 7334584792678367904}
   m_Layer: 10
   m_Name: ActionObject
   m_TagString: Untagged
@@ -312,6 +317,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4cb04409d305fb41b3691d07ac05426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &7334584792678367904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321952404266471980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797cf3834c1ffbc4bbe601cfefb384df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactLayerMask:

@@ -28,10 +28,12 @@ public class SurveillanceCamera : MonoBehaviour
 
     private List<Transform> targetsInRadiusEarlier = new List<Transform>();
     private Vector3 lastKnownPlayerLocation;
+    private bool isDisabled = false;
 
 
     // Start is called before the first frame update
     private void Start() {
+        isDisabled = FindObjectOfType<LevelManager>().GetCamerasDisabled();
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         fovMeshFilter.mesh = viewMesh;
@@ -40,11 +42,19 @@ public class SurveillanceCamera : MonoBehaviour
     }
     // Update is called once per frame
     private void LateUpdate() {
-        DrawFieldOfView();
+        if(!isDisabled){
+            DrawFieldOfView();
+        }
+    }
+
+    public void DisableCamera(){
+        isDisabled = true;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        Debug.Log("Camera "+ gameObject.name + " has been set to disabled");
     }
 
     IEnumerator FindTargetsWithDelay(float delay){
-        while(true) {
+        while(!isDisabled) {
             yield return new WaitForSeconds(delay);
             FindVisibleTargets();
             ScanTargets();
