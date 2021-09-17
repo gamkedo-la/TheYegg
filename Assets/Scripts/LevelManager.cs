@@ -20,6 +20,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] List<int> levelStartIndeces = new List<int>();
     [SerializeField] List<Vector3> levelStartPositions = new List<Vector3>();
 
+    [Header("Number of conditions to check for clearing level")]
+    [SerializeField] List<int> levelClearConditionCount = new List<int>();
+
 
     [Header("UI Gameobjects")]
     [SerializeField] GameObject loseUI;
@@ -30,6 +33,8 @@ public class LevelManager : MonoBehaviour
 
     private bool areCamerasDisabled;
     private int levelToLoad;
+    private int currentLevelConditionsCleared = 0;
+    private bool isExitEnabled = false;
 
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -37,6 +42,16 @@ public class LevelManager : MonoBehaviour
 
     private void OnDisable(){
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void Start() {
+        if(winUI){
+            winUI.SetActive(false);
+        }
+        
+        if(loseUI){
+            loseUI.SetActive(false);
+        }
     }
 
     public bool GetCamerasDisabled()
@@ -50,14 +65,22 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    private void Start() {
-        if(winUI){
-            winUI.SetActive(false);
+    public bool GetIsExitEnabled()
+    {
+        return isExitEnabled;
+    }
+
+    public void LevelClearConditionCompleted(int index){
+        //increase the number of conditions cleared
+        currentLevelConditionsCleared = index;
+        if(currentLevelConditionsCleared >= levelClearConditionCount[currentLevelIndex]){
+            isExitEnabled = true;
+            //TODO enable all exits in the same scene
         }
-        
-        if(loseUI){
-            loseUI.SetActive(false);
-        }
+    }
+
+    public int GetLevelClearConditionCompleted(){
+        return currentLevelConditionsCleared;
     }
 
 
@@ -89,12 +112,12 @@ public class LevelManager : MonoBehaviour
     public void LoadNextLevel(){
         int sceneIndex = levelStartIndeces[nextLevelIndex];
         Debug.Log("Loading scene " + sceneIndex);
-        //SceneManager.LoadScene(sceneIndex);
         FadeToLevel(sceneIndex);
         ChangeLevelIndeces();
         winUI.SetActive(false);
-        //reset player parameters for lockpicks, keys, disguise and position in the game
         ResetPlayer();
+        currentLevelConditionsCleared = 0;
+        isExitEnabled = false;
     }
 
     private void ResetPlayer()
@@ -109,12 +132,12 @@ public class LevelManager : MonoBehaviour
     public void ReloadCurrentLevel(){
         int sceneIndex = levelStartIndeces[currentLevelIndex];
         Debug.Log("Loading scene " + sceneIndex);
-        //SceneManager.LoadScene(sceneIndex);
         FadeToLevel(sceneIndex);
         winUI.SetActive(false);
         loseUI.SetActive(false);
         ResetPlayer();
-        //reset player parameters for lockpicks, keys and disguise
+        currentLevelConditionsCleared = 0;
+        isExitEnabled = false;
     }
 
     public void LoadMainMenu(){
@@ -123,7 +146,6 @@ public class LevelManager : MonoBehaviour
         nextLevelIndex = 0;
         winUI.SetActive(false);
         loseUI.SetActive(false);
-        //SceneManager.LoadScene(mainMenuSceneIndex);
         FadeToLevel(mainMenuSceneIndex);
     }
 

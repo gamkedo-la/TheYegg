@@ -48,7 +48,7 @@ MonoBehaviour:
     m_Bits: 512
   timeToOpenWithKey: 2
   timeToOpenWithLockpick: 5
-  keys: 00000000
+  keys: 
   lockpickCount: 1
   lockpickCountAtStartOfLevel: 2
   door: {fileID: 0}
@@ -196,12 +196,14 @@ MonoBehaviour:
   openSafeInput: 103
   levelTransitionInput: 101
   surveillanceCameraSwitchInput: 101
+  levelExitInput: 101
   nPCHandler: {fileID: 3321952404266471983}
   disguiseHandler: {fileID: 3321952403952502151}
   keyHandler: {fileID: 3321952403935609023}
   safeHandler: {fileID: 3321952404266471976}
   levelTransitionHandler: {fileID: 3321952404266471977}
   surveillanceSystemHandler: {fileID: 7334584792678367904}
+  levelExitHandler: {fileID: 2683927788839099885}
   isCompromisedDisguise: 1
   isDoingIllegalAction: 1
 --- !u!114 &3321952403952502151
@@ -244,6 +246,7 @@ GameObject:
   - component: {fileID: 3321952404266471976}
   - component: {fileID: 3321952404266471977}
   - component: {fileID: 7334584792678367904}
+  - component: {fileID: 2683927788839099885}
   m_Layer: 10
   m_Name: ActionObject
   m_TagString: Untagged
@@ -332,6 +335,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 797cf3834c1ffbc4bbe601cfefb384df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &2683927788839099885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321952404266471980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb9b76b6b85ff24aa1d8a1f32a0809f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactLayerMask:

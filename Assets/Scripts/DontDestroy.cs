@@ -7,6 +7,7 @@ public class DontDestroy : MonoBehaviour
     private string objectID;
 
 
+
     private void Awake() {
         objectID = name + transform.position.ToString();
     }
@@ -17,12 +18,8 @@ public class DontDestroy : MonoBehaviour
                 if(GameObject.FindObjectsOfType<DontDestroy>()[i].name == gameObject.name){
                 Destroy(gameObject);
                 }
-            }
-
-            
-        }
-
-        
+            }   
+        } 
         DontDestroyOnLoad(gameObject);
     }
 }

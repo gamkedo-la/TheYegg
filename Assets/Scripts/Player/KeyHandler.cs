@@ -117,12 +117,17 @@ public class KeyHandler : MonoBehaviour
     }
 
     public void ResetKeyHandler(){
+        Debug.Log("Resetting KeyHandler!");
         lockpickCount = lockpickCountAtStartOfLevel;
-        GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
-        keys.Clear();
-        foreach (DoorKey key in keys)
-        {
-            GameObject.FindObjectOfType<HUDHandler>().SetCollectedKeys(key.ToString());
+        HUDHandler hUDHandler = GameObject.FindObjectOfType<HUDHandler>();
+        if(hUDHandler){
+            hUDHandler.SetLockPickCount(lockpickCount);
+            keys.Clear();
+            foreach (DoorKey key in keys){
+            hUDHandler.SetCollectedKeys(key.ToString());
         }
+        }
+        
+
     }
 }

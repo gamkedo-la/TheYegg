@@ -247,6 +247,7 @@ MonoBehaviour:
   levelStartIndeces: 01000000
   levelStartPositions:
   - {x: 0.75, y: 9.25, z: -9.25}
+  levelClearConditionCount: 01000000
   loseUI: {fileID: 0}
   winUI: {fileID: 0}
   animator: {fileID: 994198600}

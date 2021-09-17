@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class HUDHandler : MonoBehaviour
 {
@@ -18,8 +19,21 @@ public class HUDHandler : MonoBehaviour
 
     private string keysString = "";
     
-    // Start is called before the first frame update
+    private void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable(){
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
     void Start()
+    {
+        
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SetLockPickCount(FindObjectOfType<KeyHandler>().GetLockPickCount());
         SetCollectedKeys(FindObjectOfType<KeyHandler>().GetKeyString());

@@ -20,7 +20,6 @@ public class DisguiseHandler : MonoBehaviour
 
     void Start()
     {
-        ResetDisguiseHandler();
 
     }
 

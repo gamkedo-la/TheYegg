@@ -13,6 +13,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] KeyCode openSafeInput;
     [SerializeField] KeyCode levelTransitionInput;
     [SerializeField] KeyCode surveillanceCameraSwitchInput;
+    [SerializeField] KeyCode levelExitInput;
 
 
     [Header("Required components")]
@@ -22,6 +23,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] SafeHandler safeHandler;
     [SerializeField] LevelTransitionHandler levelTransitionHandler;
     [SerializeField] SurveillanceSystemHandler surveillanceSystemHandler;
+    [SerializeField] LevelExitHandler levelExitHandler;
 
     [Header("Interface to detection")]
     public bool isCompromisedDisguise;
@@ -95,6 +97,10 @@ public class PlayerActionController : MonoBehaviour
 
         if(Input.GetKeyDown(levelTransitionInput)){
             levelTransitionHandler.UseLevelTransition();
+        }
+
+        if(Input.GetKeyDown(levelExitInput)){
+            levelExitHandler.UseLevelExit();
         }
 
         if(Input.GetKeyDown(surveillanceCameraSwitchInput)){

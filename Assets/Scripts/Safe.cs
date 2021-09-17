@@ -8,11 +8,18 @@ public class Safe : MonoBehaviour
 
     [Header("Safe settings")]
     [SerializeField] float timeToOpen;
+    [Tooltip("What is the position of this object in the correct sequence of clearing the level")]
+    [SerializeField] int positionInSequence;
 
     public void OpenSafe(){
         Debug.Log("Safe opened!");
-        FindObjectOfType<LevelManager>().LevelCleared();
-
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        if(levelManager){
+            //if has cleared previous condition, set this condition to be cleared
+            if(levelManager.GetLevelClearConditionCompleted() == positionInSequence - 1){
+                levelManager.LevelClearConditionCompleted(positionInSequence);
+            }
+        }
     }
 
     public float GetTimeToOpen()
