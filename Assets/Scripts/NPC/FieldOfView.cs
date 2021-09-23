@@ -63,7 +63,7 @@ public class FieldOfView : MonoBehaviour
                 NPC nPC;
                 foreach(Transform t in targetsInFieldOfView){
                     if(t.TryGetComponent<PlayerActionController>(out playerActionController)){
-                        if(playerActionController.isCompromisedDisguise || playerActionController.isDoingIllegalAction){
+                        if(playerActionController.isCompromisedDisguise || playerActionController.isDoingIllegalAction || playerActionController.isInRestrictedArea){
                             //Debug.Log("Player has been detected, moving to alerted state");
                             lastKnownPlayerLocation = playerActionController.transform.position;
                             //start alerted state

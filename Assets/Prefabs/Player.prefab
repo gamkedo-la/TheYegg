@@ -204,8 +204,9 @@ MonoBehaviour:
   levelTransitionHandler: {fileID: 3321952404266471977}
   surveillanceSystemHandler: {fileID: 7334584792678367904}
   levelExitHandler: {fileID: 2683927788839099885}
-  isCompromisedDisguise: 1
-  isDoingIllegalAction: 1
+  isCompromisedDisguise: 0
+  isDoingIllegalAction: 0
+  isInRestrictedArea: 0
 --- !u!114 &3321952403952502151
 MonoBehaviour:
   m_ObjectHideFlags: 0

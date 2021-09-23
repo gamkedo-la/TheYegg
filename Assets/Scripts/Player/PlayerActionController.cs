@@ -26,8 +26,9 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] LevelExitHandler levelExitHandler;
 
     [Header("Interface to detection")]
-    public bool isCompromisedDisguise;
-    public bool isDoingIllegalAction;
+    public bool isCompromisedDisguise = false;
+    public bool isDoingIllegalAction = false;
+    public bool isInRestrictedArea = false;
 
     //private
     private bool canOpenDoor;
