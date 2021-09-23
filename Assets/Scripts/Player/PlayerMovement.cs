@@ -3,7 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public interface IPlayerMouseMovement
+{
+    void MovePlayerToMousePosition(Vector3 mousePosition);
+}
+public class PlayerMovement : MonoBehaviour, IPlayerMouseMovement
 {
 
     [Header("Player Movement Settings")]
@@ -65,12 +69,6 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         movementVector = new Vector3(Mathf.Clamp(horizontalInput, -0.7f, 0.7f), 0f, Mathf.Clamp(verticalInput, -0.7f, 0.7f));
         movementVector.Normalize();
-
-        //mouse input
-        mousePos = Input.mousePosition;
-        if (Input.GetMouseButtonUp(1) && enableMouseMovement) {
-            MovePlayerToMouse();
-        }
         
         //TODO add checks for sprinting/sneaking
         currentSpeed = runSpeed;
@@ -110,25 +108,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void MovePlayerToMouse() {
-        Ray screenRay = mainCamera.ScreenPointToRay(mousePos);
-        RaycastHit hit;
-        Vector3 updatedPos = playerRb.position;
-        if (Physics.Raycast(screenRay, out hit))
-        {
-            if (hit.collider.gameObject.GetComponent<PlayerMovement>())
-            {
-                return;
-            }
-            else
-            {
-                updatedPos = new Vector3(hit.point.x, transform.position.y, hit.point.z);
-            }
-
-        }
-        playerRb.MovePosition(playerRb.position + updatedPos * Time.fixedDeltaTime * currentSpeed);
-    }
-
     public float GetPlayerMovementMagnitude(){
         return movementVector.magnitude;
     }
@@ -156,5 +135,10 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.SetBool("idle", false);
             playerAnimator.SetBool("incapacitate", false);
         }
+    }
+
+    void IPlayerMouseMovement.MovePlayerToMousePosition(Vector3 mousePosition)
+    {
+        playerRb.MovePosition(playerRb.position + mousePosition * Time.fixedDeltaTime * currentSpeed);
     }
 }
