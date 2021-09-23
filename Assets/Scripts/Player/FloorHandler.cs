@@ -22,7 +22,12 @@ public class FloorHandler : MonoBehaviour
             {
                 //floor hit detected
                 //TODO:indicate to player character to move to hit point
-                //Debug.Log("This hit at " + hit.point);
+                PlayerMovement playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+                if (playerMovement != null)
+                {
+                    //Debug.Log("This hit at " + hit.point);
+                    //playerMovement.MovePlayerToMousePosition(hit.point);
+                }
             }
         }
     }

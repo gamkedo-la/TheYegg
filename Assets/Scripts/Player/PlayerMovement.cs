@@ -3,11 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPlayerMouseMovement
-{
-    void MovePlayerToMousePosition(Vector3 mousePosition);
-}
-public class PlayerMovement : MonoBehaviour, IPlayerMouseMovement
+
+public class PlayerMovement : MonoBehaviour
 {
 
     [Header("Player Movement Settings")]
@@ -137,8 +134,11 @@ public class PlayerMovement : MonoBehaviour, IPlayerMouseMovement
         }
     }
 
-    void IPlayerMouseMovement.MovePlayerToMousePosition(Vector3 mousePosition)
+    public void MovePlayerToMousePosition(Vector3 mousePosition)
     {
-        playerRb.MovePosition(playerRb.position + mousePosition * Time.fixedDeltaTime * currentSpeed);
+        if(enableMouseMovement)
+        {
+            playerRb.MovePosition(playerRb.position + mousePosition * Time.fixedDeltaTime * currentSpeed);
+        }
     }
 }
