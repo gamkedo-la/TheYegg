@@ -17,6 +17,7 @@ public class PlayerActionController : MonoBehaviour
 
 
     [Header("Required components")]
+    [SerializeField] PlayerSFXHandler playerSFXHandler;
     [SerializeField] NPCHandler nPCHandler;
     [SerializeField] DisguiseHandler disguiseHandler;
     [SerializeField] KeyHandler keyHandler;
@@ -92,10 +93,6 @@ public class PlayerActionController : MonoBehaviour
             openSafeStartTime = 0f;
         }
 
-        if(Input.GetKeyDown(KeyCode.P)) {
-            pauseOrResumeGame();
-        }
-
         if(Input.GetKeyDown(levelTransitionInput)){
             levelTransitionHandler.UseLevelTransition();
         }
@@ -119,9 +116,15 @@ public class PlayerActionController : MonoBehaviour
 
     }
 
-    // Pause or Resume Game
-    void pauseOrResumeGame() 
-    {
-        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+    public void SetIsInRestrictedArea(bool t){
+        isInRestrictedArea = t;
+        if(t == true){
+            playerSFXHandler.PlayPlayerHeartBeat();
+        } else {
+            playerSFXHandler.StopCurrentPlayerSFX();
+        }
+        
+        //play SFX from PlayerSFXHandler
+        
     }
 }

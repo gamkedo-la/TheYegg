@@ -30,6 +30,11 @@ public class InGameMenuHandler : MonoBehaviour
 
     public void ToggleMenuPanel(){
         menuPanel.SetActive(!menuPanel.activeSelf);
+        if(menuPanel.activeSelf){
+            Time.timeScale = 0f;
+        } else {
+            Time.timeScale = 1.0f;
+        }
     }
 
     public void SetMasterVolumeValue(int value){

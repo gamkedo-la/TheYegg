@@ -61,9 +61,9 @@ public class RestrictedAreaHandler : MonoBehaviour
             }
             if(latestMoveDirIsZPos == restrictedAreaIsInZPos){
                 //if the restricted area is in the moved direction, set player variables to reflect that the player is in a restricted area
-                player.isInRestrictedArea = true;
+                player.SetIsInRestrictedArea(true);
             } else {
-                player.isInRestrictedArea = false;
+                player.SetIsInRestrictedArea(false);
             }
         }
  
