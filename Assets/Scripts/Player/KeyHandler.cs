@@ -117,7 +117,6 @@ public class KeyHandler : MonoBehaviour
     }
 
     public void ResetKeyHandler(){
-        Debug.Log("Resetting KeyHandler!");
         lockpickCount = lockpickCountAtStartOfLevel;
         HUDHandler hUDHandler = GameObject.FindObjectOfType<HUDHandler>();
         if(hUDHandler){
@@ -125,9 +124,8 @@ public class KeyHandler : MonoBehaviour
             keys.Clear();
             foreach (DoorKey key in keys){
             hUDHandler.SetCollectedKeys(key.ToString());
-        }
+            }
         }
         
-
     }
 }

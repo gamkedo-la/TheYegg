@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 126512399}
   - component: {fileID: 126512398}
   m_Layer: 0
-  m_Name: AudioSource
+  m_Name: LevelMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,7 +154,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.22
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
