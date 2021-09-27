@@ -10,6 +10,11 @@ public class LevelManager : MonoBehaviour
     //this class handles the win and lose conditions of each level
     //attach a DontDestroy component to keep this persistent
 
+
+    //event telling that the game is over
+    public delegate void GameOver();
+    public static event GameOver OnGameOver;
+
     [Header("Scene settings")]
     [SerializeField] int currentLevelIndex;
 
@@ -96,8 +101,16 @@ public class LevelManager : MonoBehaviour
         hUDHandler.ToggleHUDVisibility(false); 
     }
 
-    public void GameOver(){
+    public void StartGameOver(){
+        //set event that game is over
+        OnGameOver();
         //show option UI to reset to level
+        loseUI.SetActive(true);
+        HUDHandler hUDHandler = FindObjectOfType<HUDHandler>();
+        if(!hUDHandler || hUDHandler == null){
+            Debug.LogWarning("LevelManager cannot find a HUDHandler");
+        }
+        hUDHandler.ToggleHUDVisibility(false); 
     }
 
     private void ChangeLevelIndeces(){
@@ -115,6 +128,7 @@ public class LevelManager : MonoBehaviour
         FadeToLevel(sceneIndex);
         ChangeLevelIndeces();
         winUI.SetActive(false);
+        loseUI.SetActive(false);
         ResetPlayer();
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
@@ -125,6 +139,7 @@ public class LevelManager : MonoBehaviour
         if(GameObject.FindObjectOfType<PlayerMovement>()){
             GameObject.FindObjectOfType<KeyHandler>().ResetKeyHandler();
             GameObject.FindObjectOfType<DisguiseHandler>().ResetDisguiseHandler();
+            GameObject.FindObjectOfType<PlayerActionController>().SetIsInRestrictedArea(false);
         }
         areCamerasDisabled = false;
     }
@@ -142,7 +157,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadMainMenu(){
         Debug.Log("Loading scene " + mainMenuSceneIndex);
-        currentLevelIndex = 0;
+        currentLevelIndex = -1;
         nextLevelIndex = 0;
         winUI.SetActive(false);
         loseUI.SetActive(false);
@@ -156,7 +171,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnFadeComplete(){
         SceneManager.LoadScene(levelToLoad);
-        if(PlayerMovement.GetPlayer()){
+        if(PlayerMovement.GetPlayer() && currentLevelIndex >= 0){
             PlayerMovement.GetPlayer().transform.position = levelStartPositions[currentLevelIndex]; //NB main menu scene does not have a starting position
             //TODO make sure that when restarting from the first level the currentLevelIndex is reset correctly
         }

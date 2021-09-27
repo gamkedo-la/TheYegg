@@ -31,13 +31,14 @@ public class GuardStateAlerted : GuardState
         StartAlertTimer();
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = nPC.npcSpeed;
+        //TODO add some sprite or other visual to show that this guard is alerted
     }
 
     public override void RunGuardState(){
         base.RunGuardState();
-        //TODO move to last know location based on lastKnownLocation
         MoveToLastKnownLocation();
         HandleAlertTimer();
+        TryCatchPlayer();
     }
 
     public override void EndGuardState()
@@ -95,13 +96,26 @@ public class GuardStateAlerted : GuardState
 
     private void MoveToLastKnownLocation()
     {
-        navMeshAgent.destination = lastKnownLocation;
-        if(navMeshAgent.remainingDistance < allowedDistanceFromPlayer){
-            //move to new state where the player is caught or game over
-            navMeshAgent.isStopped = true;
-        } else {
-            navMeshAgent.isStopped = false;
+        
+        if(lastKnownLocation != Vector3.zero){
+            navMeshAgent.destination = lastKnownLocation;
+            if(navMeshAgent.remainingDistance <= allowedDistanceFromPlayer){
+                //move to new state where the player is caught or game over
+                navMeshAgent.isStopped = true;
+                TryCatchPlayer();
+            } else {
+                navMeshAgent.isStopped = false;
+            }
         }
     }
 
+    private void TryCatchPlayer()
+    {
+        //tell level manager that game is over
+        if(Vector3.Distance(FindObjectOfType<PlayerMovement>().transform.position, this.transform.position) <= allowedDistanceFromPlayer){
+            Debug.Log("Player is caught!");
+            LevelManager levelManager = FindObjectOfType<LevelManager>();
+            levelManager.StartGameOver();
+        }
+    }
 }

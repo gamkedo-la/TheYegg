@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,17 @@ public class GuardFSM : MonoBehaviour
     [HideInInspector]
     public GuardFSM guardFSM;
 
+    private bool isGameOver = false;
+
+    private void OnEnable() {
+        LevelManager.OnGameOver += HandleGameOver;
+    }
+
+    private void OnDisable() {
+        LevelManager.OnGameOver -= HandleGameOver;
+    }
+
+
     private void Start() {
         stateStack = new List<GuardState>();
         guardFSM = this;
@@ -22,7 +34,7 @@ public class GuardFSM : MonoBehaviour
 
     public void Update() {
         activeState = GetCurrentState();
-        if(activeState != null){
+        if(activeState != null && !isGameOver){
             activeState.RunGuardState();
         }
     }
@@ -49,5 +61,11 @@ public class GuardFSM : MonoBehaviour
             return null;
         }
     }
+
+    private void HandleGameOver()
+    {
+        isGameOver = true;
+    }
+
 
 }
