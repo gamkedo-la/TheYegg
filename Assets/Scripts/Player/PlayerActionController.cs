@@ -127,4 +127,10 @@ public class PlayerActionController : MonoBehaviour
         //play SFX from PlayerSFXHandler
         
     }
+
+    public void SetIsDisguiseCompromised(bool t){
+        isCompromisedDisguise = t;
+        //IF true, change display value
+        
+    }
 }

@@ -10,7 +10,7 @@ public class DisguiseHandler : MonoBehaviour
 
 
     //private
-    private Color currentOutfitColour;
+    public Color currentOutfitColour;
 
     //public
 
@@ -31,6 +31,13 @@ public class DisguiseHandler : MonoBehaviour
         } else if(n.hasNPCOutfit == true) {
             Debug.Log("equipping disguise!");
             Color npcColor = n.GetNPCColor();
+            if(npcColor != spriteRenderer.color){
+                //equipped different disguise
+                Debug.Log("Equipped different disguise!");
+                GetComponent<PlayerActionController>().SetIsDisguiseCompromised(false);
+                FindObjectOfType<HUDHandler>().SetDisguiseStatus(false);
+            }
+            currentOutfitColour = npcColor;
             spriteRenderer.color = npcColor;
             n.RemoveNPCOutfit();
         } else {
@@ -42,5 +49,14 @@ public class DisguiseHandler : MonoBehaviour
     public void ResetDisguiseHandler(){
         currentOutfitColour = defaultOutfitColour;
         spriteRenderer.color = currentOutfitColour;
+    }
+
+    public void CompromiseDisguise(Color disguiseColor){
+        PlayerActionController playerActionController = GetComponent<PlayerActionController>();
+        if(disguiseColor == currentOutfitColour){
+            //set disguise compromised in player action controller
+            playerActionController.SetIsDisguiseCompromised(true);
+            FindObjectOfType<HUDHandler>().SetDisguiseStatus(true);
+        }
     }
 }

@@ -84,6 +84,11 @@ public class FieldOfView : MonoBehaviour
                                 guardFSM.PushState(guardFSM.alertState);
                                 guardFSM.activeState.EndGuardState();
                             }
+
+                            if(nPC.hasNPCOutfit == false){
+                                //outfit has been removed for the detected NPC, check if player has the same outfit and set outfit as compromised
+                                FindObjectOfType<DisguiseHandler>().CompromiseDisguise(nPC.GetNPCColor());
+                            }
                         }
                     }
                 }

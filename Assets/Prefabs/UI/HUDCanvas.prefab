@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3519288342407842162}
   - component: {fileID: 7846452397862172692}
   m_Layer: 5
-  m_Name: VisibilityText
+  m_Name: DisguiseStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 32.241, y: -20}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 251.5375, y: 85.8521}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3519288342407842162
 CanvasRenderer:
@@ -65,9 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hidden
-
-'
+  m_text: Disguise compromised
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -102,7 +100,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -522,9 +520,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keysText: {fileID: 5438826572211349262}
   lockpickText: {fileID: 5438826573060073182}
-  visibilityText: {fileID: 7846452397862172692}
+  disguiseStatusText: {fileID: 7846452397862172692}
   keysTextStart: 'Keys Collected: '
   lockPickTextStart: 'Lockpicks: '
+  disguiseCompromisedText: Disguise compromised
+  disguiseSafeText: Disguise OK
 --- !u!1001 &5438826574051350819
 PrefabInstance:
   m_ObjectHideFlags: 0

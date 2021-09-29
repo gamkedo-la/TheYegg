@@ -41,6 +41,10 @@ public class NPC : MonoBehaviour
         set {hasOutfit = hasNPCOutfit;}
     }
 
+    public Color defaultNPCOutfit{
+        get {return defaultNPCColor;}
+    }
+
     private void Start() {
         NPCColor = spriteRenderer.color;
     }
