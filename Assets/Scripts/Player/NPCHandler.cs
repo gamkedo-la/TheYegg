@@ -97,4 +97,8 @@ public class NPCHandler : MonoBehaviour
             return closestNPC;
         }
     }
+
+    public void ResetNPCList(){
+        npcList = new List<NPC>();
+    }
 }

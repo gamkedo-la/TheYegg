@@ -140,6 +140,7 @@ public class LevelManager : MonoBehaviour
             GameObject.FindObjectOfType<KeyHandler>().ResetKeyHandler();
             GameObject.FindObjectOfType<DisguiseHandler>().ResetDisguiseHandler();
             GameObject.FindObjectOfType<PlayerActionController>().SetIsInRestrictedArea(false);
+            GameObject.FindObjectOfType<NPCHandler>().ResetNPCList();
         }
         areCamerasDisabled = false;
     }
