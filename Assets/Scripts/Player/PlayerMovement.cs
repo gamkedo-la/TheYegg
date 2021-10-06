@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
     //required components
     [Header("Required components")]
     private Rigidbody playerRb;
-    public Camera mainCamera;
-    Animator playerAnimator;
+    private Camera mainCamera;
+    [SerializeField] Animator playerAnimator;
 
     //private
     private float horizontalInput;
@@ -47,17 +47,13 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogWarning("PlayerMovement component could not find a Main Camera");
         }
 
-        playerAnimator = GetComponent<Animator>();
-        if(!playerAnimator || playerAnimator == null) {
-            Debug.LogWarning("playerAnimator component could not find a Main Camera");
-        }
-
     }
 
     // Update is called once per frame
     void Update()
     {
         GetInput();
+        AnimatePlayer();
     }
 
     private void GetInput()
@@ -68,7 +64,11 @@ public class PlayerMovement : MonoBehaviour
         movementVector.Normalize();
         
         //TODO add checks for sprinting/sneaking
-        currentSpeed = runSpeed;
+        if(movementVector.magnitude == 0f){
+            currentSpeed = 0f;
+        } else {
+            currentSpeed = walkSpeed;
+        }
     }
 
     private void FixedUpdate() {
@@ -114,14 +114,14 @@ public class PlayerMovement : MonoBehaviour
     // may need to reference PlayerActionController
     // add to update
 
-    private void animatePlayer() 
+    private void AnimatePlayer() 
     {
         if(currentSpeed == runSpeed) {
             playerAnimator.SetBool("run", true);
             playerAnimator.SetBool("walk", false);
             playerAnimator.SetBool("idle", false);
             playerAnimator.SetBool("incapacitate", false);
-        } else if (currentSpeed == 0) {
+        } else if (currentSpeed == 0f) {
             playerAnimator.SetBool("run", false);
             playerAnimator.SetBool("walk", false);
             playerAnimator.SetBool("idle", true);

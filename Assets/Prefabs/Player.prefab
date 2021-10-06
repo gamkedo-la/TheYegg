@@ -46,7 +46,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -207,7 +207,6 @@ GameObject:
   - component: {fileID: 3321952403952502155}
   - component: {fileID: 3321952403952502154}
   - component: {fileID: 3321952403952502150}
-  - component: {fileID: -3169490519667154114}
   - component: {fileID: 3321952403952502149}
   - component: {fileID: 3321952403952502144}
   - component: {fileID: 3321952403952502151}
@@ -283,25 +282,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!95 &-3169490519667154114
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3321952403952502153}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7245b362e146be24a961ef47cd8217d5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &3321952403952502149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,11 +295,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLookAtMouse: 0
-  walkSpeed: 2
-  runSpeed: 4
+  walkSpeed: 4
+  runSpeed: 5
   sneakSpeed: 1
   enableMouseMovement: 0
-  mainCamera: {fileID: 0}
+  playerAnimator: {fileID: 3321952404356015016}
 --- !u!114 &3321952403952502144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultOutfitColour: {r: 1, g: 1, b: 1, a: 1}
+  currentOutfitColour: {r: 0, g: 0, b: 0, a: 0}
   spriteRenderer: {fileID: 3321952404356015022}
 --- !u!114 &4697710633266393813
 MonoBehaviour:
