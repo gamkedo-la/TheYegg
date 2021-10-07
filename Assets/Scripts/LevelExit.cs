@@ -20,7 +20,7 @@ public class LevelExit : MonoBehaviour
     }
 
     public void ExitLevel(){
-        levelManager.LevelCleared();
+        levelManager.LevelCompleted();
     }
 
 }

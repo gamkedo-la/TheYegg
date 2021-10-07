@@ -35,6 +35,7 @@ public class DisguiseHandler : MonoBehaviour
             Debug.Log("No downed NPC found!");
         } else if(n.hasNPCOutfit == true) {
             Debug.Log("equipping disguise!");
+            FindObjectOfType<ScoreKeeper>().IncreaseDisguisesUsed();
             Color npcColor = n.GetNPCColor();
             if(npcColor != spriteRenderer.color){
                 //equipped different disguise

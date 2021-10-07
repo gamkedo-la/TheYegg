@@ -31,12 +31,6 @@ public class HUDHandler : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-
-    void Start()
-    {
-        
-    }
-
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SetLockPickCount(FindObjectOfType<KeyHandler>().GetLockPickCount());

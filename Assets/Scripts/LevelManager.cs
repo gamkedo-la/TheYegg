@@ -15,6 +15,9 @@ public class LevelManager : MonoBehaviour
     public delegate void GameOver();
     public static event GameOver OnGameOver;
 
+    public delegate void LevelCleared();
+    public static event LevelCleared OnLevelCleared;
+
     [Header("Scene settings")]
     [SerializeField] int currentLevelIndex;
 
@@ -40,6 +43,7 @@ public class LevelManager : MonoBehaviour
     private int levelToLoad;
     private int currentLevelConditionsCleared = 0;
     private bool isExitEnabled = false;
+    private ScoreKeeper scoreKeeper;
 
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -89,11 +93,13 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void LevelCleared(){
+    public void LevelCompleted(){
+        //trigger event that level is cleared
+        OnLevelCleared();
         //display score
-        //TODO: ScoreKeeper.CalculateScore();
         //show option UI to move to next level
         winUI.SetActive(true);
+        //TODO move this to HUDHandler triggered by event
         HUDHandler hUDHandler = FindObjectOfType<HUDHandler>();
         if(!hUDHandler || hUDHandler == null){
             Debug.LogWarning("LevelManager cannot find a HUDHandler");

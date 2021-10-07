@@ -58,6 +58,7 @@ public class NPC : MonoBehaviour
         //Debug.Log("Incapacitated NPC " + name);
         isDown = true;
         //spawn a downed mark on NPC
+        FindObjectOfType<ScoreKeeper>().IncreaseGuardsSubdued();
         downedMarkObject = Instantiate<GameObject>(downedMark, this.transform);
         //when NPC is incapacitated, disable FOV
         fov.SetActive(false);
