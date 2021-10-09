@@ -28,9 +28,25 @@ public class ScoreKeeper : MonoBehaviour
     private int totalScore;
 
 
+    private void OnEnable() {
+        LevelManager.OnLevelCleared += HandleLevelCleared;
+    }
+
+    private void OnDisable() {
+        LevelManager.OnLevelCleared -= HandleLevelCleared;
+    }
+
+    private void HandleLevelCleared(){
+        StopLevelTimer();
+    }
+
     public void StartLevelTimer(){
-        //level timer needs to be restarted when a new level is loaded by LevelManager
+        //TODO level timer needs to be restarted when a new level is loaded by LevelManager
         levelStartTime = Time.time;
+    }
+
+    public void StopLevelTimer(){
+        levelTotalTime = Time.time - levelStartTime;
     }
 
 
@@ -46,6 +62,10 @@ public class ScoreKeeper : MonoBehaviour
         timesDetected += 1;
     }
 
+    public int GetTimesDetected(){
+        return timesDetected;
+    }
+
     public int GetTimesDetectedScore(){
         detectionPoints = timesDetected * subtractFromTimesDetected;
         return detectionPoints;
@@ -53,6 +73,10 @@ public class ScoreKeeper : MonoBehaviour
 
     public void IncreaseDisguisesUsed(){
         numberOfDisguisesUsed += 1;
+    }
+
+    public int GetDisguisesUsedCount(){
+        return numberOfDisguisesUsed;
     }
 
     public int GetDisguiseScore(){
@@ -64,15 +88,22 @@ public class ScoreKeeper : MonoBehaviour
         numberOfSubduedGuards += 1;
     }
 
+    public int GetSubduedCount(){
+        return numberOfSubduedGuards;
+    }
+
     public int GetSubdueScore(){
         subduePoints  = numberOfSubduedGuards * subtractFromSubduedGuard;
         return subduePoints;
     }
 
     public int GetTimeScore(){
-        levelTotalTime = Time.time - levelStartTime;
         timePoints = Mathf.RoundToInt(levelTotalTime) * subtractFromSeconds;
         return timePoints;
+    }
+
+    public float GetTimeToClear(){
+        return levelTotalTime;
     }
     
     public int GetTotalScore(){

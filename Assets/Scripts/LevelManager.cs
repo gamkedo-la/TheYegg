@@ -99,6 +99,7 @@ public class LevelManager : MonoBehaviour
         //display score
         //show option UI to move to next level
         winUI.SetActive(true);
+        winUI.GetComponent<ScoreUIHandler>().SetScoreTexts();
         //TODO move this to HUDHandler triggered by event
         HUDHandler hUDHandler = FindObjectOfType<HUDHandler>();
         if(!hUDHandler || hUDHandler == null){
