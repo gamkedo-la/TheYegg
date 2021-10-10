@@ -13,19 +13,22 @@ public class ScoreKeeper : MonoBehaviour
     [SerializeField] int subtractFromSubduedGuard;
     [SerializeField] int subtractFromDisguisesUsed;
     [SerializeField] int subtractFromSeconds;
+    [SerializeField] int subtractFromSpottedByCameras;
 
     private float levelTotalTime;
     private float levelStartTime;
 
-    private int timesDetected;
-    private int numberOfSubduedGuards;
-    private int numberOfDisguisesUsed;
+    public int timesDetected;
+    public int numberOfSubduedGuards;
+    public int numberOfDisguisesUsed;
 
     private int detectionPoints;
     private int subduePoints;
     private int disguisePoints;
     private int timePoints;
+    private int cameraPoints;
     private int totalScore;
+    public bool isDetectedByCameras;
 
 
     private void OnEnable() {
@@ -55,6 +58,7 @@ public class ScoreKeeper : MonoBehaviour
         timesDetected = 0;
         numberOfDisguisesUsed = 0;
         numberOfSubduedGuards = 0;
+        isDetectedByCameras = false;
     }
 
     //public methods for adding to score variables and getting score variables
@@ -105,9 +109,27 @@ public class ScoreKeeper : MonoBehaviour
     public float GetTimeToClear(){
         return levelTotalTime;
     }
+
+    public int GetCameraScore(){
+        cameraPoints = subtractFromSpottedByCameras * (isDetectedByCameras ? 1 : 0);
+        return cameraPoints;
+    }
     
     public int GetTotalScore(){
-        totalScore = maximumPoints - detectionPoints - subduePoints - disguisePoints - timePoints;
+        GetTimesDetectedScore();
+        GetDisguiseScore();
+        GetSubdueScore();
+        GetTimeScore();
+        GetCameraScore();
+        totalScore = maximumPoints - detectionPoints - subduePoints - disguisePoints - timePoints - cameraPoints;
         return totalScore;
+    }
+
+    public void SetIsDetectedByCameras(bool t){
+        isDetectedByCameras = t;
+    }
+
+    public bool GetIsDetectedByCameras(){
+        return isDetectedByCameras;
     }
 }

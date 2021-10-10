@@ -29,12 +29,18 @@ public class FieldOfView : MonoBehaviour
 
     private List<Transform> targetsInRadiusEarlier = new List<Transform>();
 
+    private ScoreKeeper scoreKeeper;
+
     private void Start() {
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         fovMeshFilter.mesh = viewMesh;
         StartCoroutine("FindTargetsWithDelay", .2f);
-
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        if(!scoreKeeper || scoreKeeper == null){
+            //no scorekeeper found. Scorekeeper should be a dont destroy
+            Debug.LogWarning("No ScoreKeeper found in scene by " + gameObject.name);
+        }
     }
 
     public void ReactivateFOV(){
@@ -72,6 +78,7 @@ public class FieldOfView : MonoBehaviour
                                 //Debug.Log("active state was not alert state for " + transform.parent.name);
                                 guardFSM.PushState(guardFSM.alertState);
                                 guardFSM.activeState.EndGuardState();
+                                scoreKeeper.IncreaseTimesDetected();
                             }
                         }
                     } else if(t.TryGetComponent<NPC>(out nPC)){

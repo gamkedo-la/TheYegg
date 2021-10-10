@@ -30,6 +30,8 @@ public class SurveillanceCamera : MonoBehaviour
     private Vector3 lastKnownPlayerLocation;
     private bool isDisabled = false;
 
+    private ScoreKeeper scoreKeeper;
+
 
     // Start is called before the first frame update
     private void Start() {
@@ -38,7 +40,10 @@ public class SurveillanceCamera : MonoBehaviour
         viewMesh.name = "View Mesh";
         fovMeshFilter.mesh = viewMesh;
         StartCoroutine("FindTargetsWithDelay", .2f);
-
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        if(!scoreKeeper || scoreKeeper == null){
+            Debug.LogWarning("No ScoreKeeper found in scene for " +  gameObject.name);
+        }
     }
     // Update is called once per frame
     private void LateUpdate() {
@@ -73,7 +78,12 @@ public class SurveillanceCamera : MonoBehaviour
                         lastKnownPlayerLocation = playerActionController.transform.position;
                         //start alerted state for guards in the vicinity of the camera
                         Debug.Log("Camera spotted player and tries to alert");
+                        //TODO subtract points if the player is spotted by the cameras!
+                        if(scoreKeeper.GetIsDetectedByCameras() == false){
+                            scoreKeeper.SetIsDetectedByCameras(true);
+                        }
                         AlertGuards();
+                
                     }
                 } else if(t.TryGetComponent<NPC>(out nPC)){
                     if(nPC.isNPCDown == true){
