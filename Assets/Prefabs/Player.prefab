@@ -320,6 +320,7 @@ MonoBehaviour:
   levelTransitionInput: 101
   surveillanceCameraSwitchInput: 101
   levelExitInput: 101
+  alarmSystemSwitchInput: 101
   playerSFXHandler: {fileID: 8425280506786535929}
   nPCHandler: {fileID: 3321952404266471983}
   disguiseHandler: {fileID: 3321952403952502151}
@@ -328,6 +329,7 @@ MonoBehaviour:
   levelTransitionHandler: {fileID: 3321952404266471977}
   surveillanceSystemHandler: {fileID: 7334584792678367904}
   levelExitHandler: {fileID: 2683927788839099885}
+  alarmSystemHandler: {fileID: 5359903125082875775}
   isCompromisedDisguise: 0
   isDoingIllegalAction: 0
   isInRestrictedArea: 0
@@ -373,6 +375,7 @@ GameObject:
   - component: {fileID: 3321952404266471977}
   - component: {fileID: 7334584792678367904}
   - component: {fileID: 2683927788839099885}
+  - component: {fileID: 5359903125082875775}
   m_Layer: 10
   m_Name: ActionObject
   m_TagString: Untagged
@@ -476,6 +479,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecb9b76b6b85ff24aa1d8a1f32a0809f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &5359903125082875775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321952404266471980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025e0aa9faaca9647a8e77b052716543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactLayerMask:

@@ -14,6 +14,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] KeyCode levelTransitionInput;
     [SerializeField] KeyCode surveillanceCameraSwitchInput;
     [SerializeField] KeyCode levelExitInput;
+    [SerializeField] KeyCode alarmSystemSwitchInput;
 
 
     [Header("Required components")]
@@ -25,6 +26,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] LevelTransitionHandler levelTransitionHandler;
     [SerializeField] SurveillanceSystemHandler surveillanceSystemHandler;
     [SerializeField] LevelExitHandler levelExitHandler;
+    [SerializeField] AlarmSystemHandler alarmSystemHandler;
 
     [Header("Interface to detection")]
     public bool isCompromisedDisguise = false;
@@ -113,6 +115,12 @@ public class PlayerActionController : MonoBehaviour
         if(Input.GetKeyUp(surveillanceCameraSwitchInput)){
             surveillanceSystemHandler.SwitchCameras(Time.time - switchCameraTime);
         }
+
+        if(Input.GetKeyDown(alarmSystemSwitchInput)){
+            alarmSystemHandler.SwitchAlarmOff();
+        }
+
+
 
     }
 

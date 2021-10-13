@@ -29,9 +29,7 @@ public class SurveillanceSystemHandler : MonoBehaviour
 
     public void SwitchCameras(float inputTime){
         if(inputTime > timeToSwitchCamerasOff){
-            Debug.Log("Cameras are turned off!");
-            if(switcher){
-                
+            if(switcher){ 
                 switcher.SwitchCamerasOff();
             }
         }

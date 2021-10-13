@@ -44,13 +44,18 @@ public class LevelManager : MonoBehaviour
     private int currentLevelConditionsCleared = 0;
     private bool isExitEnabled = false;
     private ScoreKeeper scoreKeeper;
+    private bool isAlarmOn = true;
 
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        AlarmSystemSwitch.OnAlarmTurnedOff += HandleAlarmTurnedOff;
+        AlarmSystemSwitch.OnAlarmTurnedOn += HandleAlarmTurnedOn;
     }
 
     private void OnDisable(){
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        AlarmSystemSwitch.OnAlarmTurnedOff -= HandleAlarmTurnedOff;
+        AlarmSystemSwitch.OnAlarmTurnedOn -= HandleAlarmTurnedOn;
     }
 
     private void Start() {
@@ -77,6 +82,14 @@ public class LevelManager : MonoBehaviour
     public bool GetIsExitEnabled()
     {
         return isExitEnabled;
+    }
+
+    public void SetIsAlarmSystemOn(bool t){
+        isAlarmOn = t;
+    }
+
+    public bool GetIsAlarmSystemOn(){
+        return isAlarmOn;
     }
 
     public void LevelClearConditionCompleted(int index){
@@ -187,6 +200,16 @@ public class LevelManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         animator.SetTrigger("FadeIn");
+    }
+
+    private void HandleAlarmTurnedOn()
+    {
+        SetIsAlarmSystemOn(true);
+    }
+
+    private void HandleAlarmTurnedOff()
+    {
+        SetIsAlarmSystemOn(false);
     }
 
 }
