@@ -25,12 +25,10 @@ public class WallAlarm : MonoBehaviour
 
     private void HandleAlarmTurnedOff(){
         alarmParticleSystem.Stop();
-        Debug.Log("Wall alarms turned off");
     }
 
     private void HandleAlarmTurnedOn(){
         alarmParticleSystem.Play();
-        Debug.Log("Wall alarms turned on");
     }
 
 

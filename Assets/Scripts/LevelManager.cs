@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
     private int currentLevelConditionsCleared = 0;
     private bool isExitEnabled = false;
     private ScoreKeeper scoreKeeper;
-    private bool isAlarmOn = true;
+    private bool isAlarmOn = false;
 
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -144,7 +144,6 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel(){
         int sceneIndex = levelStartIndeces[nextLevelIndex];
-        Debug.Log("Loading scene " + sceneIndex);
         FadeToLevel(sceneIndex);
         ChangeLevelIndeces();
         winUI.SetActive(false);
@@ -167,7 +166,6 @@ public class LevelManager : MonoBehaviour
 
     public void ReloadCurrentLevel(){
         int sceneIndex = levelStartIndeces[currentLevelIndex];
-        Debug.Log("Loading scene " + sceneIndex);
         FadeToLevel(sceneIndex);
         winUI.SetActive(false);
         loseUI.SetActive(false);
@@ -177,7 +175,6 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LoadMainMenu(){
-        Debug.Log("Loading scene " + mainMenuSceneIndex);
         currentLevelIndex = -1;
         nextLevelIndex = 0;
         winUI.SetActive(false);

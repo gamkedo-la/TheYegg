@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 5114384222650809296}
   - component: {fileID: 8304663008673374458}
   - component: {fileID: 8304663008673374460}
+  - component: {fileID: 1755099940475444544}
   m_Layer: 8
   m_Name: Guard
   m_TagString: Untagged
@@ -368,6 +369,7 @@ MonoBehaviour:
   alertState: {fileID: 7935545533546093925}
   idleState: {fileID: 8304663008673374454}
   incapacitatedState: {fileID: 5114384222650809296}
+  triggerAlarmState: {fileID: 1755099940475444544}
   stateStack:
   - {fileID: 8304663008673374453}
   guardFSM: {fileID: 8304663008673374455}
@@ -426,7 +428,7 @@ MonoBehaviour:
   alertLayerMask:
     serializedVersion: 2
     m_Bits: 0
-  alertMaxTime: 5
+  alertMaxTime: 15
   allowedDistanceFromPlayer: 1
   navMeshAgent: {fileID: 1571682958}
   nPC: {fileID: 8304663008673374458}
@@ -488,6 +490,20 @@ MonoBehaviour:
   redKey: {fileID: 3354292694775443284, guid: 82d401ccc6ebf1449868984db67509b2, type: 3}
   yellowKey: {fileID: 4461124982762036425, guid: 5215baf30faf54b41b0ffab5ff7ed16c, type: 3}
   greenKey: {fileID: 2366175086989178330, guid: ac40333384f3ca543b3f2819ab2b3c1d, type: 3}
+--- !u!114 &1755099940475444544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8304663008673374452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4000cb65b7acfc4b8bf5fb20577f9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guardFSM: {fileID: 8304663008673374455}
+  allowedDistanceFromAlarm: 0.5
 --- !u!1 &8304663009899576403
 GameObject:
   m_ObjectHideFlags: 0

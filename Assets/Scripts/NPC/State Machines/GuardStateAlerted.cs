@@ -20,18 +20,39 @@ public class GuardStateAlerted : GuardState
 
     //private
     private float alertStartTime;
+    private LevelManager levelManager;
+    private AlarmSystemSwitch alarmSystemSwitch;
+
 
     public override void StartGuardState()
     {
         base.StartGuardState();
         //alert all guards inside alerting radius IF this guard is the first to detect something
+        levelManager = FindObjectOfType<LevelManager>();
+        if(!levelManager || levelManager == null){
+            Debug.LogWarning("Guard State Alerted could not find a levelmanager!");
+        }
+        alarmSystemSwitch = FindObjectOfType<AlarmSystemSwitch>();
+        if(!alarmSystemSwitch || alarmSystemSwitch == null){
+            Debug.Log("Guard State Alerted could not find an AlarmSystemSwitch, and that is ok if intentional!");
+        }
         if(!isAlertedByAnother){
             GetGuardsToAlert();
+            GoToAlarmSwitch();
         }
         StartAlertTimer();
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = nPC.npcSpeed;
         //TODO add some sprite or other visual to show that this guard is alerted
+    }
+
+    private void GoToAlarmSwitch()
+    {
+        if(levelManager.GetIsAlarmSystemOn() == false && alarmSystemSwitch){
+            //activate guard state which goes to the alarm switch and then to alert from there
+            guardFSM.PushState(guardFSM.triggerAlarmState);
+            guardFSM.activeState.EndGuardState();
+        }
     }
 
     public override void RunGuardState(){

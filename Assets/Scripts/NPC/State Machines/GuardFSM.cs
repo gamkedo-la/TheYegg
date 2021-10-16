@@ -11,6 +11,7 @@ public class GuardFSM : MonoBehaviour
     public GuardState alertState;
     public GuardState idleState;
     public GuardState incapacitatedState;
+    public GuardState triggerAlarmState;
     public List<GuardState> stateStack;
     [HideInInspector]
     public GuardFSM guardFSM;
@@ -56,7 +57,7 @@ public class GuardFSM : MonoBehaviour
     public GuardState GetCurrentState()
     {
         if(stateStack.Count > 0){
-            return stateStack[stateStack.Count - 1];
+            return stateStack[0];
         } else {
             return null;
         }

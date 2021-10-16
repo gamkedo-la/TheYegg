@@ -30,6 +30,8 @@ public class FieldOfView : MonoBehaviour
     private List<Transform> targetsInRadiusEarlier = new List<Transform>();
 
     private ScoreKeeper scoreKeeper;
+    private LevelManager levelManager;
+    private AlarmSystemSwitch alarmSystemSwitch;
 
     private void Start() {
         viewMesh = new Mesh();
@@ -40,6 +42,14 @@ public class FieldOfView : MonoBehaviour
         if(!scoreKeeper || scoreKeeper == null){
             //no scorekeeper found. Scorekeeper should be a dont destroy
             Debug.LogWarning("No ScoreKeeper found in scene by " + gameObject.name);
+        }
+        levelManager = FindObjectOfType<LevelManager>();
+        if(!levelManager || levelManager == null){
+            Debug.LogWarning("No LevelManager found in scene by " + gameObject.name);
+        }
+        alarmSystemSwitch = FindObjectOfType<AlarmSystemSwitch>();
+        if(!alarmSystemSwitch || alarmSystemSwitch == null){
+            Debug.Log("No AlarmSystemSwitch found in scene by " + gameObject.name + " and that is ok if intentional!");
         }
     }
 
@@ -54,8 +64,12 @@ public class FieldOfView : MonoBehaviour
     IEnumerator FindTargetsWithDelay(float delay){
         while(true) {
             yield return new WaitForSeconds(delay);
-            FindVisibleTargets();
-            ScanTargets();
+            if(guardFSM.activeState != guardFSM.triggerAlarmState){
+                FindVisibleTargets();
+                ScanTargets();
+            }
+            
+           
         }
     }
 
@@ -70,26 +84,27 @@ public class FieldOfView : MonoBehaviour
                 foreach(Transform t in targetsInFieldOfView){
                     if(t.TryGetComponent<PlayerActionController>(out playerActionController)){
                         if(playerActionController.isCompromisedDisguise || playerActionController.isDoingIllegalAction || playerActionController.isInRestrictedArea){
-                            //Debug.Log("Player has been detected, moving to alerted state");
                             lastKnownPlayerLocation = playerActionController.transform.position;
                             //start alerted state
                             guardStateAlerted.SetLastKnownLocation(lastKnownPlayerLocation);
                             if(guardFSM.activeState != guardFSM.alertState){
-                                //Debug.Log("active state was not alert state for " + transform.parent.name);
                                 guardFSM.PushState(guardFSM.alertState);
                                 guardFSM.activeState.EndGuardState();
                                 scoreKeeper.IncreaseTimesDetected();
+                                return;
                             }
+                            
                         }
                     } else if(t.TryGetComponent<NPC>(out nPC)){
                         if(nPC.isNPCDown == true){
                             //saw a downed NPC
                             //get rid of the NPC in the scene, or mark them as "seen" so that the NPC does not fall into a loop of detecting the same downed NPC
-                            Debug.Log("An incapacitated NPC detected, moving to alerted state");
-                            if(guardFSM.activeState != guardFSM.alertState){
-                                //Debug.Log("active state was not alert state for " + transform.parent.name);
-                                guardFSM.PushState(guardFSM.alertState);
-                                guardFSM.activeState.EndGuardState();
+                            guardStateAlerted.SetLastKnownLocation(nPC.transform.position);
+                            if(guardFSM.activeState != guardFSM.alertState ){
+                                if(guardFSM.activeState != guardFSM.triggerAlarmState){
+                                    guardFSM.PushState(guardFSM.alertState);
+                                    guardFSM.activeState.EndGuardState();
+                                }
                             }
 
                             if(nPC.hasNPCOutfit == false){
