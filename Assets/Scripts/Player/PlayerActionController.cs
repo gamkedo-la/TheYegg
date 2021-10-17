@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,11 +42,18 @@ public class PlayerActionController : MonoBehaviour
     private float switchCameraTime;
     private bool canSwitchCamera;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private void OnEnable() {
+        AlarmSystemSwitch.OnAlarmTurnedOff += HandleAlarmTurnedOff;
+        AlarmSystemSwitch.OnAlarmTurnedOn += HandleAlarmTurnedOn;
     }
+
+    private void OnDisable(){
+        AlarmSystemSwitch.OnAlarmTurnedOff -= HandleAlarmTurnedOff;
+        AlarmSystemSwitch.OnAlarmTurnedOn -= HandleAlarmTurnedOn;
+    }
+
+    
+
 
     // Update is called once per frame
     void Update()
@@ -120,8 +128,6 @@ public class PlayerActionController : MonoBehaviour
             alarmSystemHandler.SwitchAlarmOff();
         }
 
-
-
     }
 
     public void SetIsInRestrictedArea(bool t){
@@ -140,5 +146,15 @@ public class PlayerActionController : MonoBehaviour
         isCompromisedDisguise = t;
         //IF true, change display value
         
+    }
+
+    private void HandleAlarmTurnedOn()
+    {
+        SetIsInRestrictedArea(true);
+    }
+
+    private void HandleAlarmTurnedOff()
+    {
+        SetIsInRestrictedArea(false);
     }
 }
