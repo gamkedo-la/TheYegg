@@ -408,6 +408,7 @@ MonoBehaviour:
   patrolPointParent: {fileID: 0}
   navMeshAgent: {fileID: 1571682958}
   nPC: {fileID: 8304663008673374458}
+  animationController: {fileID: 6596937719293409702}
   globalPatrolPoints: []
 --- !u!114 &7935545533546093925
 MonoBehaviour:
@@ -432,6 +433,7 @@ MonoBehaviour:
   allowedDistanceFromPlayer: 1
   navMeshAgent: {fileID: 1571682958}
   nPC: {fileID: 8304663008673374458}
+  animationController: {fileID: 6596937719293409702}
 --- !u!114 &5114384222650809296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +517,7 @@ GameObject:
   - component: {fileID: 8304663009899576404}
   - component: {fileID: 8304663009899576405}
   - component: {fileID: 2256169905172220742}
+  - component: {fileID: 6596937719293409702}
   m_Layer: 8
   m_Name: SpriteRenderer
   m_TagString: Untagged
@@ -606,3 +609,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6596937719293409702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8304663009899576403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07350689f31e8ca4b96357d8b1703825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

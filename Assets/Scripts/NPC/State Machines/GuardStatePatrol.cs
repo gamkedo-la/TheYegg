@@ -15,6 +15,7 @@ public class GuardStatePatrol : GuardState
     [Header("Required components")] 
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] NPC nPC;
+    [SerializeField] GuardAnimationController animationController;
 
 
     //private
@@ -53,6 +54,7 @@ public class GuardStatePatrol : GuardState
         }
         navMeshAgent.destination = globalPatrolPoints[currentPatrolPointIndex].position;
         currentPatrolPointIndex = (currentPatrolPointIndex + 1) % patrolPoints.Count;
+        animationController.SetIsWalking(true);
     }
 
     public override void RunGuardState()
@@ -71,6 +73,7 @@ public class GuardStatePatrol : GuardState
     public override void EndGuardState()
     {
         navMeshAgent.isStopped = true;
+        animationController.SetIsWalking(false);
         base.EndGuardState();
         
     }
