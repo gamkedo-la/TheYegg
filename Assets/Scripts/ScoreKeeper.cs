@@ -52,6 +52,10 @@ public class ScoreKeeper : MonoBehaviour
         levelTotalTime = Time.time - levelStartTime;
     }
 
+    public float GetLevelTime(){
+        return Time.time - levelStartTime;
+    }
+
 
     private void ResetScoreKeeper(){
         //reset all scores here other than level timer

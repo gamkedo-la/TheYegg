@@ -12,6 +12,7 @@ public class HUDHandler : MonoBehaviour
     [SerializeField] TextMeshProUGUI keysText;
     [SerializeField] TextMeshProUGUI lockpickText;
     [SerializeField] TextMeshProUGUI disguiseStatusText;
+    [SerializeField] TextMeshProUGUI timeText;
 
     [Header("UI Text starts")]
     [SerializeField] string keysTextStart;
@@ -22,6 +23,7 @@ public class HUDHandler : MonoBehaviour
     [SerializeField] string disguiseSafeText;
 
     private string keysString = "";
+    private ScoreKeeper scoreKeeper;
     
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -35,6 +37,19 @@ public class HUDHandler : MonoBehaviour
     {
         SetLockPickCount(FindObjectOfType<KeyHandler>().GetLockPickCount());
         SetCollectedKeys(FindObjectOfType<KeyHandler>().GetKeyString());
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        if(!scoreKeeper || scoreKeeper == null){
+            Debug.LogWarning("HUDHandler is not able to find a ScoreKeeper in the scene!");
+        }
+        StartCoroutine(GetTime());
+    }
+
+    private IEnumerator GetTime(){
+        while (true){
+            var timeSpan = TimeSpan.FromSeconds(scoreKeeper.GetLevelTime());
+            timeText.text = timeSpan.ToString("mm\\:ss");
+            yield return new WaitForSeconds(1f);
+        }
     }
 
 

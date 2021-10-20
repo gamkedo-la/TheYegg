@@ -66,6 +66,11 @@ public class LevelManager : MonoBehaviour
         if(loseUI){
             loseUI.SetActive(false);
         }
+
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        if(!scoreKeeper || scoreKeeper == null){
+            Debug.LogWarning("LevelManager was not able to find a ScoreKeeper in scene!");
+        }
     }
 
     public bool GetCamerasDisabled()
@@ -149,6 +154,7 @@ public class LevelManager : MonoBehaviour
         winUI.SetActive(false);
         loseUI.SetActive(false);
         ResetPlayer();
+        scoreKeeper.StartLevelTimer();
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
     }
