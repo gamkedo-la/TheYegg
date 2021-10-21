@@ -10,6 +10,9 @@ public class KeyHandler : MonoBehaviour
     [SerializeField] LayerMask interactLayerMask;
     [SerializeField] float timeToOpenWithKey;
     [SerializeField] float timeToOpenWithLockpick;
+    [Header("Door Audio Settings")]
+    public List<AudioClip> doorAudioClips = new List<AudioClip>();
+    public AudioSource audioSource;
 
     [Header("Collected Keys")]
     public List<DoorKey> keys = new List<DoorKey>();
@@ -55,12 +58,14 @@ public class KeyHandler : MonoBehaviour
             if(inputTime > timeToOpenWithKey){
                 door.OpenDoor();
                 hasMatchingKey = false;
+                audioSource.PlayOneShot(doorAudioClips[UnityEngine.Random.Range(0, doorAudioClips.Count)]);
             }
         } else {
             if(inputTime > timeToOpenWithLockpick){
                 door.OpenDoor();
                 lockpickCount -= 1;
                 GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
+                audioSource.PlayOneShot(doorAudioClips[UnityEngine.Random.Range(0, doorAudioClips.Count)]);
             }
         }
 

@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class NPCHandler : MonoBehaviour
 {
-    [Header("Required components")]
-    [SerializeField] BoxCollider boxCollider;
-
+  
     //private
 
     private Transform parentTransform;

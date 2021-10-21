@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class SurveillanceCameraRotator : MonoBehaviour
     [Header("Rotation settings")]
     [SerializeField] float rotationToRight;
     [SerializeField] float rotationToLeft;
-    [SerializeField] float rotationSpeed = 1f;    
+    [SerializeField] float rotationSpeed = 1f; 
 
     //private
     public float adjustedMinAngleLimit;
@@ -26,6 +27,7 @@ public class SurveillanceCameraRotator : MonoBehaviour
         startAngle = transform.localEulerAngles.y;
         fwVector = transform.forward;
         isDisabled = FindObjectOfType<LevelManager>().GetCamerasDisabled();
+        
     }
 
     // Update is called once per frame
@@ -34,7 +36,6 @@ public class SurveillanceCameraRotator : MonoBehaviour
         if(!isDisabled){
             RotateCamera();
         }
-        
     }
 
     public void DisableCameraRotator(){
