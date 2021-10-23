@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: dd15deac01c8ea348ba1f19bec44a1fe, type: 2}
+  inGameMenuHandler: {fileID: 0}
+  muteSound: 109
 --- !u!114 &9014647858033710675
 MonoBehaviour:
   m_ObjectHideFlags: 0
