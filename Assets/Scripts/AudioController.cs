@@ -11,6 +11,9 @@ public class AudioController : MonoBehaviour
 
     public AudioMixer audioMixer;
     [SerializeField] InGameMenuHandler inGameMenuHandler;
+    [SerializeField] KeyCode muteSound;
+
+    private bool isMuted = false;
 
     private void Start() {
         inGameMenuHandler = FindObjectOfType<InGameMenuHandler>();
@@ -32,6 +35,15 @@ public class AudioController : MonoBehaviour
     public void SetMusicVolume(Slider volume){
         audioMixer.SetFloat("musicVolume", volume.value / 100f * -80f);
         inGameMenuHandler.SetBGVolumeValue(100 - Mathf.RoundToInt(volume.value));
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(muteSound))
+        {
+            isMuted = !isMuted;
+            AudioListener.volume = isMuted ? 0 : 1;
+        }
     }
 
 }
