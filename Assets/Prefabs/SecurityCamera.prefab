@@ -243,6 +243,7 @@ MonoBehaviour:
   rotationToRight: 0
   rotationToLeft: 0
   rotationSpeed: 1
+  distanceSFXPlayer: {fileID: 8431554935961727557}
   adjustedMinAngleLimit: 0
   isMovingRight: 1
 --- !u!82 &825501984941290025

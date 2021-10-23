@@ -18,6 +18,7 @@ public class GuardStateAlerted : GuardState
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] NPC nPC;
     [SerializeField] GuardAnimationController animationController;
+    [SerializeField] DistanceSFXPlayer distanceSFXPlayer;
 
     //private
     private float alertStartTime;
@@ -70,6 +71,7 @@ public class GuardStateAlerted : GuardState
         alertStartTime = 0f;
         navMeshAgent.isStopped = true;
         animationController.SetIsWalking(false);
+        distanceSFXPlayer.SetPlayAudio(false);
         base.EndGuardState();
     }
         
@@ -122,6 +124,7 @@ public class GuardStateAlerted : GuardState
         
         if(lastKnownLocation != Vector3.zero){
             animationController.SetIsWalking(true);
+            distanceSFXPlayer.SetPlayAudio(true);
             navMeshAgent.destination = lastKnownLocation;
             if(navMeshAgent.remainingDistance <= allowedDistanceFromPlayer){
                 //move to new state where the player is caught or game over

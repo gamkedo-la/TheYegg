@@ -16,6 +16,7 @@ public class GuardStatePatrol : GuardState
     [SerializeField] NavMeshAgent navMeshAgent;
     [SerializeField] NPC nPC;
     [SerializeField] GuardAnimationController animationController;
+    [SerializeField] DistanceSFXPlayer distanceSFXPlayer;
 
 
     //private
@@ -31,7 +32,7 @@ public class GuardStatePatrol : GuardState
     public override void StartGuardState()
     {
         base.StartGuardState();
-
+        
         navMeshAgent.autoBraking = false;
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = nPC.npcSpeed;
@@ -55,6 +56,7 @@ public class GuardStatePatrol : GuardState
         navMeshAgent.destination = globalPatrolPoints[currentPatrolPointIndex].position;
         currentPatrolPointIndex = (currentPatrolPointIndex + 1) % patrolPoints.Count;
         animationController.SetIsWalking(true);
+        distanceSFXPlayer.SetPlayAudio(true);
     }
 
     public override void RunGuardState()
@@ -74,6 +76,7 @@ public class GuardStatePatrol : GuardState
     {
         navMeshAgent.isStopped = true;
         animationController.SetIsWalking(false);
+        distanceSFXPlayer.SetPlayAudio(false);
         base.EndGuardState();
         
     }

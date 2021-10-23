@@ -10,6 +10,7 @@ public class DistanceSFXPlayer : MonoBehaviour
     [SerializeField] AudioClip audioClip;
     [SerializeField] float minDistanceToPlayer;
     [SerializeField] float maxDistanceToPlayer;
+    private bool isPlayingAudio = false;
     private PlayerActionController player;
     private float defaultVolume;
    
@@ -21,14 +22,15 @@ public class DistanceSFXPlayer : MonoBehaviour
         if(!player || player == null){
             Debug.LogWarning("DistanceSFXPlayer could not find a Player in scene!");
         }
-        audioSource.clip = audioClip;
-        audioSource.Play();
     }
 
     
     void Update()
     {
-        HandleDistanceToPlayer();
+        if(isPlayingAudio){
+            HandleDistanceToPlayer();
+        }
+        
     }
 
     private void HandleDistanceToPlayer()
@@ -40,6 +42,16 @@ public class DistanceSFXPlayer : MonoBehaviour
             audioSource.volume = 0f;
         } else {
             audioSource.volume = defaultVolume * (1 - ((dist - minDistanceToPlayer) / (maxDistanceToPlayer - minDistanceToPlayer)));
+        }
+    }
+
+    public void SetPlayAudio(bool t){
+        isPlayingAudio = t;
+        if(t){
+            audioSource.clip = audioClip;
+            audioSource.Play();
+        } else {
+            audioSource.Stop();
         }
     }
 }

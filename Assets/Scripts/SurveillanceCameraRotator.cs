@@ -11,6 +11,9 @@ public class SurveillanceCameraRotator : MonoBehaviour
     [SerializeField] float rotationToLeft;
     [SerializeField] float rotationSpeed = 1f; 
 
+    [Header("Required components")]
+    [SerializeField] DistanceSFXPlayer distanceSFXPlayer;
+
     //private
     public float adjustedMinAngleLimit;
     private float startAngle;
@@ -27,7 +30,9 @@ public class SurveillanceCameraRotator : MonoBehaviour
         startAngle = transform.localEulerAngles.y;
         fwVector = transform.forward;
         isDisabled = FindObjectOfType<LevelManager>().GetCamerasDisabled();
-        
+        if(!isDisabled){
+            distanceSFXPlayer.SetPlayAudio(true);
+        }
     }
 
     // Update is called once per frame
@@ -40,6 +45,7 @@ public class SurveillanceCameraRotator : MonoBehaviour
 
     public void DisableCameraRotator(){
         isDisabled = true;
+        distanceSFXPlayer.SetPlayAudio(false);
     }
 
     private void RotateCamera(){
