@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Disguise_Anim_Office_Guard
+  m_Controller: {fileID: 9100000, guid: 7245b362e146be24a961ef47cd8217d5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 62452d23e2aad0e45897669b8c4673e5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ce40199250b83b64b814da5b6ee6289f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e7ddcc40020ba934c8c8da59a01ae5bd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fb0e1784565f6c2429eb70fbf008840f, type: 2}

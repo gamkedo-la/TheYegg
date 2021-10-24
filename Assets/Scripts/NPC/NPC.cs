@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,9 @@ public class NPC : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] KeySpawner keySpawner;
     [SerializeField] GuardFSM guardFSM;
+
+    [Header("NPC Outfit settings")]
+    public AnimatorOverrideController nPCDisguiseAnimationController;
     
 
 
@@ -48,7 +52,11 @@ public class NPC : MonoBehaviour
     private void Start() {
         NPCColor = spriteRenderer.color;
     }
- 
+
+    public AnimatorOverrideController GetDisguiseAnimator()
+    {
+        return nPCDisguiseAnimationController;
+    }
 
     public Color GetNPCColor(){
         return NPCColor;

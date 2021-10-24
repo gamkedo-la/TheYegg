@@ -7,17 +7,16 @@ public class DisguiseHandler : MonoBehaviour
 
     [Header("Handler settings")]
     [SerializeField] Color defaultOutfitColour = Color.white;
-
-
+    
     //private
-    public Color currentOutfitColour;
-
+    private Color currentOutfitColour;
     //public
 
     //required components
     [Header("Required components")]
     [SerializeField] SpriteRenderer spriteRenderer;
-
+    [SerializeField] Animator playerAnim;
+    [SerializeField] PlayerAnimationController playerAnimationController;
     private PlayerActionController playerActionController;
 
     void Start()
@@ -34,17 +33,19 @@ public class DisguiseHandler : MonoBehaviour
         if(!n || n == null){
             Debug.Log("No downed NPC found!");
         } else if(n.hasNPCOutfit == true) {
+            Debug.Log(n.nPCDisguiseAnimationController.name);
             Debug.Log("equipping disguise!");
             FindObjectOfType<ScoreKeeper>().IncreaseDisguisesUsed();
-            Color npcColor = n.GetNPCColor();
-            if(npcColor != spriteRenderer.color){
+            AnimatorOverrideController npcAnim = n.GetDisguiseAnimator();
+            if(npcAnim != playerAnim.runtimeAnimatorController){
                 //equipped different disguise
                 Debug.Log("Equipped different disguise!");
                 playerActionController.SetIsDisguiseCompromised(false);
                 FindObjectOfType<HUDHandler>().SetDisguiseStatus(false);
             }
-            currentOutfitColour = npcColor;
-            spriteRenderer.color = npcColor;
+            //currentOutfitColour = npcColor;
+            //spriteRenderer.color = npcColor;
+            playerAnimationController.SetAnimator(n.GetDisguiseAnimator());
             n.RemoveNPCOutfit();
         } else {
             Debug.Log("Downed NPC does not have an outfit anymore!");
@@ -53,8 +54,9 @@ public class DisguiseHandler : MonoBehaviour
     }
 
     public void ResetDisguiseHandler(){
-        currentOutfitColour = defaultOutfitColour;
-        spriteRenderer.color = currentOutfitColour;
+        //currentOutfitColour = defaultOutfitColour;
+        //spriteRenderer.color = currentOutfitColour;
+        playerAnimationController.ResetAnimator();
         playerActionController.SetIsDisguiseCompromised(false);
         HUDHandler hUDHandler = FindObjectOfType<HUDHandler>();
         if(hUDHandler){
@@ -62,8 +64,8 @@ public class DisguiseHandler : MonoBehaviour
         }
     }
 
-    public void CompromiseDisguise(Color disguiseColor){
-        if(disguiseColor == currentOutfitColour){
+    public void CompromiseDisguise(AnimatorOverrideController disguiseAnimator){
+        if(disguiseAnimator == playerAnimationController.GetCurrentAnimator()){
             //set disguise compromised in player action controller
             playerActionController.SetIsDisguiseCompromised(true);
             FindObjectOfType<HUDHandler>().SetDisguiseStatus(true);

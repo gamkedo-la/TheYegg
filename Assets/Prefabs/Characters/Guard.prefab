@@ -473,6 +473,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8304663009899576405}
   keySpawner: {fileID: 8304663008673374460}
   guardFSM: {fileID: 8304663008673374455}
+  nPCDisguiseAnimationController: {fileID: 22100000, guid: a864f5cdf6b63744d95051bdfbfb29ad, type: 2}
   isDown: 0
   npcSpeed: 2
 --- !u!114 &8304663008673374460
@@ -519,7 +520,7 @@ AudioSource:
   m_GameObject: {fileID: 8304663008673374452}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -703697999888180299, guid: dd15deac01c8ea348ba1f19bec44a1fe, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -696,7 +697,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -6161622119635689463, guid: 30f11a295915e664ba521a31a3a79af6, type: 3}
-  m_Color: {r: 0.9622642, g: 0.80482936, b: 0.18609825, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

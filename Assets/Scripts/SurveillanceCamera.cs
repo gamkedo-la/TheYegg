@@ -82,7 +82,7 @@ public class SurveillanceCamera : MonoBehaviour
                         if(scoreKeeper.GetIsDetectedByCameras() == false){
                             scoreKeeper.SetIsDetectedByCameras(true);
                         }
-                        AlertGuards();
+                        AlertGuards(lastKnownPlayerLocation);
                 
                     }
                 } else if(t.TryGetComponent<NPC>(out nPC)){
@@ -90,18 +90,18 @@ public class SurveillanceCamera : MonoBehaviour
                         //saw a downed NPC
                         //get rid of the NPC in the scene, or mark them as "seen" so that the NPC does not fall into a loop of detecting the same downed NPC
                         Debug.Log("An incapacitated NPC detected, moving to alerted state");
-                        AlertGuards();
+                        AlertGuards(nPC.transform.position);
                     }
                 }
             }
         }
     }
 
-    private void AlertGuards()
+    private void AlertGuards(Vector3 lastKnownLocation)
     {
         GuardFSM[] allGuards = FindObjectsOfType<GuardFSM>();
         foreach(GuardFSM g in allGuards){
-            if(Vector3.Distance(g.transform.position, lastKnownPlayerLocation) <= alertRadius){
+            if(Vector3.Distance(g.transform.position, lastKnownLocation) <= alertRadius){
                 //raycast to the guard in the radius to see if there is a wall in between
                 Vector3 dirToGuard = g.transform.position - transform.position;
                 Ray ray = new Ray(transform.position, (dirToGuard));
@@ -109,7 +109,7 @@ public class SurveillanceCamera : MonoBehaviour
                     //alert others
                     if(g.activeState != g.alertState){
                         g.gameObject.GetComponent<GuardStateAlerted>().SetIsAlertedByAnother(true);
-                        g.gameObject.GetComponent<GuardStateAlerted>().SetLastKnownLocation(lastKnownPlayerLocation);
+                        g.gameObject.GetComponent<GuardStateAlerted>().SetLastKnownLocation(lastKnownLocation);
                         g.PushState(g.alertState);
                         g.activeState.EndGuardState();
                     }

@@ -212,7 +212,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 2734883672449510063, guid: dd15deac01c8ea348ba1f19bec44a1fe, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -447,8 +447,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultOutfitColour: {r: 1, g: 1, b: 1, a: 1}
-  currentOutfitColour: {r: 0, g: 0, b: 0, a: 0}
   spriteRenderer: {fileID: 3321952404356015022}
+  playerAnim: {fileID: 3321952404356015016}
+  playerAnimationController: {fileID: 3934632608374226152}
 --- !u!114 &4697710633266393813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +611,7 @@ GameObject:
   - component: {fileID: 3321952404356015023}
   - component: {fileID: 3321952404356015022}
   - component: {fileID: 3321952404356015016}
+  - component: {fileID: 3934632608374226152}
   m_Layer: 7
   m_Name: SpriteRenderer
   m_TagString: Untagged
@@ -701,3 +703,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3934632608374226152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3321952404356015021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d91f39f76ccff458b6208c88120c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 3321952404356015016}
