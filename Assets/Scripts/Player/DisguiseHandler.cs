@@ -9,7 +9,7 @@ public class DisguiseHandler : MonoBehaviour
     [SerializeField] Color defaultOutfitColour = Color.white;
     
     //private
-    private Color currentOutfitColour;
+
     //public
 
     //required components

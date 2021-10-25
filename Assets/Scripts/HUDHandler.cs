@@ -37,6 +37,7 @@ public class HUDHandler : MonoBehaviour
     {
         SetLockPickCount(FindObjectOfType<KeyHandler>().GetLockPickCount());
         SetCollectedKeys(FindObjectOfType<KeyHandler>().GetKeyString());
+        SetDisguiseStatus(FindObjectOfType<PlayerActionController>().isCompromisedDisguise);
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         if(!scoreKeeper || scoreKeeper == null){
             Debug.LogWarning("HUDHandler is not able to find a ScoreKeeper in the scene!");
