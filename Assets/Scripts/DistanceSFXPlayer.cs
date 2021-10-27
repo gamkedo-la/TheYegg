@@ -13,15 +13,19 @@ public class DistanceSFXPlayer : MonoBehaviour
     private bool isPlayingAudio = false;
     private PlayerActionController player;
     private float defaultVolume;
+    private AudioClip originalAudioClip;
    
     void Start()
     {
         defaultVolume = audioSource.volume;
         audioSource.volume = 0;
+
         player = FindObjectOfType<PlayerActionController>();
         if(!player || player == null){
             Debug.LogWarning("DistanceSFXPlayer could not find a Player in scene!");
         }
+
+        originalAudioClip = audioClip;
     }
 
     
@@ -43,6 +47,13 @@ public class DistanceSFXPlayer : MonoBehaviour
         } else {
             audioSource.volume = defaultVolume * (1 - ((dist - minDistanceToPlayer) / (maxDistanceToPlayer - minDistanceToPlayer)));
         }
+    }
+
+    public void PlayOneShotClip(AudioClip swapClip)
+    {
+        Debug.Log("Playing clip: " + swapClip.name);
+        audioSource.clip = swapClip;
+        audioSource.PlayOneShot(swapClip, audioSource.volume);
     }
 
     public void SetPlayAudio(bool t){

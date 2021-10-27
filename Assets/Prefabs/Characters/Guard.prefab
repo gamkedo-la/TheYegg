@@ -389,7 +389,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
   idleTimeInSeconds: 3
-  timeSpentIdle: 3.00539
+  walkieTalkieAudio: {fileID: 8300000, guid: 6b9644c860e2e3b42ade208745ca38a7, type: 3}
+  timeSpentIdle: 0
+  distanceSFXPlayer: {fileID: 4643250427907089933}
 --- !u!114 &8304663008673374453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,7 +524,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -703697999888180299, guid: dd15deac01c8ea348ba1f19bec44a1fe, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

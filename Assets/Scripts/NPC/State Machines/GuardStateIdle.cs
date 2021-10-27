@@ -7,14 +7,18 @@ public class GuardStateIdle : GuardState
 {
 
     [SerializeField] float idleTimeInSeconds = 3f;
-    
+    [SerializeField] AudioClip walkieTalkieAudio;
     public float timeSpentIdle = 0f;
+    public DistanceSFXPlayer distanceSFXPlayer;
+    private bool walkieTalkiePlayed = false;
 
     public override void StartGuardState()
     {
         //start counting down seconds that the guard stays idle
         timeSpentIdle = 0f;
         //if the FOV is not active, activate it
+        //play walkie talkie audio
+        walkieTalkiePlayed = false;
         
     }
 
@@ -22,6 +26,10 @@ public class GuardStateIdle : GuardState
     {
         base.RunGuardState();
         CountTimeIdle();
+        if(!walkieTalkiePlayed){
+            distanceSFXPlayer.PlayOneShotClip(walkieTalkieAudio);
+            walkieTalkiePlayed = true;
+        }
     }
 
     private void CountTimeIdle()
