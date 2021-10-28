@@ -389,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
   idleTimeInSeconds: 3
-  walkieTalkieAudio: {fileID: 8300000, guid: 6b9644c860e2e3b42ade208745ca38a7, type: 3}
+  walkieTalkieAudio: {fileID: 8300000, guid: e410c7b60bc33ed41856f5a3335eedc4, type: 3}
   timeSpentIdle: 0
   distanceSFXPlayer: {fileID: 4643250427907089933}
 --- !u!114 &8304663008673374453

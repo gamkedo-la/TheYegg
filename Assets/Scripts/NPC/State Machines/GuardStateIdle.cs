@@ -26,10 +26,11 @@ public class GuardStateIdle : GuardState
     {
         base.RunGuardState();
         CountTimeIdle();
-        if(!walkieTalkiePlayed){
+        if(!walkieTalkiePlayed && UnityEngine.Random.Range(0f, 1f) > 0.9f){
             distanceSFXPlayer.PlayOneShotClip(walkieTalkieAudio);
-            walkieTalkiePlayed = true;
+            
         }
+        walkieTalkiePlayed = true;
     }
 
     private void CountTimeIdle()
