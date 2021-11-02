@@ -11,7 +11,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] KeyCode equipDisguiseInput;
     [SerializeField] KeyCode openDoorInput;
     [SerializeField] KeyCode pickUpKeyInput;
-    [SerializeField] KeyCode openSafeInput;
+    [SerializeField] KeyCode interactWithLevelSequenceInput;
     [SerializeField] KeyCode levelTransitionInput;
     [SerializeField] KeyCode surveillanceCameraSwitchInput;
     [SerializeField] KeyCode levelExitInput;
@@ -23,7 +23,7 @@ public class PlayerActionController : MonoBehaviour
     [SerializeField] NPCHandler nPCHandler;
     [SerializeField] DisguiseHandler disguiseHandler;
     [SerializeField] KeyHandler keyHandler;
-    [SerializeField] SafeHandler safeHandler;
+    [SerializeField] LevelSequenceHandler levelSequenceHandler;
     [SerializeField] LevelTransitionHandler levelTransitionHandler;
     [SerializeField] SurveillanceSystemHandler surveillanceSystemHandler;
     [SerializeField] LevelExitHandler levelExitHandler;
@@ -37,8 +37,8 @@ public class PlayerActionController : MonoBehaviour
     //private
     private bool canOpenDoor;
     private float openDoorStartTime;
-    private bool canOpenSafe;
-    private float openSafeStartTime;
+    private bool canInteract;
+    private float interactStartTime;
     private float switchCameraTime;
     private bool canSwitchCamera;
     
@@ -89,18 +89,18 @@ public class PlayerActionController : MonoBehaviour
             keyHandler.PickUpKey();
         }
 
-        if(Input.GetKeyDown(openSafeInput)){
-            if(safeHandler.StartOpenSafe() == true){
-                openSafeStartTime = Time.time;
-                canOpenSafe = true;
+        if(Input.GetKeyDown(interactWithLevelSequenceInput)){
+            if(levelSequenceHandler.StartInteraction() == true){
+                interactStartTime = Time.time;
+                canInteract = true;
             } else {
-                canOpenSafe = false;
+                canInteract = false;
             }
         }
 
-        if(Input.GetKeyUp(openSafeInput) && canOpenSafe){
-            safeHandler.OpenSafe(Time.time - openSafeStartTime);
-            openSafeStartTime = 0f;
+        if(Input.GetKeyUp(interactWithLevelSequenceInput) && canInteract){
+            levelSequenceHandler.InterAct(Time.time - interactStartTime);
+            interactStartTime = 0f;
         }
 
         if(Input.GetKeyDown(levelTransitionInput)){

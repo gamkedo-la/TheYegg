@@ -417,7 +417,7 @@ MonoBehaviour:
   equipDisguiseInput: 113
   openDoorInput: 101
   pickUpKeyInput: 116
-  openSafeInput: 103
+  interactWithLevelSequenceInput: 103
   levelTransitionInput: 101
   surveillanceCameraSwitchInput: 101
   levelExitInput: 101
@@ -426,7 +426,7 @@ MonoBehaviour:
   nPCHandler: {fileID: 3321952404266471983}
   disguiseHandler: {fileID: 3321952403952502151}
   keyHandler: {fileID: 3321952403935609023}
-  safeHandler: {fileID: 3321952404266471976}
+  levelSequenceHandler: {fileID: 3321952404266471976}
   levelTransitionHandler: {fileID: 3321952404266471977}
   surveillanceSystemHandler: {fileID: 7334584792678367904}
   levelExitHandler: {fileID: 2683927788839099885}
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3321952404266471980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc2f54c2ac69df942a795dc46c3566cf, type: 3}
+  m_Script: {fileID: 11500000, guid: cc93a47fe7a441446ab73292fd1b6097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactLayerMask:

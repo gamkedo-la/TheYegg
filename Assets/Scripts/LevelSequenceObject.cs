@@ -1,18 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Safe : MonoBehaviour
+public class LevelSequenceObject : MonoBehaviour
 {
-
-    [Header("Safe settings")]
-    [SerializeField] float timeToOpen;
+    [Header("Interaction settings")]
+    [SerializeField] float timeToInteract;
     [Tooltip("What is the position of this object in the correct sequence of clearing the level")]
     [SerializeField] int positionInSequence;
 
-    public void OpenSafe(){
-        Debug.Log("Safe opened!");
+    public void InteractWithObject(){
+        Debug.Log("Sequence step completed!");
         LevelManager levelManager = FindObjectOfType<LevelManager>();
         if(levelManager){
             //if has cleared previous condition, set this condition to be cleared
@@ -22,9 +20,9 @@ public class Safe : MonoBehaviour
         }
     }
 
-    public float GetTimeToOpen()
+    public float GetTimeToInteract()
     {
-        return timeToOpen;
+        return timeToInteract;
     }
 
 }
