@@ -51,7 +51,6 @@ public class DistanceSFXPlayer : MonoBehaviour
 
     public void PlayOneShotClip(AudioClip swapClip)
     {
-        Debug.Log("Playing clip: " + swapClip.name);
         audioSource.clip = swapClip;
         audioSource.PlayOneShot(swapClip, audioSource.volume);
     }
