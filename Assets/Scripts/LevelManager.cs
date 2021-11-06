@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
     private bool isExitEnabled = false;
     private ScoreKeeper scoreKeeper;
     private bool isAlarmOn = false;
+    private bool showIntros = false;
 
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -158,6 +159,7 @@ public class LevelManager : MonoBehaviour
 
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
+        showIntros = true;
     }
 
     private void ResetPlayer()
@@ -179,6 +181,17 @@ public class LevelManager : MonoBehaviour
         ResetPlayer();
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
+        showIntros = true;
+    }
+
+    private void PrintLevelIntro()
+    {
+        TextPrinter textPrinter = FindObjectOfType<TextPrinter>();
+        if(textPrinter)
+        {
+            textPrinter.PrintlevelIntro(currentLevelIndex);
+        }
+
     }
 
     public void LoadMainMenu(){
@@ -204,12 +217,11 @@ public class LevelManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         animator.SetTrigger("FadeIn");
-        TextPrinter textPrinter = FindObjectOfType<TextPrinter>();
-        if(textPrinter)
+        if(showIntros == true)
         {
-            textPrinter.PrintlevelIntro(currentLevelIndex);
+            PrintLevelIntro();
+            showIntros = false;
         }
-
     }
 
     private void HandleAlarmTurnedOn()
