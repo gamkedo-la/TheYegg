@@ -6,31 +6,14 @@ using TMPro;
 public class TextPrinter : MonoBehaviour
 {
     [Multiline]
-    public string textToPrint;
+    public List<string> textsToPrint;
     private char[] processedArray;
     private char[] textToPrintSplit;
     public TextMeshProUGUI textPrinterText;
-    public float delayBetweenCharacters;
+    public float delayBetweenCharactersIncoming;
+    public float delayBetweenCharactersRemoving;
+    public float delayToTextDisappear = 5f;
     private bool isPrinting = false;
-
-
-    private void Start() {
-        processedArray = textToPrint.ToCharArray();
-        textToPrintSplit = new char[processedArray.Length]; 
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if(!isPrinting)
-            {
-                textToPrintSplit = new char[processedArray.Length]; 
-                StartCoroutine(PrintText());
-            }
-        }
-        
-    }
 
     private IEnumerator PrintText()
     {
@@ -40,9 +23,36 @@ public class TextPrinter : MonoBehaviour
             textToPrintSplit[i] = processedArray[i];
             string s = new string(textToPrintSplit);
             textPrinterText.text = s;
-            yield return new WaitForSeconds(delayBetweenCharacters);
+            yield return new WaitForSeconds(delayBetweenCharactersIncoming);
         }
         isPrinting = false;
+        yield return new WaitForSeconds(delayToTextDisappear);
+        StartCoroutine(ClearText());
+
+    }
+
+    public void PrintlevelIntro(int levelIndex)
+    {
+        processedArray = textsToPrint[levelIndex].ToCharArray();
+        textToPrintSplit = new char[processedArray.Length]; 
+
+        if(!isPrinting)
+            {
+                textToPrintSplit = new char[processedArray.Length]; 
+                StartCoroutine(PrintText());
+            }
+    }
+
+    private IEnumerator ClearText()
+    {
+        
+        for(int i = processedArray.Length; i > 0; i--)
+        {
+            textToPrintSplit[i - 1] = new char();
+            string s = new string(textToPrintSplit);
+            textPrinterText.text = s;
+            yield return new WaitForSeconds(delayBetweenCharactersRemoving);
+        }
     }
 
 }

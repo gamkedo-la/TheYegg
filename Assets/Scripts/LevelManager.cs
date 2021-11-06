@@ -155,6 +155,7 @@ public class LevelManager : MonoBehaviour
         loseUI.SetActive(false);
         ResetPlayer();
         scoreKeeper.StartLevelTimer();
+
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
     }
@@ -203,6 +204,12 @@ public class LevelManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         animator.SetTrigger("FadeIn");
+        TextPrinter textPrinter = FindObjectOfType<TextPrinter>();
+        if(textPrinter)
+        {
+            textPrinter.PrintlevelIntro(currentLevelIndex);
+        }
+
     }
 
     private void HandleAlarmTurnedOn()

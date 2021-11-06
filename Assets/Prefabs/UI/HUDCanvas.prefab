@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 479.99994, y: -270}
-  m_SizeDelta: {x: 960, y: 539.99}
+  m_AnchoredPosition: {x: 368.88, y: -315.5711}
+  m_SizeDelta: {x: 1182.2, y: 448.8478}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4130159665793151124
 MonoBehaviour:
@@ -49,19 +49,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de277e97e0cdac44c939642903ed414d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textToPrint: "Hey, can you hear me in there? I slipped you a radio when they took
-    you in.\r\nI know you don't need to trust me, but I need your... expertise to
-    get something that belongs to me,\r\nand you are no help rotting in a jail cell.\r\n\r\nYou
-    should be able to pick the lock on that cell door. There's a car waiting for
-    you outside the precinct.\r\nJust make your way to the safety room next on the
-    other side of the cell corridor and turn off the cameras.\r\nThere's at least
-    one door that you need to open before you can get out.\r\n\r\nTake care, Yegg.
-    Once you leave your cell the guards will hunt you down if they see you on the
-    cameras.\r\nYou can take out the guards for a moment, if you think it will help
-    you get out. They'll get up at some point,\r\nbut you might have enough time
-    to get out.\r"
+  textsToPrint:
+  - 'Hey, can you hear me in there? I slipped you a radio when they took you in.
+    I know you don''t need to trust me, but I need your... expertise to get something
+    that belongs to me, and you are no help rotting in a jail cell.
+
+    You should
+    be able to pick the lock on that cell door. There''s a car waiting for you outside
+    the precinct. Just make your way to the safety room next on the other side of
+    the cell corridor and turn off the cameras. There''s at least one door that you
+    need to open before you can get out.
+
+    Take care, Yegg. Once you leave your
+    cell the guards will hunt you down if they or the cameras spot you. You can take
+    out the guards for a moment, if you think it will help you get out. They''ll
+    get up at some point, but you might have enough time to get out.
+
+    
+
+'
+  - 'This is a sample text we can show at the beginning of a level to instruct the
+    player to do things.
+
+    For example, we could say that the player needs to
+    go somewhere, or to start by getting a key to a door or something like that.
+
+    If
+    you have a good idea what might be fun/interesting to say here, give it a go!'
   textPrinterText: {fileID: 5421446405673901172}
-  delayBetweenCharacters: 0.02
+  delayBetweenCharactersIncoming: 0.02
+  delayBetweenCharactersRemoving: 0.005
+  delayToTextDisappear: 5
 --- !u!1 &4902175616156605836
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,15 +834,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
