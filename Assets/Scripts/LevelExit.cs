@@ -8,14 +8,19 @@ public class LevelExit : MonoBehaviour
 
     [SerializeField] GameObject levelExit; //a child object which visually represents the exit
     private LevelManager levelManager;
-
+    private Collider exitCollider;
 
     private void Start() {
+        exitCollider = GetComponent<Collider>();
+        if(!exitCollider || exitCollider == null){
+            Debug.LogWarning("Not collider found in LevelExit for " + gameObject.name);
+        }
         levelManager = FindObjectOfType<LevelManager>();
         if(!levelManager || levelManager == null){
-            Debug.LogWarning("No levelmanager found in LevelExit for GO " + gameObject.name);
+            Debug.LogWarning("No levelmanager found in LevelExit for " + gameObject.name);
         } else {
-            levelExit.SetActive(levelManager.GetIsExitEnabled());
+            bool isExitEnabled = levelManager.GetIsExitEnabled();
+            SetExitActive(isExitEnabled);
         }
     }
 
@@ -23,4 +28,9 @@ public class LevelExit : MonoBehaviour
         levelManager.LevelCompleted();
     }
 
+    public void SetExitActive(bool t)
+    {
+        levelExit.SetActive(t);
+        exitCollider.enabled = t;
+    }
 }

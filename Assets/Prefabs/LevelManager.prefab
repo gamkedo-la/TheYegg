@@ -228,7 +228,7 @@ MonoBehaviour:
   levelStartPositions:
   - {x: 8.75, y: 0.5, z: -1.25}
   - {x: -12, y: 0.75, z: -12}
-  levelClearConditionCount: 01000000
+  levelClearConditionCount: 0000000001000000
   loseUI: {fileID: 0}
   winUI: {fileID: 0}
   animator: {fileID: 994198600}

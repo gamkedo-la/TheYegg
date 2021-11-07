@@ -93,6 +93,7 @@ public class PlayerActionController : MonoBehaviour
             if(levelSequenceHandler.StartInteraction() == true){
                 interactStartTime = Time.time;
                 canInteract = true;
+                Debug.Log("Can Interact based on input!");
             } else {
                 canInteract = false;
             }

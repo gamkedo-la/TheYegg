@@ -33,7 +33,6 @@ public class DisguiseHandler : MonoBehaviour
         if(!n || n == null){
             Debug.Log("No downed NPC found!");
         } else if(n.hasNPCOutfit == true) {
-            Debug.Log(n.nPCDisguiseAnimationController.name);
             Debug.Log("equipping disguise!");
             FindObjectOfType<ScoreKeeper>().IncreaseDisguisesUsed();
             AnimatorOverrideController npcAnim = n.GetDisguiseAnimator();

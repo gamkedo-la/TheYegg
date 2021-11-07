@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
 
     private bool areCamerasDisabled;
     private int levelToLoad;
-    private int currentLevelConditionsCleared = 0;
+    public int currentLevelConditionsCleared = 0;
     private bool isExitEnabled = false;
     private ScoreKeeper scoreKeeper;
     private bool isAlarmOn = false;
@@ -100,10 +100,16 @@ public class LevelManager : MonoBehaviour
 
     public void LevelClearConditionCompleted(int index){
         //increase the number of conditions cleared
+        Debug.Log("Level conditions completed");
         currentLevelConditionsCleared = index;
         if(currentLevelConditionsCleared >= levelClearConditionCount[currentLevelIndex]){
             isExitEnabled = true;
-            //TODO enable all exits in the same scene
+            LevelExit[] levelExits = FindObjectsOfType<LevelExit>();
+            foreach (LevelExit exit in levelExits)
+            {
+                exit.SetExitActive(true);
+            }
+            
         }
     }
 

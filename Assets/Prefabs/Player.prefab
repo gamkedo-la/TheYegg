@@ -417,7 +417,7 @@ MonoBehaviour:
   equipDisguiseInput: 113
   openDoorInput: 101
   pickUpKeyInput: 116
-  interactWithLevelSequenceInput: 103
+  interactWithLevelSequenceInput: 101
   levelTransitionInput: 101
   surveillanceCameraSwitchInput: 101
   levelExitInput: 101
