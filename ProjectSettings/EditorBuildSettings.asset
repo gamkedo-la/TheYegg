@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 00a0adcf51e24bd4db140033670e9e45
   - enabled: 1
-    path: Assets/Scenes/Level0_Jailbreak.unity
+    path: Assets/Scenes/Level0_JailBreak.unity
     guid: 4f1bdd75733051545aa37e2608032752
   - enabled: 1
     path: Assets/Scenes/Level2_Office_Entrance 1.unity

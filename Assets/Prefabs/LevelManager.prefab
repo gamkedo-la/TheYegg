@@ -232,6 +232,7 @@ MonoBehaviour:
   loseUI: {fileID: 0}
   winUI: {fileID: 0}
   animator: {fileID: 994198600}
+  currentLevelConditionsCleared: 0
 --- !u!114 &7469692347871288247
 MonoBehaviour:
   m_ObjectHideFlags: 0
