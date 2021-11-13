@@ -65,9 +65,17 @@ MonoBehaviour:
     out the guards for a moment, if you think it will help you get out. They''ll
     get up at some point, but you might have enough time to get out.
 
-    
+
 
 '
+  - 'This is a sample text we can show at the beginning of a level to instruct the
+    player to do things.
+
+    For example, we could say that the player needs to
+    go somewhere, or to start by getting a key to a door or something like that.
+
+    If
+    you have a good idea what might be fun/interesting to say here, give it a go!'
   - 'This is a sample text we can show at the beginning of a level to instruct the
     player to do things.
 
