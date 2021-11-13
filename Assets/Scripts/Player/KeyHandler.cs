@@ -59,6 +59,8 @@ public class KeyHandler : MonoBehaviour
                 door.OpenDoor();
                 hasMatchingKey = false;
                 audioSource.PlayOneShot(doorAudioClips[UnityEngine.Random.Range(0, doorAudioClips.Count)]);
+            } else {
+                HandleDoorTimer(0f); //to reset timer
             }
         } else {
             if(inputTime > timeToOpenWithLockpick){
@@ -66,6 +68,8 @@ public class KeyHandler : MonoBehaviour
                 lockpickCount -= 1;
                 GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
                 audioSource.PlayOneShot(doorAudioClips[UnityEngine.Random.Range(0, doorAudioClips.Count)]);
+            } else {
+                HandleDoorTimer(0f); //to reset timer
             }
         }
 
@@ -95,6 +99,23 @@ public class KeyHandler : MonoBehaviour
             } 
         }
         return false;
+    }
+
+    public void HandleDoorTimer(float v)
+    {
+        if(hasMatchingKey){
+            if(v >= timeToOpenWithKey){
+                door.SetDoorTimerValue(1f);
+            } else {
+                door.SetDoorTimerValue(v / timeToOpenWithKey);
+            }
+        } else {
+            if(v >= timeToOpenWithLockpick){
+                door.SetDoorTimerValue(1f);
+            } else {
+                door.SetDoorTimerValue(v / timeToOpenWithLockpick);
+            }
+        }
     }
 
     public void PickUpKey(){

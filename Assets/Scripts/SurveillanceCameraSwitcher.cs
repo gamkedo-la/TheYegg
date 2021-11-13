@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SurveillanceCameraSwitcher : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class SurveillanceCameraSwitcher : MonoBehaviour
     [SerializeField] float timeToSwitchCamerasOff = 1f;
     [SerializeField] GameObject camerasOnObject;
     [SerializeField] GameObject camerasOffObject;
+    [SerializeField] Slider slider;
 
     private ScoreKeeper scoreKeeper;
 
@@ -35,6 +38,11 @@ public class SurveillanceCameraSwitcher : MonoBehaviour
             cam.GetComponentInParent<SurveillanceCameraRotator>().DisableCameraRotator();
         }
 
+    }
+
+    public void SetTimerValue(float v)
+    {
+        slider.value = v;
     }
 
     public float GetTimeToSwitchCamerasOff(){

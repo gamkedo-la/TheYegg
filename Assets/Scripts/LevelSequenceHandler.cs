@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,15 @@ public class LevelSequenceHandler : MonoBehaviour
             if(levelSequenceObject){
                 levelSequenceObject.InteractWithObject();
             }
+        }
+    }
+
+    public void HandleTimer(float v)
+    {
+        if(v >= timeToInteract){
+            levelSequenceObject.SetTimerValue(1f);
+        } else {
+            levelSequenceObject.SetTimerValue(v / timeToInteract);
         }
     }
 }

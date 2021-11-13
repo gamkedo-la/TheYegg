@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,5 +35,13 @@ public class SurveillanceSystemHandler : MonoBehaviour
             }
         }
     }
-   
+
+    public void HandleSwitchTimer(float v)
+    {
+        if(v >= timeToSwitchCamerasOff){
+            switcher.SetTimerValue(1f);
+        } else {
+            switcher.SetTimerValue(v / timeToSwitchCamerasOff);
+        }
+    }
 }

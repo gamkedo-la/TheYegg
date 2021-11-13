@@ -79,6 +79,10 @@ public class PlayerActionController : MonoBehaviour
             
         }
 
+        if(Input.GetKey(openDoorInput) && canOpenDoor){
+            keyHandler.HandleDoorTimer(Time.time - openDoorStartTime);
+        }
+
         if(Input.GetKeyUp(openDoorInput) && canOpenDoor){
             keyHandler.OpenDoor(Time.time - openDoorStartTime);
             openDoorStartTime = 0f;
@@ -93,10 +97,13 @@ public class PlayerActionController : MonoBehaviour
             if(levelSequenceHandler.StartInteraction() == true){
                 interactStartTime = Time.time;
                 canInteract = true;
-                Debug.Log("Can Interact based on input!");
             } else {
                 canInteract = false;
             }
+        }
+
+        if(Input.GetKey(interactWithLevelSequenceInput) && canInteract){
+            levelSequenceHandler.HandleTimer(Time.time - interactStartTime);
         }
 
         if(Input.GetKeyUp(interactWithLevelSequenceInput) && canInteract){
@@ -121,7 +128,11 @@ public class PlayerActionController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyUp(surveillanceCameraSwitchInput)){
+        if(Input.GetKey(surveillanceCameraSwitchInput) && canSwitchCamera){
+            surveillanceSystemHandler.HandleSwitchTimer(Time.time - switchCameraTime);
+        }
+
+        if(Input.GetKeyUp(surveillanceCameraSwitchInput) && canSwitchCamera){
             surveillanceSystemHandler.SwitchCameras(Time.time - switchCameraTime);
         }
 
