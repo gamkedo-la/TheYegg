@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class HUDHandler : MonoBehaviour
 {
+    public GameObject coreForDirectLoad;
 
     [Header("UI text objects:")]
     [SerializeField] TextMeshProUGUI keysText;
@@ -31,6 +32,20 @@ public class HUDHandler : MonoBehaviour
 
     private void OnDisable(){
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }    
+
+    private void Awake()
+    {
+        if (FindObjectOfType<KeyHandler>() == null)
+        { 
+            if (coreForDirectLoad == null)
+            {
+                Debug.Log("For Quicker Testing Connect Core In Inspector To Event Handler.");
+            } else
+            {
+                coreForDirectLoad.SetActive(true);
+            }
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
