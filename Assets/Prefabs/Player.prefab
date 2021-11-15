@@ -434,6 +434,8 @@ MonoBehaviour:
   isCompromisedDisguise: 0
   isDoingIllegalAction: 0
   isInRestrictedArea: 0
+  layerName: Interactable
+  interactableGameObjects: []
 --- !u!114 &3321952403952502151
 MonoBehaviour:
   m_ObjectHideFlags: 0

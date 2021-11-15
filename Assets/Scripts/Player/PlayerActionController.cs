@@ -33,6 +33,10 @@ public class PlayerActionController : MonoBehaviour
     public bool isCompromisedDisguise = false;
     public bool isDoingIllegalAction = false;
     public bool isInRestrictedArea = false;
+    
+    [Header("Interactable Objects")]
+    [SerializeField] string layerName;
+    public List<GameObject> interactableGameObjects = new List<GameObject>();
 
     //private
     private bool canOpenDoor;
@@ -52,8 +56,11 @@ public class PlayerActionController : MonoBehaviour
         AlarmSystemSwitch.OnAlarmTurnedOn -= HandleAlarmTurnedOn;
     }
 
-    
 
+    private void Start()
+    {
+        FindLayerObjects(LayerMask.NameToLayer(layerName));
+    }
 
     // Update is called once per frame
     void Update()
@@ -154,10 +161,22 @@ public class PlayerActionController : MonoBehaviour
         
     }
 
+    void FindLayerObjects(int layer)
+    {
+        var interactableObjects = FindObjectsOfType<GameObject>();
+
+        foreach (var gameObject in interactableObjects)
+        {
+            if (gameObject.layer == layer)
+            {
+                interactableGameObjects.Add(gameObject);
+            }
+        }
+    }
+
     public void SetIsDisguiseCompromised(bool t){
         isCompromisedDisguise = t;
         //IF true, change display value
-        
     }
 
     private void HandleAlarmTurnedOn()
