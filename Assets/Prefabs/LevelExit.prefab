@@ -73,7 +73,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c50b122657d37b48880fd0cce17b2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: 2ffe643262aa1134788354b77d8e8390, type: 2}
   promptTextObject: {fileID: 6493089699169225334}
+  activatedGameObjects: []
   promptText: Press E
 --- !u!1 &7302920026645887034
 GameObject:

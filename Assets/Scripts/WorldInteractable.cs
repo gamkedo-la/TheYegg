@@ -7,6 +7,7 @@ public class WorldInteractable : MonoBehaviour
 {
     //this class shows a TMPro text once the player is inside the trigger area
 
+    [SerializeField] Material outlineMaterial;
     public TextMeshPro promptTextObject;
     public List<GameObject> activatedGameObjects = new List<GameObject>();
 
@@ -30,6 +31,19 @@ public class WorldInteractable : MonoBehaviour
                 g.SetActive(true);
                 RotateToWorldZ(g);
             }
+            //add the outline material to list of materials in the mesh renderer
+            MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (var m in meshRenderers)
+            {
+                if(m.CompareTag("InteractionPrompt") == false)
+                {
+                    List<Material> materials = new List<Material>();
+                    materials.Add(m.material);
+                    materials.Add(outlineMaterial);
+                    m.materials = materials.ToArray();
+                }
+                
+            }
         }
     }
 
@@ -40,7 +54,21 @@ public class WorldInteractable : MonoBehaviour
                 g.SetActive(false);
                 RotateToWorldZ(g);
             }
+
+            //remove the outlinematerial from list of materials
+            MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (var m in meshRenderers)
+            {
+                if(m.CompareTag("InteractionPrompt") == false)
+                {
+                    List<Material> materials = new List<Material>();
+                    materials.Add(m.materials[0]);
+                    m.materials = materials.ToArray();
+                }
+                
+            }
         }
+
     }
 
     private void RotateToWorldZ(GameObject g){

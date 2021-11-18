@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c50b122657d37b48880fd0cce17b2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: 2ffe643262aa1134788354b77d8e8390, type: 2}
   promptTextObject: {fileID: 4590439639101292774}
   activatedGameObjects:
   - {fileID: 2648367822782835142}

@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Test Debugging.");
         playerRb = GetComponent<Rigidbody>();
         if(!playerRb || playerRb == null){
             Debug.LogWarning("PlayerMovement component could not find a Rigidbody2D");
