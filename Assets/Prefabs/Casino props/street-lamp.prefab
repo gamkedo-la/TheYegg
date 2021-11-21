@@ -175,7 +175,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -327,7 +327,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 0.55, y: 4, z: 0.55}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.55, y: 6.0000005, z: -0.55}
   m_TimeToStationary: 0.5

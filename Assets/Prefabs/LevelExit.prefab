@@ -75,7 +75,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMaterial: {fileID: 2100000, guid: 2ffe643262aa1134788354b77d8e8390, type: 2}
   promptTextObject: {fileID: 6493089699169225334}
-  activatedGameObjects: []
+  activatedGameObjects:
+  - {fileID: 4713147486480376662}
   promptText: Press E
 --- !u!1 &7302920026645887034
 GameObject:
@@ -270,6 +271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82cb200c6d68fd74795410726fc6487f, type: 3}
+--- !u!1 &4713147486480376662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8795902991370581609, guid: 82cb200c6d68fd74795410726fc6487f, type: 3}
+  m_PrefabInstance: {fileID: 4285497752487482687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5317565250758961293 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8264928764932308402, guid: 82cb200c6d68fd74795410726fc6487f, type: 3}
@@ -280,7 +286,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7018071866509795145, guid: 82cb200c6d68fd74795410726fc6487f, type: 3}
   m_PrefabInstance: {fileID: 4285497752487482687}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4713147486480376662}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
