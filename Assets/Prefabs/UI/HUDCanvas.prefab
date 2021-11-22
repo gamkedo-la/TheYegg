@@ -68,22 +68,35 @@ MonoBehaviour:
 
 
 '
-  - 'This is a sample text we can show at the beginning of a level to instruct the
-    player to do things.
+  - 'Large Corp Industrial Company makes everything from little dollies to jet engines.
+    In their greed they decided to make me the fall guy for one of their various
+    failed corporate espionage attempts. I want revenge. I can offer you your freedom,
+    if you manage to help me. We have a long way to go, Yegg.
 
-    For example, we could say that the player needs to
-    go somewhere, or to start by getting a key to a door or something like that.
+    In this industrial
+    park, there is an office with a simple file cabinet. In this file cabinet you
+    can find the name of a shell company responsible for the money laundering activities
+    of LCIC. The office is in the northeast building. Once you have the name for
+    me, get to the getaway car outside the northwest entrance. Good luck.'
+  - "I have a connection at Large Corp Industrial, a whistle blower you might call
+    her. I haven't heard from her in a while, but she has intel securing your freedom
+    and my revenge.\r\nI always thought corporate crime is the worst kind of crime
+    \u2013 faceless, impersonal. It's time you show them that the traditional ways
+    are sometimes superior. Find my contact's intel from her top floor office. It's
+    a fairly large room, you can't miss it.\r\nAvoid the guards, and if you can,
+    disable the security cameras. The controls should be somewhere on the first floor.
+    There's a getaway car waiting for you outside."
+  - 'This is it, Yegg. Your office visit gave me all I need to take down everyone
+    profiting from Large Corp Industrial''s dirty business. You have done all that
+    I have asked of you. Now it''s time you reclaim your freedom.
 
-    If
-    you have a good idea what might be fun/interesting to say here, give it a go!'
-  - 'This is a sample text we can show at the beginning of a level to instruct the
-    player to do things.
-
-    For example, we could say that the player needs to
-    go somewhere, or to start by getting a key to a door or something like that.
-
-    If
-    you have a good idea what might be fun/interesting to say here, give it a go!'
+    Inside the
+    vault of this casino there is a surveillance footage video which proves you did
+    not in fact commit the B&E you were imprisoned for. Such a high-end place, but
+    all it is is a front for Large Corp. They hold many sensitive documents in that
+    vault, but if I were you, I''d only take what I need and vanish. Unfortunately
+    that is all I know of this place. There''s a car waiting for you outside once
+    you are done. Good luck.'
   textPrinterText: {fileID: 5421446405673901172}
   delayBetweenCharactersIncoming: 0.02
   delayBetweenCharactersRemoving: 0.005
@@ -180,7 +193,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.6
+  m_fontSize: 37.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

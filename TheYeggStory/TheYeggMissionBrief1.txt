@@ -1,0 +1,20 @@
+You are one of the most sought-after detective / hitman, that gets hired to target bad guys.
+Mission brief 1:
+You were hired by a family to investigate their missing loved one who works at the Large Corp Industrial Company. The person you are trying to find is a whistle blower to the companies under the table illegal transactions.
+You decided to start to go investigate in the initial office of the person, however, you were prevented from entering their establishment. 
+You decided to go and sneak inside the office and find some possible leads to the missing employee of Large Corp Industrial Company. 
+You need to avoid alerting guards to avoid getting sued by the company lawyers. 
+
+
+////Modified version to seem more like me-to-you 
+“I have a ...connection at Large Corp Industrial, a whistle blower you might call her. I haven't heard from her in a while, but she has intel securing your freedom and my revenge.
+I always thought corporate crime is the worst kind of crime – faceless, impersonal. It's time you show them that the traditional ways are sometimes superior. Find my contact's intel from her top floor office. It's a fairly large room, you can't miss it.
+Avoid the guards, and if you can, disable the security cameras. The controls should be somewhere on the first floor. There's a getaway car waiting for you outside.”
+
+Mission brief for industrial level:
+“Large Corp Industrial Company makes everything from little dollies to jet engines. In their greed they decided to make me the fall guy for one of their various failed corporate espionage attempts. I want revenge. I can offer you your freedom, if you manage to help me. We have a long way to go, Yegg.
+In this industrial park, there is an office with a simple file cabinet. In this file cabinet you can find the name of a shell company responsible for the money laundering activities of LCIC. The office is in the northeast building. Once you have the name for me, get to the getaway car outside the northwest entrance. Good luck.”
+
+Mission brief for Casino level:
+This is it, Yegg. Your office visit gave me all I need to take down everyone profiting from Large Corp Industrial's dirty business. You have done all that I have asked of you. Now it's time you reclaim your freedom.
+Inside the vault of this casino there is a surveillance footage video which proves you did not in fact commit the B&E you were imprisoned for. Such a high-end place, but all it is is a front for Large Corp. They hold many sensitive documents in that vault, but if I were you, I'd only take what I need and vanish. Unfortunately that is all I know of this place. There's a car waiting for you outside once you are done. Good luck.
