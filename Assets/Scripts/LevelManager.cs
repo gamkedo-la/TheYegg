@@ -161,6 +161,7 @@ public class LevelManager : MonoBehaviour
         winUI.SetActive(false);
         loseUI.SetActive(false);
         ResetPlayer();
+        SetIsAlarmSystemOn(false);
         scoreKeeper.StartLevelTimer();
 
         currentLevelConditionsCleared = 0;
@@ -188,6 +189,7 @@ public class LevelManager : MonoBehaviour
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
         showIntros = true;
+        SetIsAlarmSystemOn(false);
     }
 
     private void PrintLevelIntro()

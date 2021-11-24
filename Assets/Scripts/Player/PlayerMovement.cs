@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool isLookAtMouse = false;
     [SerializeField] float walkSpeed = 2f;
     [SerializeField] float runSpeed = 4f;
-    [SerializeField] float sneakSpeed = 1f;
     [SerializeField] bool enableMouseMovement = false;
 
     //required components

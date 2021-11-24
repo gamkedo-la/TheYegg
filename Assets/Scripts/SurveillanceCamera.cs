@@ -112,6 +112,9 @@ public class SurveillanceCamera : MonoBehaviour
                         g.gameObject.GetComponent<GuardStateAlerted>().SetLastKnownLocation(lastKnownLocation);
                         g.PushState(g.alertState);
                         g.activeState.EndGuardState();
+                    } else {
+                        g.gameObject.GetComponent<GuardStateAlerted>().SetIsAlertedByAnother(true);
+                        g.gameObject.GetComponent<GuardStateAlerted>().SetLastKnownLocation(lastKnownLocation);
                     }
                     
                 }

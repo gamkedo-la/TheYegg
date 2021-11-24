@@ -513,6 +513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
   allowedDistanceFromAlarm: 0.5
+  animationController: {fileID: 6596937719293409702}
 --- !u!82 &3756879775023326213
 AudioSource:
   m_ObjectHideFlags: 0
