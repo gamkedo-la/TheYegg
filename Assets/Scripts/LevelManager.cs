@@ -39,6 +39,7 @@ public class LevelManager : MonoBehaviour
     [Header("Scene fade parameters")]
     [SerializeField] Animator animator;
 
+    public List<string> openedDoors = new List<string>();
     private bool areCamerasDisabled;
     private int levelToLoad;
     public int currentLevelConditionsCleared = 0;
@@ -72,6 +73,31 @@ public class LevelManager : MonoBehaviour
         if(!scoreKeeper || scoreKeeper == null){
             Debug.LogWarning("LevelManager was not able to find a ScoreKeeper in scene!");
         }
+    }
+
+    public bool GetIsDoorOpen(string id) {
+        foreach (var d in openedDoors)
+        {
+            if(d == id) 
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void AddToOpenedDoors(string id){
+        Debug.Log("Adding door!");
+        if(!openedDoors.Contains(id))
+        {
+            Debug.Log("Door added successfully");
+            openedDoors.Add(id);
+        }
+    }
+
+    public void ResetOpenedDoors(){
+        Debug.Log("ResetOpenDoors called");
+        openedDoors.Clear();
     }
 
     public bool GetCamerasDisabled()
@@ -162,6 +188,7 @@ public class LevelManager : MonoBehaviour
         loseUI.SetActive(false);
         ResetPlayer();
         SetIsAlarmSystemOn(false);
+        ResetOpenedDoors();
         scoreKeeper.StartLevelTimer();
 
         currentLevelConditionsCleared = 0;
@@ -190,6 +217,7 @@ public class LevelManager : MonoBehaviour
         isExitEnabled = false;
         showIntros = true;
         SetIsAlarmSystemOn(false);
+        ResetOpenedDoors();
     }
 
     private void PrintLevelIntro()
