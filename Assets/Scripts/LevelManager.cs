@@ -20,10 +20,9 @@ public class LevelManager : MonoBehaviour
 
     [Header("Scene settings")]
     [SerializeField] int currentLevelIndex;
-
- 
     [SerializeField] int nextLevelIndex;
     [SerializeField] int mainMenuSceneIndex;
+
     [Tooltip("Set the level starting scenes' indeces for all the possible levels")]
     [SerializeField] List<int> levelStartIndeces = new List<int>();
     [SerializeField] List<Vector3> levelStartPositions = new List<Vector3>();
@@ -39,6 +38,9 @@ public class LevelManager : MonoBehaviour
     [Header("Scene fade parameters")]
     [SerializeField] Animator animator;
 
+    [Header("Audio handling components")]
+    [SerializeField] LevelAudioHandler levelAudioHandler;
+
     public List<string> openedDoors = new List<string>();
     private bool areCamerasDisabled;
     private int levelToLoad;
@@ -46,7 +48,7 @@ public class LevelManager : MonoBehaviour
     private bool isExitEnabled = false;
     private ScoreKeeper scoreKeeper;
     private bool isAlarmOn = false;
-    private bool showIntros = false;
+    private bool isLevelChanging = false;
 
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -190,10 +192,9 @@ public class LevelManager : MonoBehaviour
         SetIsAlarmSystemOn(false);
         ResetOpenedDoors();
         scoreKeeper.StartLevelTimer();
-
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
-        showIntros = true;
+        isLevelChanging = true;
     }
 
     private void ResetPlayer()
@@ -215,7 +216,7 @@ public class LevelManager : MonoBehaviour
         ResetPlayer();
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
-        showIntros = true;
+        isLevelChanging = true;
         SetIsAlarmSystemOn(false);
         ResetOpenedDoors();
     }
@@ -253,10 +254,12 @@ public class LevelManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         animator.SetTrigger("FadeIn");
-        if(showIntros == true)
+        if(isLevelChanging == true)
         {
+            //show intros and switch audio clip
             PrintLevelIntro();
-            showIntros = false;
+            levelAudioHandler.PlayAudioForLevel(currentLevelIndex);
+            isLevelChanging = false;
         }
     }
 

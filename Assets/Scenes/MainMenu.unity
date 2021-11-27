@@ -731,6 +731,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6114948467362941207, guid: 6b07059be9188e744b899a4cee575829, type: 3}
+      propertyPath: levelAudioSource
+      value: 
+      objectReference: {fileID: 1703121310}
     - target: {fileID: 7469692347871288240, guid: 6b07059be9188e744b899a4cee575829, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -783,6 +787,10 @@ PrefabInstance:
       propertyPath: loseUI
       value: 
       objectReference: {fileID: 1205076114}
+    - target: {fileID: 7469692347871288241, guid: 6b07059be9188e744b899a4cee575829, type: 3}
+      propertyPath: levelAudioHandler
+      value: 
+      objectReference: {fileID: 1703121311}
     - target: {fileID: 7469692347871288242, guid: 6b07059be9188e744b899a4cee575829, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -1299,6 +1307,22 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!82 &1703121310 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 872739422102597945, guid: 6b07059be9188e744b899a4cee575829, type: 3}
+  m_PrefabInstance: {fileID: 756981771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1703121311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6114948467362941207, guid: 6b07059be9188e744b899a4cee575829, type: 3}
+  m_PrefabInstance: {fileID: 756981771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b550ad311e21874aa41ede70d5bf215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1802234237
 GameObject:
   m_ObjectHideFlags: 0
