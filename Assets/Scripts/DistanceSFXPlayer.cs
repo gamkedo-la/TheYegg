@@ -10,13 +10,16 @@ public class DistanceSFXPlayer : MonoBehaviour
     [SerializeField] AudioClip audioClip;
     [SerializeField] float minDistanceToPlayer;
     [SerializeField] float maxDistanceToPlayer;
-    private bool isPlayingAudio = false;
+    public bool isPlayingAudio = false;
     private PlayerActionController player;
     private float defaultVolume;
     private AudioClip originalAudioClip;
    
     void Start()
     {
+        if(isPlayingAudio == true){
+            SetPlayAudio(true);
+        }
         defaultVolume = audioSource.volume;
         audioSource.volume = 0;
 
