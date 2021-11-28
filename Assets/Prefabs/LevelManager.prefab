@@ -287,6 +287,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: efe35abedd827474095909e9be988d83, type: 3}
   - {fileID: 8300000, guid: c7086e6a88949c346b2476a62dc083e9, type: 3}
   - {fileID: 8300000, guid: be614b93284123b478f98bbfeca4208a, type: 3}
+  audioSoundForStart:
+  - {fileID: 8300000, guid: 7882daa560b924758840ca946b99ef0a, type: 3}
+  - {fileID: 8300000, guid: c492c5143d6124bb3b2d172daf23643d, type: 3}
+  - {fileID: 8300000, guid: ae7ea7e09dcfe4ddd92347bbadca0244, type: 3}
+  - {fileID: 8300000, guid: e6f4fe7d8b8c24e41a0a5183f4c6aa78, type: 3}
   levelAudioSource: {fileID: 0}
 --- !u!82 &872739422102597945
 AudioSource:

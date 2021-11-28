@@ -7,11 +7,18 @@ public class LevelAudioHandler : MonoBehaviour
     [Header("Audio clips for levels:")]
     public AudioClip[] audioClips;
 
+    [Header("Sound to start level :")] // ex. elevator ding
+    public AudioClip[] audioSoundForStart;
+
     [Header("Required components")]
     [SerializeField] AudioSource levelAudioSource;
 
     public void PlayAudioForLevel(int index){
-        if(audioClips.Length == 0)
+        Debug.Log("PlayAudioForLevel");
+        if(audioSoundForStart.Length>0 && audioSoundForStart[index]) {
+            AudioSource.PlayClipAtPoint(audioSoundForStart[index], Camera.main.transform.position);
+        }
+        if (audioClips.Length == 0)
         {
             Debug.LogWarning("No audioclips available for level audio handler!");
         } else {
