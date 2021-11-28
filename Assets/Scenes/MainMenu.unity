@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4411714, g: 0.48994243, b: 0.5700134, a: 1}
+  m_IndirectSpecularColor: {r: 0.44117153, g: 0.48994273, b: 0.570014, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -564,6 +564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 530f0eb799a960f488b3ef0ef4b7e36f, type: 3}
+--- !u!1 &129847395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4782857762148811738, guid: 155a5ff1d145414499ee1b07cefe0463, type: 3}
+  m_PrefabInstance: {fileID: 2076418006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &150677938 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c2fbb7f2838b346d695ca963f8758bde, type: 3}
@@ -1490,6 +1495,10 @@ PrefabInstance:
       propertyPath: loseUI
       value: 
       objectReference: {fileID: 1205076114}
+    - target: {fileID: 7469692347871288241, guid: 6b07059be9188e744b899a4cee575829, type: 3}
+      propertyPath: gameEndUI
+      value: 
+      objectReference: {fileID: 129847395}
     - target: {fileID: 7469692347871288241, guid: 6b07059be9188e744b899a4cee575829, type: 3}
       propertyPath: levelAudioHandler
       value: 
@@ -4520,6 +4529,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -49.859985
       objectReference: {fileID: 0}
+    - target: {fileID: 3723996189079290842, guid: 155a5ff1d145414499ee1b07cefe0463, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 156595424}
+    - target: {fileID: 3723996189079290842, guid: 155a5ff1d145414499ee1b07cefe0463, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReloadCurrentLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 4102598924778750794, guid: 155a5ff1d145414499ee1b07cefe0463, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.9999695
@@ -4531,6 +4548,18 @@ PrefabInstance:
     - target: {fileID: 4627816777116894876, guid: 155a5ff1d145414499ee1b07cefe0463, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1.3700256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782857762148811738, guid: 155a5ff1d145414499ee1b07cefe0463, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908332814983543068, guid: 155a5ff1d145414499ee1b07cefe0463, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 156595424}
+    - target: {fileID: 4908332814983543068, guid: 155a5ff1d145414499ee1b07cefe0463, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5611974242704461994, guid: 155a5ff1d145414499ee1b07cefe0463, type: 3}
       propertyPath: m_AnchoredPosition.x

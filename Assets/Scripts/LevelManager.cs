@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour
     [Header("UI Gameobjects")]
     [SerializeField] GameObject loseUI;
     [SerializeField] GameObject winUI;
+    [SerializeField] GameObject gameEndUI;
 
     [Header("Scene fade parameters")]
     [SerializeField] Animator animator;
@@ -69,6 +70,9 @@ public class LevelManager : MonoBehaviour
         
         if(loseUI){
             loseUI.SetActive(false);
+        }
+        if(gameEndUI){
+            gameEndUI.SetActive(false);
         }
 
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
@@ -151,8 +155,17 @@ public class LevelManager : MonoBehaviour
         OnLevelCleared();
         //display score
         //show option UI to move to next level
-        winUI.SetActive(true);
-        winUI.GetComponent<ScoreUIHandler>().SetScoreTexts();
+        if(currentLevelIndex < 3)
+        {
+            winUI.SetActive(true);
+            winUI.GetComponent<ScoreUIHandler>().SetScoreTexts();
+        }
+        else 
+        {
+            gameEndUI.SetActive(true);
+            gameEndUI.GetComponent<ScoreUIHandler>().SetScoreTexts();
+        }
+        
         //TODO move this to HUDHandler triggered by event
         HUDHandler hUDHandler = FindObjectOfType<HUDHandler>();
         if(!hUDHandler || hUDHandler == null){
@@ -187,6 +200,7 @@ public class LevelManager : MonoBehaviour
         FadeToLevel(sceneIndex);
         ChangeLevelIndeces();
         winUI.SetActive(false);
+        gameEndUI.SetActive(false);
         loseUI.SetActive(false);
         ResetPlayer();
         SetIsAlarmSystemOn(false);
@@ -212,6 +226,7 @@ public class LevelManager : MonoBehaviour
         int sceneIndex = levelStartIndeces[currentLevelIndex];
         FadeToLevel(sceneIndex);
         winUI.SetActive(false);
+        gameEndUI.SetActive(false);
         loseUI.SetActive(false);
         ResetPlayer();
         currentLevelConditionsCleared = 0;
@@ -235,8 +250,10 @@ public class LevelManager : MonoBehaviour
         currentLevelIndex = -1;
         nextLevelIndex = 0;
         winUI.SetActive(false);
+        gameEndUI.SetActive(false);
         loseUI.SetActive(false);
         FadeToLevel(mainMenuSceneIndex);
+        levelAudioHandler.StopLevelBackgroundMusic();
     }
 
     public void FadeToLevel(int levelIndex){
