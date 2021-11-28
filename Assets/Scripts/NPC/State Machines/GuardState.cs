@@ -7,6 +7,7 @@ public abstract class GuardState : MonoBehaviour
 {
 
     public GuardFSM guardFSM;
+    public AudioClip[] enterStateSayings;
 
     public virtual void RunGuardState()
     {
@@ -15,7 +16,9 @@ public abstract class GuardState : MonoBehaviour
 
     public virtual void StartGuardState()
     {
-        
+        if(enterStateSayings.Length>0) {
+            AudioSource.PlayClipAtPoint(enterStateSayings[UnityEngine.Random.Range(0, enterStateSayings.Length)], transform.position);
+        }
     }
 
     public virtual void EndGuardState(){

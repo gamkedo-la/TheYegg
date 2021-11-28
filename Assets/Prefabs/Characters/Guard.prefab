@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
+  enterStateSayings: []
   idleTimeInSeconds: 3
   walkieTalkieAudio: {fileID: 8300000, guid: e410c7b60bc33ed41856f5a3335eedc4, type: 3}
   timeSpentIdle: 0
@@ -405,6 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
+  enterStateSayings: []
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -428,6 +430,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
+  enterStateSayings:
+  - {fileID: 8300000, guid: b98340e64e7bc4edaaa220572adad498, type: 3}
+  - {fileID: 8300000, guid: 57a050acb6b094833800763046b57547, type: 3}
+  - {fileID: 8300000, guid: 31252f1dcf598441fa89c6167f3262bc, type: 3}
+  - {fileID: 8300000, guid: 551ce2be37e6f4ec693ebb5c503db2b7, type: 3}
+  - {fileID: 8300000, guid: 58560835cea2c48cc93dac366fc85f74, type: 3}
   lastKnownLocation: {x: 0, y: 0, z: 0}
   isAlertedByAnother: 0
   alertRadius: 50
@@ -453,6 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
+  enterStateSayings: []
   timeToReset: 5
   canExitState: 0
 --- !u!114 &8304663008673374458
@@ -512,6 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
+  enterStateSayings: []
   allowedDistanceFromAlarm: 0.5
   animationController: {fileID: 6596937719293409702}
 --- !u!82 &3756879775023326213
@@ -626,6 +636,7 @@ MonoBehaviour:
   audioClip: {fileID: 8300000, guid: 048fa7bcb0e164d3595d70d308f5bc43, type: 3}
   minDistanceToPlayer: 0.1
   maxDistanceToPlayer: 10
+  isPlayingAudio: 0
 --- !u!1 &8304663009899576403
 GameObject:
   m_ObjectHideFlags: 0
