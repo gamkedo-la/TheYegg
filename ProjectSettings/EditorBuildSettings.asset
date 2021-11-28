@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level3_Casino.unity
     guid: 1effe9d04229d2a4793ac29ff6ddc19d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ArcticFoxtrot_Testscene.unity
     guid: 1af12d04ae0b3f9469e5ec20fe1d6bc5
   m_configObjects: {}
