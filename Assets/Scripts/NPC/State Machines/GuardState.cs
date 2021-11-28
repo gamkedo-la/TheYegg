@@ -8,6 +8,7 @@ public abstract class GuardState : MonoBehaviour
 
     public GuardFSM guardFSM;
     public AudioClip[] enterStateSayings;
+    public AudioClip[] exitStateSayings;
 
     public virtual void RunGuardState()
     {
@@ -22,6 +23,9 @@ public abstract class GuardState : MonoBehaviour
     }
 
     public virtual void EndGuardState(){
+        if (exitStateSayings.Length > 0) {
+            AudioSource.PlayClipAtPoint(exitStateSayings[UnityEngine.Random.Range(0, exitStateSayings.Length)], transform.position);
+        }
         guardFSM.PopState(this);
         //protect against having no state
         if(guardFSM.GetCurrentState() == null){

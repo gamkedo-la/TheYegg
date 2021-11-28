@@ -389,6 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
   enterStateSayings: []
+  exitStateSayings: []
   idleTimeInSeconds: 3
   walkieTalkieAudio: {fileID: 8300000, guid: e410c7b60bc33ed41856f5a3335eedc4, type: 3}
   timeSpentIdle: 0
@@ -407,6 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
   enterStateSayings: []
+  exitStateSayings: []
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -436,6 +438,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 31252f1dcf598441fa89c6167f3262bc, type: 3}
   - {fileID: 8300000, guid: 551ce2be37e6f4ec693ebb5c503db2b7, type: 3}
   - {fileID: 8300000, guid: 58560835cea2c48cc93dac366fc85f74, type: 3}
+  exitStateSayings:
+  - {fileID: 8300000, guid: 98c66016e18d942e79c9f8af37093a99, type: 3}
+  - {fileID: 8300000, guid: d63cfdad498a14dc89079dbee4ef6fdc, type: 3}
+  - {fileID: 8300000, guid: b626845c3cff54d8a955cc62e0336ab5, type: 3}
+  - {fileID: 8300000, guid: 2c020863637054b70bf924840c662c4e, type: 3}
   lastKnownLocation: {x: 0, y: 0, z: 0}
   isAlertedByAnother: 0
   alertRadius: 50
@@ -462,6 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
   enterStateSayings: []
+  exitStateSayings: []
   timeToReset: 5
   canExitState: 0
 --- !u!114 &8304663008673374458
@@ -522,6 +530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guardFSM: {fileID: 8304663008673374455}
   enterStateSayings: []
+  exitStateSayings: []
   allowedDistanceFromAlarm: 0.5
   animationController: {fileID: 6596937719293409702}
 --- !u!82 &3756879775023326213
