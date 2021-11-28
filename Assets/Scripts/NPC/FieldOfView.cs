@@ -136,7 +136,7 @@ public class FieldOfView : MonoBehaviour
                     } 
                    
                 } else {
-                    Debug.Log("there was an obstacle between FOV source and target");
+                    // Debug.Log("there was an obstacle between FOV source and target");
                 }
             }
         }

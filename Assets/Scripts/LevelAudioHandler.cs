@@ -10,12 +10,20 @@ public class LevelAudioHandler : MonoBehaviour
     [Header("Sound to start level :")] // ex. elevator ding
     public AudioClip[] audioSoundForStart;
 
+    [Header("Background noises by level:")]
+    public AudioClip[] randomEffectsJail;
+    public AudioClip[] randomEffectsIndustrial;
+    public AudioClip[] randomEffectsOffice;
+    public AudioClip[] randomEffectsCasino;
+
     [Header("Required components")]
     [SerializeField] AudioSource levelAudioSource;
 
+    private int currentLevelIndex = -1;
+
     public void PlayAudioForLevel(int index){
-        Debug.Log("PlayAudioForLevel");
-        if(audioSoundForStart.Length>0 && audioSoundForStart[index]) {
+        currentLevelIndex = index;
+        if (audioSoundForStart.Length>0 && audioSoundForStart[index]) {
             AudioSource.PlayClipAtPoint(audioSoundForStart[index], Camera.main.transform.position);
         }
         if (audioClips.Length == 0)
@@ -25,8 +33,39 @@ public class LevelAudioHandler : MonoBehaviour
             levelAudioSource.Stop();
             levelAudioSource.clip = audioClips[index];
             levelAudioSource.Play();
+        }        
+    }
+
+    private void Start() {
+        StartCoroutine(RandomBackgroundNoise());
+    }
+
+    IEnumerator RandomBackgroundNoise() {
+        AudioClip[] soundList;
+        while (true) {
+            soundList = null;
+            switch (currentLevelIndex) {
+                case 0:
+                    soundList = randomEffectsJail;
+                    break;
+                case 1:
+                    soundList = randomEffectsIndustrial;
+                    break;
+                case 2:
+                    soundList = randomEffectsOffice;
+                    break;
+                case 3:
+                    soundList = randomEffectsCasino;
+                    break;
+                default:
+                    soundList = null;
+                    break;
+            }
+            if(soundList != null && soundList.Length>0) {
+                AudioSource.PlayClipAtPoint(soundList[UnityEngine.Random.Range(0, soundList.Length)], Camera.main.transform.position);
+            }
+            yield return new WaitForSeconds(Random.Range(6.0f,17.0f)); // frequency of random environment audio
         }
-        
     }
 
     public void StopLevelBackgroundMusic(){
