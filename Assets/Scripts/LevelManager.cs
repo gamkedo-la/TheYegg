@@ -93,16 +93,13 @@ public class LevelManager : MonoBehaviour
     }
 
     public void AddToOpenedDoors(string id){
-        Debug.Log("Adding door!");
         if(!openedDoors.Contains(id))
         {
-            Debug.Log("Door added successfully");
             openedDoors.Add(id);
         }
     }
 
     public void ResetOpenedDoors(){
-        Debug.Log("ResetOpenDoors called");
         openedDoors.Clear();
     }
 

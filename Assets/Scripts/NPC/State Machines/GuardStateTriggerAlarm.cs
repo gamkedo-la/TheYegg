@@ -15,7 +15,6 @@ public class GuardStateTriggerAlarm : GuardState
     public override void StartGuardState()
     {
         base.StartGuardState();
-        Debug.Log("Starting Trigger Alarm State!");
         navMeshAgent = GetComponent<NavMeshAgent>();
         if(!navMeshAgent || navMeshAgent == null){
             Debug.LogWarning("Guard State Trigger Alarm could not find a navmeshagent!");

@@ -27,11 +27,11 @@ public class NPCHandler : MonoBehaviour
             NPC closestNPC = GetClosestNPC();
             if(highlightedNPC == null){
                 highlightedNPC = closestNPC;
-                highlightedNPC.SetOutlineActive(true);
+               
             } else if(closestNPC != highlightedNPC){
-                highlightedNPC.SetOutlineActive(false);
+                
                 highlightedNPC = closestNPC;
-                highlightedNPC.SetOutlineActive(true);
+               
             } else {
                 closestNPC = null;
             }
@@ -53,7 +53,6 @@ public class NPCHandler : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         //remove from list when exits trigger
         if(other.TryGetComponent<NPC>(out NPC n)){
-            n.SetOutlineActive(false);
             npcList.Remove(n);
         }
     }

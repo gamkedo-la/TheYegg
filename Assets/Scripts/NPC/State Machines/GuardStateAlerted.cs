@@ -20,6 +20,9 @@ public class GuardStateAlerted : GuardState
     [SerializeField] GuardAnimationController animationController;
     [SerializeField] DistanceSFXPlayer distanceSFXPlayer;
 
+    [Header("References to other gameobjects")]
+    [SerializeField] GameObject alertedSignalObject;
+
     //private
     private float alertStartTime;
     private LevelManager levelManager;
@@ -46,6 +49,7 @@ public class GuardStateAlerted : GuardState
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = nPC.npcSpeed;
         //TODO add some sprite or other visual to show that this guard is alerted
+        alertedSignalObject.SetActive(true);
     }
 
     private void GoToAlarmSwitch()
@@ -62,6 +66,7 @@ public class GuardStateAlerted : GuardState
         MoveToLastKnownLocation();
         HandleAlertTimer();
         TryCatchPlayer();
+        RotateToWorldZ(alertedSignalObject);
     }
 
     public override void EndGuardState()
@@ -72,6 +77,7 @@ public class GuardStateAlerted : GuardState
         navMeshAgent.isStopped = true;
         animationController.SetIsWalking(false);
         distanceSFXPlayer.SetPlayAudio(false);
+        alertedSignalObject.SetActive(false);
         base.EndGuardState();
     }
         
@@ -145,5 +151,9 @@ public class GuardStateAlerted : GuardState
             LevelManager levelManager = FindObjectOfType<LevelManager>();
             levelManager.StartGameOver();
         }
+    }
+
+    private void RotateToWorldZ(GameObject g){
+        g.transform.SetPositionAndRotation(g.transform.position, Quaternion.LookRotation(Vector3.down, Vector3.up));
     }
 }

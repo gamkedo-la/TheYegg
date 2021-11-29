@@ -13,9 +13,7 @@ public class NPC : MonoBehaviour
     [SerializeField] GameObject downedMark;
 
     [Header("References to other Gameobjects")]
-    [SerializeField] GameObject fov;
-    [SerializeField] GameObject outlineGameObject;
-    
+    [SerializeField] GameObject fov;    
 
     [Header("Required Components")]
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -78,10 +76,6 @@ public class NPC : MonoBehaviour
     public void RemoveNPCOutfit(){
         hasOutfit = false;
         spriteRenderer.color = defaultNPCColor;
-    }
-
-    public void SetOutlineActive(bool t){
-        outlineGameObject.SetActive(t);
     }
 
     public void ReactivateNPC(){

@@ -14,10 +14,8 @@ public class LevelSequenceObject : MonoBehaviour
     public void InteractWithObject(){
         LevelManager levelManager = FindObjectOfType<LevelManager>();
         if(levelManager){
-            Debug.Log("Found levelManager!");
             //if has cleared previous condition, set this condition to be cleared
             if(levelManager.GetLevelClearConditionCompleted() == positionInSequence - 1){
-                Debug.Log("Cleared sequence step!");
                 levelManager.LevelClearConditionCompleted(positionInSequence);
             }
         }
