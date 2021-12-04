@@ -56,6 +56,16 @@ public class Door : MonoBehaviour
         }
         //TODO add an actual door and animations and sounds
         FindObjectOfType<LevelManager>().AddToOpenedDoors(id);
+        BoxCollider interactionCollider;
+        if(TryGetComponent<BoxCollider>(out interactionCollider))
+        {
+            interactionCollider.enabled = false;
+        }
+        WorldInteractable worldInteractable;
+        if(TryGetComponent<WorldInteractable>(out worldInteractable))
+        {
+            worldInteractable.SetPromptObjectsActive(false);
+        }
         return true;
     }
 

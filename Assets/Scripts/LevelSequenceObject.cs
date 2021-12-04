@@ -16,6 +16,16 @@ public class LevelSequenceObject : MonoBehaviour
         if(levelManager){
             //if has cleared previous condition, set this condition to be cleared
             if(levelManager.GetLevelClearConditionCompleted() == positionInSequence - 1){
+                WorldInteractable worldInteractable;
+                BoxCollider boxCollider;
+                if(TryGetComponent<WorldInteractable>(out worldInteractable))
+                {
+                    worldInteractable.SetPromptObjectsActive(false);
+                }
+                if(TryGetComponent<BoxCollider>(out boxCollider))
+                {
+                    boxCollider.enabled = false;
+                }
                 levelManager.LevelClearConditionCompleted(positionInSequence);
             }
         }

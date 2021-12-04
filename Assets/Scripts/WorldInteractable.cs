@@ -15,22 +15,14 @@ public class WorldInteractable : MonoBehaviour
 
     private void Start() {
         promptTextObject.text = promptText;
-        foreach(GameObject g in activatedGameObjects)
-        {
-            g.SetActive(false);
-            RotateToWorldZ(g);
-        }
+        SetPromptObjectsActive(false);
         
     }
 
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Player")){
             //show TMPro object
-            foreach(GameObject g in activatedGameObjects)
-            {
-                g.SetActive(true);
-                RotateToWorldZ(g);
-            }
+            SetPromptObjectsActive(true);
             //add the outline material to list of materials in the mesh renderer
             MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
             foreach (var m in meshRenderers)
@@ -49,12 +41,8 @@ public class WorldInteractable : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if(other.CompareTag("Player")){
-            foreach(GameObject g in activatedGameObjects)
-            {
-                g.SetActive(false);
-                RotateToWorldZ(g);
-            }
-
+           
+            SetPromptObjectsActive(false);
             //remove the outlinematerial from list of materials
             MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
             foreach (var m in meshRenderers)
@@ -73,6 +61,15 @@ public class WorldInteractable : MonoBehaviour
 
     private void RotateToWorldZ(GameObject g){
         g.transform.SetPositionAndRotation(g.transform.position, Quaternion.LookRotation(Vector3.down, Vector3.up));
+    }
+
+    public void SetPromptObjectsActive(bool t)
+    {
+         foreach(GameObject g in activatedGameObjects)
+            {
+                g.SetActive(t);
+                RotateToWorldZ(g);
+            }
     }
 
 

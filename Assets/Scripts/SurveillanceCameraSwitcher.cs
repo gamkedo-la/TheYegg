@@ -28,6 +28,16 @@ public class SurveillanceCameraSwitcher : MonoBehaviour
         Debug.Log("Switching cameras off");
         levelManager.SetCamerasDisabled(true);
         scoreKeeper.SetIsDetectedByCameras(false);
+        WorldInteractable worldInteractable;
+        if(TryGetComponent<WorldInteractable>(out worldInteractable))
+        {
+            worldInteractable.SetPromptObjectsActive(false);
+        }
+        BoxCollider boxCollider;
+        if(TryGetComponent<BoxCollider>(out boxCollider))
+        {
+            boxCollider.enabled = false;
+        }
         //get all cameras in current scene and turn them off
         camerasOnObject.SetActive(false);
         camerasOffObject.SetActive(true);
@@ -36,6 +46,7 @@ public class SurveillanceCameraSwitcher : MonoBehaviour
         {
             cam.DisableCamera();
             cam.GetComponentInParent<SurveillanceCameraRotator>().DisableCameraRotator();
+         
         }
 
     }

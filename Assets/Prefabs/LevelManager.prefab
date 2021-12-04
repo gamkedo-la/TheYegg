@@ -229,12 +229,13 @@ MonoBehaviour:
   levelStartIndeces: 01000000020000000300000006000000
   levelStartPositions:
   - {x: 8.75, y: 0.5, z: -1.25}
-  - {x: 17.25, y: 0.5, z: -25.75}
+  - {x: 21.25, y: 0.5, z: -25.75}
   - {x: -12, y: 0.75, z: -12}
   - {x: -1.25, y: 0.5, z: -44.5}
   levelClearConditionCount: 00000000000000000100000001000000
   loseUI: {fileID: 0}
   winUI: {fileID: 0}
+  gameEndUI: {fileID: 0}
   animator: {fileID: 994198600}
   levelAudioHandler: {fileID: 0}
   openedDoors: []
