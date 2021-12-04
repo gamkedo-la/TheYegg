@@ -43,6 +43,16 @@ public class Door : MonoBehaviour
     public bool OpenDoor(){
         //disable the collider from the parent object
         parentCollider.enabled = false;
+        // from collider and all its children
+        Renderer[] doorRend = parentCollider.GetComponentsInChildren<Renderer>();
+        for(int i=0; i<doorRend.Length;i++) {
+            doorRend[i].enabled = false; // hide door
+        }
+        // any visuals from this door object's children
+        doorRend = gameObject.GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < doorRend.Length; i++) {
+            doorRend[i].enabled = false; // hide door
+        }
         //TODO add an actual door and animations and sounds
         FindObjectOfType<LevelManager>().AddToOpenedDoors(id);
         return true;
