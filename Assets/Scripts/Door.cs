@@ -23,7 +23,7 @@ public class Door : MonoBehaviour
 
     private void Start() {
         //create ID for door based on object name and scene name
-        id = string.Format("{0}-{1}", this.name, SceneManager.GetActiveScene().ToString());
+        id = string.Format("{0}-{1}", this.transform.parent.name, SceneManager.GetActiveScene().ToString());
         
         //check from levelmanager if the door has been opened already
         levelManager = FindObjectOfType<LevelManager>();

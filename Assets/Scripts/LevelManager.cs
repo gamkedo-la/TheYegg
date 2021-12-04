@@ -84,7 +84,7 @@ public class LevelManager : MonoBehaviour
     public bool GetIsDoorOpen(string id) {
         foreach (var d in openedDoors)
         {
-            if(d == id) 
+            if(d == id && d != null) 
             {
                 return true;
             }
@@ -100,6 +100,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void ResetOpenedDoors(){
+        Debug.Log("ResetOpenedDoors Called!");
         openedDoors.Clear();
     }
 
