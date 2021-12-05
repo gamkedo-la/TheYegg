@@ -203,6 +203,7 @@ public class LevelManager : MonoBehaviour
         ResetPlayer();
         SetIsAlarmSystemOn(false);
         ResetOpenedDoors();
+        scoreKeeper.ResetScoreKeeper();
         scoreKeeper.StartLevelTimer();
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
@@ -232,6 +233,8 @@ public class LevelManager : MonoBehaviour
         isLevelChanging = true;
         SetIsAlarmSystemOn(false);
         ResetOpenedDoors();
+        scoreKeeper.ResetScoreKeeper();
+        scoreKeeper.StartLevelTimer();
     }
 
     private void PrintLevelIntro()

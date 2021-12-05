@@ -179,11 +179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2113cee3848957942919e764acc93e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomInLimit: 10
+  zoomInLimit: 13
   zoomInDuration: 2
   zoomOutDuration: 1
   zoomOutLimit: 0
-  playerIdleThreshold: 2
+  playerIdleThreshold: 5
 --- !u!114 &3638691974168742783
 MonoBehaviour:
   m_ObjectHideFlags: 0

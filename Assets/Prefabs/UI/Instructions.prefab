@@ -71,14 +71,15 @@ MonoBehaviour:
 
     Use items - E
 
-    Subdue Guards -
-    Q
+    Subdue Guards/
+    Take  Outfit - Q
 
     Pause Menu - P
 
     Show minimap - V
 
-    Mute Audio - M'
+    Mute Audio -
+    M'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 00a4159c5e9c00e409973cd98bcb7a27, type: 2}
   m_sharedMaterial: {fileID: 8851758955293568969, guid: 00a4159c5e9c00e409973cd98bcb7a27, type: 2}

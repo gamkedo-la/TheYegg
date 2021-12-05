@@ -9,7 +9,6 @@ public class NPC : MonoBehaviour
     [SerializeField] Color defaultNPCColor;
 
     [Header("Required Prefabs")]
-    [SerializeField] GameObject deathMark;
     [SerializeField] GameObject downedMark;
 
     [Header("References to other Gameobjects")]
@@ -83,6 +82,8 @@ public class NPC : MonoBehaviour
         Destroy(downedMarkObject);
         fov.SetActive(true);
         fov.gameObject.GetComponent<FieldOfView>().ReactivateFOV();
+        FindObjectOfType<PlayerActionController>().SetIsDisguiseCompromised(true);
+        FindObjectOfType<HUDHandler>().SetDisguiseStatus(true);
         //reset some outfit?
     }
 

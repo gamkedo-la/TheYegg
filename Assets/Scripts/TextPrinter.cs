@@ -42,23 +42,6 @@ public class TextPrinter : MonoBehaviour
     [SerializeField] KeyCode continueTextInput;
     [SerializeField] string waitForInputPrompt;
 
-    private void ProcessTexts() {
-        //move the inserted strings to list of list 
-        //0 and 1 under 0 in list of lists
-        /*
-        textsToPrintInChunks[0].Insert(0, textsToPrint[0]);
-        Debug.Log("Added 00");
-        textsToPrintInChunks[0].Insert(1, textsToPrint[1]);
-        textsToPrintInChunks[1].Insert(0, textsToPrint[2]);
-        textsToPrintInChunks[1].Insert(1, textsToPrint[3]);
-        textsToPrintInChunks[2].Insert(0, textsToPrint[4]);
-        textsToPrintInChunks[2].Insert(1, textsToPrint[5]);
-        textsToPrintInChunks[3].Insert(0, textsToPrint[6]);
-        textsToPrintInChunks[3].Insert(1, textsToPrint[7]);
-        */
-        isProcessed = true;
-    }
-
     private void Update() {
         if(Input.GetKeyDown(continueTextInput) && waitForInput)
         {
@@ -67,13 +50,11 @@ public class TextPrinter : MonoBehaviour
             chunkIndex++;
             if(chunkIndex > textsToPrint.levelIntroTexts[levelIndex].Count() - 1)
             {
-                Debug.Log("Showing mission objectives");
                 //if no more chunks to print, show level objectives instead
                 ShowMissionObjectives();
             }
             else
             {   
-                Debug.Log("Printing next chunk");
                 processedArray = textsToPrint.levelIntroTexts[levelIndex].textChunk[chunkIndex].ToCharArray();
                 textToPrintSplit = new char[processedArray.Length];
                 if(!isPrinting)
@@ -101,7 +82,6 @@ public class TextPrinter : MonoBehaviour
         }
         isPrinting = false;
         waitForInput = true;
-        Debug.Log("Waiting for input");
         string cont = new string(textToPrintSplit) + waitForInputPrompt;
         ///yield return new WaitForSeconds(delayToTextDisappear);
         textPrinterText.text = cont;
@@ -111,15 +91,7 @@ public class TextPrinter : MonoBehaviour
 
     public void PrintlevelIntro(int index)
     {
-        Debug.Log("Calling PrintLevelIntro with index " + index);
-        if(!isProcessed)
-        {
-            ProcessTexts();
-            Debug.Log("Processed texts. Chunk count is " + textsToPrint.levelIntroTexts.Count );
-            Debug.Log("Processed texts. Chunk count in 0 is " + textsToPrint.levelIntroTexts[0].Count() );
-        }
         levelIndex = index;
-        Debug.Log("Accessing text array with indexes " + levelIndex + " " + chunkIndex);
         processedArray = textsToPrint.levelIntroTexts[levelIndex].textChunk[chunkIndex].ToCharArray();
         textToPrintSplit = new char[processedArray.Length]; 
 

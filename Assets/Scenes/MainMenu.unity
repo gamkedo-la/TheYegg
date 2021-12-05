@@ -577,6 +577,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CMTopDown
       objectReference: {fileID: 0}
+    - target: {fileID: 1232110064541243916, guid: 530f0eb799a960f488b3ef0ef4b7e36f, type: 3}
+      propertyPath: zoomInLimit
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232110064541243916, guid: 530f0eb799a960f488b3ef0ef4b7e36f, type: 3}
+      propertyPath: playerIdleThreshold
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1232110064541243918, guid: 530f0eb799a960f488b3ef0ef4b7e36f, type: 3}
       propertyPath: m_Follow
       value: 

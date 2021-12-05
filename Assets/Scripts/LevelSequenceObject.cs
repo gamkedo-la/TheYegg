@@ -11,6 +11,7 @@ public class LevelSequenceObject : MonoBehaviour
     [Tooltip("What is the position of this object in the correct sequence of clearing the level")]
     [SerializeField] int positionInSequence;
 
+
     public void InteractWithObject(){
         LevelManager levelManager = FindObjectOfType<LevelManager>();
         if(levelManager){
@@ -18,6 +19,7 @@ public class LevelSequenceObject : MonoBehaviour
             if(levelManager.GetLevelClearConditionCompleted() == positionInSequence - 1){
                 WorldInteractable worldInteractable;
                 BoxCollider boxCollider;
+                AudioSource audioSource;
                 if(TryGetComponent<WorldInteractable>(out worldInteractable))
                 {
                     worldInteractable.SetPromptObjectsActive(false);
@@ -25,6 +27,10 @@ public class LevelSequenceObject : MonoBehaviour
                 if(TryGetComponent<BoxCollider>(out boxCollider))
                 {
                     boxCollider.enabled = false;
+                }
+                if(TryGetComponent<AudioSource>(out audioSource))
+                {
+                    audioSource.Play();
                 }
                 levelManager.LevelClearConditionCompleted(positionInSequence);
             }

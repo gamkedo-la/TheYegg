@@ -33,9 +33,9 @@ RectTransform:
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.386, y: 0.07048821}
-  m_AnchorMax: {x: 0.9766639, y: 0.41400003}
-  m_AnchoredPosition: {x: 0.2539978, y: 0}
-  m_SizeDelta: {x: 6.948, y: 0.000030518}
+  m_AnchorMax: {x: 0.8755, y: 0.31844446}
+  m_AnchoredPosition: {x: 0.46865845, y: 1.7478638}
+  m_SizeDelta: {x: 7.377304, y: 3.4957962}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4130159665793151124
 MonoBehaviour:
@@ -52,25 +52,35 @@ MonoBehaviour:
   textsToPrint:
     levelIntroTexts:
     - textChunk:
-      - "Hey, can you hear me in there? I slipped you a radio when they took you
-        in. I know you don't need to trust me, \r\nbut I need your... expertise to
-        get something that belongs to me, and you are no help in a jail cell.\r\nYou
-        should be able to pick the lock on that cell door. There's a car waiting
-        for you outside the precinct."
-      - "Just make your way to the safety room on the other side of the corridor
-        and turn off the cameras. After that you should be able to escape easily.\r\nTake
-        care, Yegg. Once you leave your cell the guards will hunt you down if they
-        or the cameras spot you. \r\nYou can take out the guards for a moment, if
-        you think it will help you get out. They'll get up at some point, but you
-        might have enough time to get out.\r\n"
+      - 'Hey, can you hear me in there? I slipped you a radio when they took you
+        in. I know you don''t need to trust me, but I need your... expertise to get
+        something that belongs to me, and you are no help in a jail cell.
+
+        You
+        should be able to pick the lock on that cell door.'
+      - 'Just make your way to the safety room on the other side of the corridor
+        and turn off the cameras.
+
+        You might need to subdue one of the guards,
+        and take their disguise. Then the guards won''t notice you. They *will* wake
+        up at some point though!
+
+        After that you should be able to escape
+        easily.'
+      - 'Take care, Yegg. Once you leave your cell the guards will hunt you down
+        if they or the cameras spot you.
+
+
+        There''s a car waiting for you
+        outside the precinct.'
     - textChunk:
       - 'Large Corp Industrial Company makes everything from little dollies to jet
         engines. In their greed they decided to make me the fall guy for one of their
         various failed corporate espionage attempts.
 
-        I want revenge. I
-        can offer you your freedom, if you manage to help me. We have a long way
-        to go, Yegg.
+        I want revenge. I can
+        offer you your freedom, if you manage to help me. We have a long way to go,
+        Yegg.
 
 '
       - 'In this industrial park, there is an office with a simple file cabinet.
@@ -113,8 +123,10 @@ MonoBehaviour:
   missionObjectives:
   - '* Turn off the CAMERAS in the security room opposite to the cells
 
-    * Make
-    your way out of the prison'
+    * Take
+    a disguise from a guard
+
+    * Make your way out of the prison'
   - "* Find the documents in the northeast office \n* Leave the area"
   - "* Find the documents in the safe on the top floor \r\n* Exit the building"
   - '* Find the documents in the safe in the building to the north

@@ -57,7 +57,7 @@ public class ScoreKeeper : MonoBehaviour
     }
 
 
-    private void ResetScoreKeeper(){
+    public void ResetScoreKeeper(){
         //reset all scores here other than level timer
         timesDetected = 0;
         numberOfDisguisesUsed = 0;

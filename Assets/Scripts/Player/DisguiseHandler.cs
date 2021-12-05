@@ -56,7 +56,7 @@ public class DisguiseHandler : MonoBehaviour
         //currentOutfitColour = defaultOutfitColour;
         //spriteRenderer.color = currentOutfitColour;
         playerAnimationController.ResetAnimator();
-        playerActionController.SetIsDisguiseCompromised(false);
+        playerActionController.SetIsDisguiseCompromised(true);
         HUDHandler hUDHandler = FindObjectOfType<HUDHandler>();
         if(hUDHandler){
             FindObjectOfType<HUDHandler>().SetDisguiseStatus(false);
