@@ -24,7 +24,8 @@ public class LevelAudioHandler : MonoBehaviour
     public void PlayAudioForLevel(int index){
         currentLevelIndex = index;
         if (audioSoundForStart.Length>0 && audioSoundForStart[index]) {
-            AudioSource.PlayClipAtPoint(audioSoundForStart[index], Camera.main.transform.position);
+            GameObject playerGO = GameObject.FindWithTag("Player");
+            AudioSource.PlayClipAtPoint(audioSoundForStart[index], playerGO.transform.position);
         }
         if (audioClips.Length == 0)
         {

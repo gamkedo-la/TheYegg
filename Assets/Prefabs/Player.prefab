@@ -142,6 +142,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSFX: {fileID: 5352119006389833691}
   playerHeartBeatSFX: {fileID: 8300000, guid: 25cd6d78000bc5949b71ff4157163bbd, type: 3}
+--- !u!1 &1327365098757711553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4814499263575712599}
+  - component: {fileID: 188054905915681698}
+  - component: {fileID: 3854287885166774808}
+  m_Layer: 7
+  m_Name: AudioListenerStaysNorth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4814499263575712599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327365098757711553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3321952403952502148}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &188054905915681698
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327365098757711553}
+  m_Enabled: 1
+--- !u!114 &3854287885166774808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327365098757711553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 704af63cdeb7f4b18ba81ef51b753fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3321952403935609021
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +363,6 @@ GameObject:
   - component: {fileID: 3321952403952502144}
   - component: {fileID: 3321952403952502151}
   - component: {fileID: 4697710633266393813}
-  - component: {fileID: -2289297250965055104}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -334,6 +385,7 @@ Transform:
   - {fileID: 3321952404356015023}
   - {fileID: 3321952403935609022}
   - {fileID: 986001217601718709}
+  - {fileID: 4814499263575712599}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -447,14 +499,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46c6a41b33b1ad4ca45203bd6aaa3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!81 &-2289297250965055104
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3321952403952502153}
-  m_Enabled: 1
 --- !u!1 &3321952404266471980
 GameObject:
   m_ObjectHideFlags: 0
