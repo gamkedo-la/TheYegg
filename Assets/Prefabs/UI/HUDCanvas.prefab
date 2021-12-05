@@ -50,45 +50,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textsToPrint:
-  - "Hey, can you hear me in there? I slipped you a radio when they took you in.
-    I know you don't need to trust me, but I need your... expertise to get something
-    that belongs to me, and you are no help in a jail cell.\r\nYou should be able
-    to pick the lock on that cell door. There's a car waiting for you outside the
-    precinct. Just make your way to the safety room on the other side of the corridor
-    and turn off the cameras. After that you should be able to escape easily.\r\nTake
-    care, Yegg. Once you leave your cell the guards will hunt you down if they or
-    the cameras spot you. You can take out the guards for a moment, if you think
-    it will help you get out. They'll get up at some point, but you might have enough
-    time to get out.\r"
-  - 'Large Corp Industrial Company makes everything from little dollies to jet engines.
-    In their greed they decided to make me the fall guy for one of their various
-    failed corporate espionage attempts. I want revenge. I can offer you your freedom,
-    if you manage to help me. We have a long way to go, Yegg.
+    levelIntroTexts:
+    - textChunk:
+      - "Hey, can you hear me in there? I slipped you a radio when they took you
+        in. I know you don't need to trust me, \r\nbut I need your... expertise to
+        get something that belongs to me, and you are no help in a jail cell.\r\nYou
+        should be able to pick the lock on that cell door. There's a car waiting
+        for you outside the precinct."
+      - "Just make your way to the safety room on the other side of the corridor
+        and turn off the cameras. After that you should be able to escape easily.\r\nTake
+        care, Yegg. Once you leave your cell the guards will hunt you down if they
+        or the cameras spot you. \r\nYou can take out the guards for a moment, if
+        you think it will help you get out. They'll get up at some point, but you
+        might have enough time to get out.\r\n"
+    - textChunk:
+      - 'Large Corp Industrial Company makes everything from little dollies to jet
+        engines. In their greed they decided to make me the fall guy for one of their
+        various failed corporate espionage attempts.
 
-    In this industrial
-    park, there is an office with a simple file cabinet. In this file cabinet you
-    can find the name of a shell company responsible for the money laundering activities
-    of LCIC. The office is in the northeast building. Once you have the name for
-    me, get to the getaway car outside the northwest entrance. Good luck.'
-  - "I have a connection at Large Corp Industrial, a whistle blower you might call
-    her. I haven't heard from her in a while, but she has intel securing your freedom
-    and my revenge.\r\nI always thought corporate crime is the worst kind of crime
-    \u2013 faceless, impersonal. It's time you show them that the traditional ways
-    are sometimes superior. Find my contact's intel from her top floor office. It's
-    a fairly large room, you can't miss it.\r\nAvoid the guards, and if you can,
-    disable the security cameras. The controls should be somewhere on the first floor.
-    There's a getaway car waiting for you outside."
-  - 'This is it, Yegg. Your office visit gave me all I need to take down everyone
-    profiting from Large Corp Industrial''s dirty business. You have done all that
-    I have asked of you. Now it''s time you reclaim your freedom.
+        I want revenge. I
+        can offer you your freedom, if you manage to help me. We have a long way
+        to go, Yegg.
 
-    Inside the
-    vault of this casino there is a surveillance footage video which proves you did
-    not in fact commit the B&E you were imprisoned for. Such a high-end place, but
-    all it is is a front for Large Corp. They hold many sensitive documents in that
-    vault, but if I were you, I''d only take what I need and vanish. Unfortunately
-    that is all I know of this place. There''s a car waiting for you outside once
-    you are done. Good luck.'
+'
+      - 'In this industrial park, there is an office with a simple file cabinet.
+        In this file cabinet you can find the name of a shell company responsible
+        for the money laundering activities of LCIC.
+
+        The office is in the
+        northeast building. Once you have the name for me, get to the getaway car
+        outside the northwest entrance. Good luck.
+
+'
+    - textChunk:
+      - 'I have a connection at Large Corp Industrial, a whistle blower you might
+        call her. I haven''t heard from her in a while, but she has intel securing
+        your freedom and my revenge.
+
+        I always thought corporate crime is
+        the worst kind of crime; faceless, impersonal. It''s time you show them that
+        the traditional ways are sometimes superior.
+
+'
+      - "Find my contact's intel from her top floor office. It's a fairly large room,
+        you can't miss it.\r\nAvoid the guards, and if you can, disable the security
+        cameras. The controls should be somewhere on the first floor. \r\nThere's
+        a getaway car waiting for you outside.\r\n"
+    - textChunk:
+      - 'This is it, Yegg. Your office visit gave me all I need to take down everyone
+        profiting from Large Corp Industrial''''s dirty business. You have done all
+        that I have asked of you.
+
+        Now it''s time you reclaim your freedom.
+
+'
+      - "Inside the vault of this casino there is a surveillance footage video which
+        proves you did not in fact commit the B&E you were imprisoned for. \r\nSuch
+        a high-end place, but all it is is a front for Large Corp. They hold many
+        sensitive documents in that vault, but if I were you, I'd only take what
+        I need and vanish. \r\nUnfortunately that is all I know of this place. There's
+        a car waiting for you outside once you are done. Good luck.\r\n"
   missionObjectives:
   - '* Turn off the CAMERAS in the security room opposite to the cells
 
@@ -98,12 +119,14 @@ MonoBehaviour:
   - "* Find the documents in the safe on the top floor \r\n* Exit the building"
   - '* Find the documents in the safe in the building to the north
 
-    * Leave
-    the area'
+    * Leave the
+    area'
   textPrinterText: {fileID: 5421446405673901172}
   delayBetweenCharactersIncoming: 0.02
   delayBetweenCharactersRemoving: 0.005
   delayToTextDisappear: 5
+  continueTextInput: 32
+  waitForInputPrompt: ' (Press Space to continue)'
 --- !u!1 &4902175616156605836
 GameObject:
   m_ObjectHideFlags: 0
