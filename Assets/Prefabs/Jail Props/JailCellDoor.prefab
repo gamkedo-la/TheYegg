@@ -50,6 +50,7 @@ MonoBehaviour:
   interactionAreaCollider: {fileID: 1592533680329446066}
   parentCollider: {fileID: 7576659989260075271}
   doorTimer: {fileID: 2641901204829389567}
+  spawnWhenOpened: {fileID: 4127404477938660430, guid: ee9456b1a1dcc404e8265dd90666de18, type: 3}
 --- !u!65 &1592533680329446066
 BoxCollider:
   m_ObjectHideFlags: 0

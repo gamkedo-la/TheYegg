@@ -17,6 +17,7 @@ public class Door : MonoBehaviour
     [Header("References to other Gameobjects")]
     [SerializeField] BoxCollider parentCollider;
     [SerializeField] Slider doorTimer;
+    [SerializeField] GameObject spawnWhenOpened;
 
     private LevelManager levelManager;
     private string id;
@@ -41,6 +42,11 @@ public class Door : MonoBehaviour
     }
 
     public bool OpenDoor(){
+        // spawn an optional prefab
+        if (spawnWhenOpened) {
+            Debug.Log("Spawning a door opened fx prefab at "+transform.parent.transform.position.ToString());
+            Instantiate(spawnWhenOpened, transform.parent.transform.position, Quaternion.Euler(90f,0f,0f));
+        }
         //disable the collider from the parent object
         parentCollider.enabled = false;
         // from collider and all its children
