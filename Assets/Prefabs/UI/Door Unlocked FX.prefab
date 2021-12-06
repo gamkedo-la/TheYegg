@@ -117,7 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b2e8d64af13df48b5d808ac2a07ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOutSpeed: 0.005
+  fadeOutSpeed: 0.0025
+  riseUpSpeed: 0.001
 --- !u!23 &8822697610647981741
 MeshRenderer:
   m_ObjectHideFlags: 0
