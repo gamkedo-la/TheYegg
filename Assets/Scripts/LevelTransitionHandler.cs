@@ -13,6 +13,12 @@ public class LevelTransitionHandler : MonoBehaviour
         foreach (Collider coll in hitColliders){
             if(coll.gameObject.TryGetComponent<LevelTransition>(out levelTransition)){
                 levelTransition.TransitionToLevel();
+                PlayerActionController playerActionController = GetComponentInParent<PlayerActionController>();
+                if(playerActionController)
+                {
+                    playerActionController.isCompromisedDisguise = true;
+                    GameObject.FindObjectOfType<HUDHandler>().SetDisguiseStatus(true);
+                }
             }
         }
     }

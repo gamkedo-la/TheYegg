@@ -63,7 +63,8 @@ public class NPCHandler : MonoBehaviour
         } else {
             NPC closestNPC = null;
             float compDist = Mathf.Infinity;
-            foreach(NPC n in npcList){
+            List<NPC> checkList = new List<NPC>(npcList.ToArray());
+            foreach(NPC n in checkList){
                 float nDist = Vector2.Distance(parentTransform.position, n.transform.position);
                 if(nDist < compDist){
                     compDist = nDist;

@@ -988,6 +988,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3321952403952502144, guid: ab51466eea4833e47a65272bfe877eba, type: 3}
+      propertyPath: pickUpKeyInput
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 3321952403952502148, guid: ab51466eea4833e47a65272bfe877eba, type: 3}
       propertyPath: m_RootOrder
       value: 8

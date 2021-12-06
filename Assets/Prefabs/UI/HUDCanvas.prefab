@@ -57,16 +57,12 @@ MonoBehaviour:
         something that belongs to me, and you are no help in a jail cell.
 
         You
-        should be able to pick the lock on that cell door.'
-      - 'Just make your way to the safety room on the other side of the corridor
-        and turn off the cameras.
-
-        You might need to subdue one of the guards,
-        and take their disguise. Then the guards won''t notice you. They *will* wake
-        up at some point though!
-
-        After that you should be able to escape
-        easily.'
+        should be able to pick the lock on that cell door even without a key'
+      - Just make your way to the safety room on the other side of the corridor and
+        turn off the cameras.
+      - "You also need to subdue one of the guards, and take their DISGUISE and KEY.
+        Keys are faster than lockpicks, you know. Then you can walk out with no hassle.
+        \r\n\r\nThey guards *will* wake up at some point though!"
       - 'Take care, Yegg. Once you leave your cell the guards will hunt you down
         if they or the cameras spot you.
 
@@ -121,12 +117,9 @@ MonoBehaviour:
         I need and vanish. \r\nUnfortunately that is all I know of this place. There's
         a car waiting for you outside once you are done. Good luck.\r\n"
   missionObjectives:
-  - '* Turn off the CAMERAS in the security room opposite to the cells
-
-    * Take
-    a disguise from a guard
-
-    * Make your way out of the prison'
+  - "* Turn off the CAMERAS in the security room opposite to the cells\n* Take a
+    DISGUISE from a guard\n* (Optional) Take a guard's KEY \n* Make your way out
+    of the prison"
   - "* Find the documents in the northeast office \n* Leave the area"
   - "* Find the documents in the safe on the top floor \r\n* Exit the building"
   - '* Find the documents in the safe in the building to the north
