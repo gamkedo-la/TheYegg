@@ -10,6 +10,25 @@ public class LevelSequenceObject : MonoBehaviour
     [SerializeField] Slider slider;
     [Tooltip("What is the position of this object in the correct sequence of clearing the level")]
     [SerializeField] int positionInSequence;
+    [Header("Object Highlightiong settings")]
+    [SerializeField] bool isHighlighted = false;
+    [SerializeField] GameObject highlightedObject;
+    private Material defaultMaterial;
+    [SerializeField] Material highlightMaterial;
+
+    private MeshRenderer meshRenderer;
+
+    private void Start() {
+        if(isHighlighted && highlightedObject != null)
+        {
+            //save default material
+            meshRenderer = highlightedObject.GetComponent<MeshRenderer>();
+            defaultMaterial = meshRenderer.material;
+            //set effect material as material
+            meshRenderer.material = highlightMaterial;
+
+        }
+    }
 
 
     public void InteractWithObject(){
@@ -20,6 +39,7 @@ public class LevelSequenceObject : MonoBehaviour
                 WorldInteractable worldInteractable;
                 BoxCollider boxCollider;
                 AudioSource audioSource;
+
                 if(TryGetComponent<WorldInteractable>(out worldInteractable))
                 {
                     worldInteractable.SetPromptObjectsActive(false);
@@ -31,6 +51,10 @@ public class LevelSequenceObject : MonoBehaviour
                 if(TryGetComponent<AudioSource>(out audioSource))
                 {
                     audioSource.Play();
+                }
+                if(isHighlighted)
+                {
+                    meshRenderer.material = defaultMaterial;
                 }
                 levelManager.LevelClearConditionCompleted(positionInSequence);
             }

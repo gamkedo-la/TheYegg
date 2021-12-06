@@ -34,7 +34,7 @@ public class DistanceSFXPlayer : MonoBehaviour
     
     void Update()
     {
-        if(isPlayingAudio){
+        if(isPlayingAudio && player != null){
             HandleDistanceToPlayer();
         }
         

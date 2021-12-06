@@ -30102,6 +30102,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2906459478274010712, guid: 8eb151f0432c47745b452603059b2678, type: 3}
+      propertyPath: isHighlighted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906459478274010712, guid: 8eb151f0432c47745b452603059b2678, type: 3}
+      propertyPath: highlightMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 68dc1277d49605449ad156716f1d38f6, type: 2}
+    - target: {fileID: 2906459478274010712, guid: 8eb151f0432c47745b452603059b2678, type: 3}
+      propertyPath: highlightedObject
+      value: 
+      objectReference: {fileID: 1025151368}
     - target: {fileID: 3115248676249762590, guid: 8eb151f0432c47745b452603059b2678, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -30160,6 +30172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eb151f0432c47745b452603059b2678, type: 3}
+--- !u!1 &1025151368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4008222958730445706, guid: 8eb151f0432c47745b452603059b2678, type: 3}
+  m_PrefabInstance: {fileID: 1025151367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1043949112
 PrefabInstance:
   m_ObjectHideFlags: 0
