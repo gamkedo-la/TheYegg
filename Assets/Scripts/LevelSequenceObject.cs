@@ -15,6 +15,9 @@ public class LevelSequenceObject : MonoBehaviour
     [SerializeField] GameObject highlightedObject;
     private Material defaultMaterial;
     [SerializeField] Material highlightMaterial;
+    [Header("Interaction completed settings")]
+    [SerializeField] GameObject interactionFXObject;
+    [SerializeField] string interactionCompletionText;
 
     private MeshRenderer meshRenderer;
 
@@ -55,6 +58,11 @@ public class LevelSequenceObject : MonoBehaviour
                 if(isHighlighted)
                 {
                     meshRenderer.material = defaultMaterial;
+                }
+                if(interactionFXObject)
+                {
+                    GameObject fx = Instantiate(interactionFXObject, transform.position, Quaternion.Euler(90f,0f,0f));
+                    fx.GetComponentInChildren<FadeOutText>().SetText(interactionCompletionText);
                 }
                 levelManager.LevelClearConditionCompleted(positionInSequence);
             }

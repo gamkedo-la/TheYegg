@@ -20526,6 +20526,14 @@ PrefabInstance:
       propertyPath: highlightedObject
       value: 
       objectReference: {fileID: 6250428486945915551}
+    - target: {fileID: 2906459478274010712, guid: 8eb151f0432c47745b452603059b2678, type: 3}
+      propertyPath: interactionFXObject
+      value: 
+      objectReference: {fileID: 4127404477938660430, guid: 02a8a933fb5bd8f4994b4e84d790263e, type: 3}
+    - target: {fileID: 2906459478274010712, guid: 8eb151f0432c47745b452603059b2678, type: 3}
+      propertyPath: interactionCompletionText
+      value: Intel found!
+      objectReference: {fileID: 0}
     - target: {fileID: 4008222958730445706, guid: 8eb151f0432c47745b452603059b2678, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295

@@ -36521,6 +36521,8 @@ MonoBehaviour:
   isHighlighted: 1
   highlightedObject: {fileID: 666693904}
   highlightMaterial: {fileID: 2100000, guid: 68dc1277d49605449ad156716f1d38f6, type: 2}
+  interactionFXObject: {fileID: 4127404477938660430, guid: 02a8a933fb5bd8f4994b4e84d790263e, type: 3}
+  interactionCompletionText: Files found!
 --- !u!65 &1840831849
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48772,7 +48774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5816819671809118877, guid: ea32a9ef8e1a4924e9cc1d714ac2c7dc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9124447534353853529, guid: ea32a9ef8e1a4924e9cc1d714ac2c7dc, type: 3}
       propertyPath: m_LocalPosition.x

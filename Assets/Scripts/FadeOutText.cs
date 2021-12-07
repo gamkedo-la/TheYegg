@@ -13,8 +13,8 @@ public class FadeOutText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        txt = GetComponent<TextMeshPro>();
-        rgba = txt.color;
+        Init();
+
     }
 
     // Update is called once per frame
@@ -30,5 +30,17 @@ public class FadeOutText : MonoBehaviour
             //Debug.Log("Destroying a door closed fx prefab.");
             Destroy(this); // go away now
         }
+    }
+
+    public void SetText(string s)
+    {
+        Init();
+        txt.text = s;
+    }
+
+    private void Init()
+    {
+        txt = GetComponent<TextMeshPro>();
+        rgba = txt.color;
     }
 }
