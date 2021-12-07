@@ -14,7 +14,7 @@ public class SurveillanceCameraSwitcher : MonoBehaviour
     [SerializeField] Slider slider;
 
     private ScoreKeeper scoreKeeper;
-
+    [SerializeField] GameObject spawnWhenSwitchedOff;
 
     private void Start() {
         levelManager = FindObjectOfType<LevelManager>();
@@ -25,6 +25,13 @@ public class SurveillanceCameraSwitcher : MonoBehaviour
     }
 
     public void SwitchCamerasOff(){
+
+        // spawn an optional prefab
+        if (spawnWhenSwitchedOff) {
+            Debug.Log("Spawning camera off fx at "+transform.position.ToString());
+            Instantiate(spawnWhenSwitchedOff, transform.position, Quaternion.Euler(90f,0f,0f));
+        }
+
         Debug.Log("Switching cameras off");
         levelManager.SetCamerasDisabled(true);
         scoreKeeper.SetIsDetectedByCameras(false);

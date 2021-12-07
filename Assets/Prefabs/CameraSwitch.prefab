@@ -53,6 +53,7 @@ MonoBehaviour:
   camerasOnObject: {fileID: 7003172164901531147}
   camerasOffObject: {fileID: 7003172165056526677}
   slider: {fileID: 5326305265845019862}
+  spawnWhenSwitchedOff: {fileID: 4127404477938660430, guid: b56d2b850e97e2b47b406b447016e9b6, type: 3}
 --- !u!65 &7922159584138718091
 BoxCollider:
   m_ObjectHideFlags: 0
