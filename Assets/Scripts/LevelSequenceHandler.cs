@@ -13,6 +13,8 @@ public class LevelSequenceHandler : MonoBehaviour
     private float timeToInteract;
     private LevelSequenceObject levelSequenceObject;
 
+    public bool hasInteracted = false;
+
     public bool StartInteraction()
     {
         Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, interactLayerMask);
@@ -29,7 +31,7 @@ public class LevelSequenceHandler : MonoBehaviour
     }
 
     public void InterAct(float inputTime){
-        if(inputTime > timeToInteract){
+        if(inputTime >= timeToInteract){
             if(levelSequenceObject){
                 levelSequenceObject.InteractWithObject();
             }
@@ -38,11 +40,17 @@ public class LevelSequenceHandler : MonoBehaviour
 
     public void HandleTimer(float v)
     {
-        if(v >= timeToInteract){
-            levelSequenceObject.SetTimerValue(1f);
-        } else {
-            levelSequenceObject.SetTimerValue(v / timeToInteract);
+        if(!hasInteracted)
+        {
+            if(v >= timeToInteract){
+                levelSequenceObject.SetTimerValue(1f);
+                InterAct(timeToInteract);
+                hasInteracted = true;
+            } else {
+                levelSequenceObject.SetTimerValue(v / timeToInteract);
         }
+        }
+        
     }
 }
 

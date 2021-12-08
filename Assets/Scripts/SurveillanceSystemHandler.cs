@@ -13,6 +13,8 @@ public class SurveillanceSystemHandler : MonoBehaviour
     private SurveillanceCameraSwitcher switcher;
     private float timeToSwitchCamerasOff;
 
+    public bool hasSwitchedOff = false;
+
     
     public bool StartSurveillanceCameraSwitchHandling()
     {
@@ -29,7 +31,7 @@ public class SurveillanceSystemHandler : MonoBehaviour
     }
 
     public void SwitchCameras(float inputTime){
-        if(inputTime > timeToSwitchCamerasOff){
+        if(inputTime >= timeToSwitchCamerasOff){
             if(switcher){ 
                 switcher.SwitchCamerasOff();
             }
@@ -38,10 +40,16 @@ public class SurveillanceSystemHandler : MonoBehaviour
 
     public void HandleSwitchTimer(float v)
     {
-        if(v >= timeToSwitchCamerasOff){
-            switcher.SetTimerValue(1f);
-        } else {
-            switcher.SetTimerValue(v / timeToSwitchCamerasOff);
+        if(!hasSwitchedOff)
+        {
+            if(v >= timeToSwitchCamerasOff){
+                switcher.SetTimerValue(1f);
+                SwitchCameras(timeToSwitchCamerasOff);
+                hasSwitchedOff = true;
+            } else {
+                switcher.SetTimerValue(v / timeToSwitchCamerasOff);
         }
+        }
+        
     }
 }

@@ -26,6 +26,8 @@ public class KeyHandler : MonoBehaviour
     public Door door;
     public Key key;
 
+    public bool isOpened = false;
+
     private void Start() {
         //GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
         //foreach (DoorKey key in keys)
@@ -55,7 +57,7 @@ public class KeyHandler : MonoBehaviour
     {
         if(hasMatchingKey){
             //compare with time required to open with key
-            if(inputTime > timeToOpenWithKey){
+            if(inputTime >= timeToOpenWithKey){
                 door.OpenDoor();
                 hasMatchingKey = false;
                 audioSource.PlayOneShot(doorAudioClips[UnityEngine.Random.Range(0, doorAudioClips.Count)]);
@@ -63,7 +65,7 @@ public class KeyHandler : MonoBehaviour
                 HandleDoorTimer(0f); //to reset timer
             }
         } else {
-            if(inputTime > timeToOpenWithLockpick){
+            if(inputTime >= timeToOpenWithLockpick){
                 door.OpenDoor();
                 lockpickCount -= 1;
                 GameObject.FindObjectOfType<HUDHandler>().SetLockPickCount(lockpickCount);
@@ -103,19 +105,27 @@ public class KeyHandler : MonoBehaviour
 
     public void HandleDoorTimer(float v)
     {
-        if(hasMatchingKey){
-            if(v >= timeToOpenWithKey){
-                door.SetDoorTimerValue(1f);
+        if(!isOpened)
+        {
+            if(hasMatchingKey){
+                if(v >= timeToOpenWithKey){
+                    door.SetDoorTimerValue(1f);
+                    OpenDoor(timeToOpenWithKey);
+                    isOpened = true;
+                } else {
+                    door.SetDoorTimerValue(v / timeToOpenWithKey);
+                }
             } else {
-                door.SetDoorTimerValue(v / timeToOpenWithKey);
-            }
-        } else {
-            if(v >= timeToOpenWithLockpick){
-                door.SetDoorTimerValue(1f);
-            } else {
-                door.SetDoorTimerValue(v / timeToOpenWithLockpick);
+                if(v >= timeToOpenWithLockpick){
+                    door.SetDoorTimerValue(1f);
+                    OpenDoor(timeToOpenWithLockpick);
+                    isOpened = true;
+                } else {
+                    door.SetDoorTimerValue(v / timeToOpenWithLockpick);
+                }
             }
         }
+        
     }
 
     public void PickUpKey(){

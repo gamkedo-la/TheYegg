@@ -86,14 +86,17 @@ public class PlayerActionController : MonoBehaviour
             
         }
 
+
         if(Input.GetKey(openDoorInput) && canOpenDoor){
             keyHandler.HandleDoorTimer(Time.time - openDoorStartTime);
         }
-
-        if(Input.GetKeyUp(openDoorInput) && canOpenDoor){
-            keyHandler.OpenDoor(Time.time - openDoorStartTime);
+        
+        
+        if(Input.GetKeyUp(openDoorInput)){
             openDoorStartTime = 0f;
+            keyHandler.isOpened = false;
         }
+        
 
 
         if(Input.GetKeyDown(pickUpKeyInput)){
@@ -114,8 +117,8 @@ public class PlayerActionController : MonoBehaviour
         }
 
         if(Input.GetKeyUp(interactWithLevelSequenceInput) && canInteract){
-            levelSequenceHandler.InterAct(Time.time - interactStartTime);
             interactStartTime = 0f;
+            levelSequenceHandler.hasInteracted = false;
         }
 
         if(Input.GetKeyDown(levelTransitionInput)){
@@ -140,7 +143,7 @@ public class PlayerActionController : MonoBehaviour
         }
 
         if(Input.GetKeyUp(surveillanceCameraSwitchInput) && canSwitchCamera){
-            surveillanceSystemHandler.SwitchCameras(Time.time - switchCameraTime);
+            surveillanceSystemHandler.hasSwitchedOff = false;
         }
 
         if(Input.GetKeyDown(alarmSystemSwitchInput)){
