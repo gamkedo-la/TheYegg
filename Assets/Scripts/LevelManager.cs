@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
     private bool isExitEnabled = false;
     private ScoreKeeper scoreKeeper;
     private bool isAlarmOn = false;
-    private bool isLevelChanging = false;
+    public bool isLevelChanging = false;
 
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -126,6 +126,11 @@ public class LevelManager : MonoBehaviour
 
     public bool GetIsAlarmSystemOn(){
         return isAlarmOn;
+    }
+
+    public int GetCurrentLevelIndex()
+    {
+        return currentLevelIndex;
     }
 
     public void LevelClearConditionCompleted(int index){
@@ -208,6 +213,7 @@ public class LevelManager : MonoBehaviour
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
         isLevelChanging = true;
+
     }
 
     private void ResetPlayer()

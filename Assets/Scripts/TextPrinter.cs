@@ -42,6 +42,17 @@ public class TextPrinter : MonoBehaviour
     [SerializeField] KeyCode continueTextInput;
     [SerializeField] string waitForInputPrompt;
 
+    private void Start() {
+        //if level is not changing, show mission objectives directly
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        if(levelManager.isLevelChanging == false)
+        {
+            levelIndex = levelManager.GetCurrentLevelIndex();
+            ShowMissionObjectives();
+            
+        }
+    }
+
     private void Update() {
         if(Input.GetKeyDown(continueTextInput) && waitForInput)
         {
