@@ -35,7 +35,6 @@ public class FieldOfView : MonoBehaviour
     private AlarmSystemSwitch alarmSystemSwitch;
 
     private void Start() {
-        GetComponent<MeshRenderer>().material = fovMaterial;
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         fovMeshFilter.mesh = viewMesh;

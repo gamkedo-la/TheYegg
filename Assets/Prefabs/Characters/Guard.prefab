@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5107343312541930928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8382092838984155285}
+  - component: {fileID: 6315527758275871494}
+  - component: {fileID: 1517091241911893741}
+  m_Layer: 8
+  m_Name: PromptTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8382092838984155285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107343312541930928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8304663008673374457}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6315527758275871494
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107343312541930928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1517091241911893741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107343312541930928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c50b122657d37b48880fd0cce17b2da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMaterial: {fileID: 2100000, guid: 2ffe643262aa1134788354b77d8e8390, type: 2}
+  promptTextObject: {fileID: 2286849977841771901}
+  activatedGameObjects:
+  - {fileID: 344778222054181981}
+  promptText: Q to subdue/take outfit
 --- !u!1 &5534453045957273364
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +259,7 @@ MonoBehaviour:
     m_Bits: 64
   targetsInFieldOfView:
   - {fileID: 0}
-  meshResolution: 1
+  meshResolution: 0.5
   edgeResolveIterations: 3
   edgeDistanceThreshold: 0.1
   fovMeshFilter: {fileID: 8304663008152641393}
@@ -276,8 +338,6 @@ GameObject:
   - component: {fileID: 1755099940475444544}
   - component: {fileID: 3756879775023326213}
   - component: {fileID: 4643250427907089933}
-  - component: {fileID: 5889656146130511673}
-  - component: {fileID: 530053224635292211}
   m_Layer: 8
   m_Name: Guard
   m_TagString: Untagged
@@ -302,6 +362,7 @@ Transform:
   - {fileID: 5371263057047017173}
   - {fileID: 5367438304156747087}
   - {fileID: 894908120467654534}
+  - {fileID: 8382092838984155285}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -652,36 +713,6 @@ MonoBehaviour:
   minDistanceToPlayer: 0.1
   maxDistanceToPlayer: 10
   isPlayingAudio: 0
---- !u!65 &5889656146130511673
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8304663008673374452}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2, y: 1, z: 1.2}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &530053224635292211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8304663008673374452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c50b122657d37b48880fd0cce17b2da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMaterial: {fileID: 0}
-  promptTextObject: {fileID: 2286849977841771901}
-  activatedGameObjects:
-  - {fileID: 344778222054181981}
-  promptText: Q to subdue/take outfit
 --- !u!1 &8304663009899576403
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +930,10 @@ PrefabInstance:
     - target: {fileID: 8795902991370581609, guid: 82cb200c6d68fd74795410726fc6487f, type: 3}
       propertyPath: m_Name
       value: WorldInteractablePrompt
+      objectReference: {fileID: 0}
+    - target: {fileID: 8795902991370581609, guid: 82cb200c6d68fd74795410726fc6487f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82cb200c6d68fd74795410726fc6487f, type: 3}
