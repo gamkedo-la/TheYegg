@@ -137,9 +137,7 @@ public class KeyHandler : MonoBehaviour
                     GameObject.FindObjectOfType<HUDHandler>().SetCollectedKeys(key.GetKeyType().ToString());
                 }
                 key.DestroyKey();
-            } else {
-                Debug.Log("No key in vicinity");
-            }
+            } 
         }
     }
 

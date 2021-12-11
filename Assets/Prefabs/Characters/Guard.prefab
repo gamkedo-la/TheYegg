@@ -201,6 +201,7 @@ MonoBehaviour:
   edgeResolveIterations: 3
   edgeDistanceThreshold: 0.1
   fovMeshFilter: {fileID: 8304663008152641393}
+  fovMaterial: {fileID: 2100000, guid: 811a53b6a223be04786260a1227f6a28, type: 2}
   guardFSM: {fileID: 8304663008673374455}
   guardStateAlerted: {fileID: 7935545533546093925}
   lastKnownPlayerLocation: {x: 0, y: 0, z: 0}
@@ -448,10 +449,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2c020863637054b70bf924840c662c4e, type: 3}
   lastKnownLocation: {x: 0, y: 0, z: 0}
   isAlertedByAnother: 0
-  alertRadius: 50
-  alertLayerMask:
+  alertRadius: 10
+  alertIgnoreLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4023
+  catchCheckLayerMask:
+    serializedVersion: 2
+    m_Bits: 1600
   alertMaxTime: 15
   allowedDistanceFromPlayer: 1
   navMeshAgent: {fileID: 1571682958}

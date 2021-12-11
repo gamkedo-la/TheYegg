@@ -44,7 +44,6 @@ public class Door : MonoBehaviour
     public bool OpenDoor(){
         // spawn an optional prefab
         if (spawnWhenOpened) {
-            Debug.Log("Spawning a door opened fx prefab at "+transform.parent.transform.position.ToString());
             Instantiate(spawnWhenOpened, transform.parent.transform.position, Quaternion.Euler(90f,0f,0f));
         }
         //disable the collider from the parent object

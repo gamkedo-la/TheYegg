@@ -38,7 +38,6 @@ public class TextPrinter : MonoBehaviour
     private int levelIndex = 0;
     private int chunkIndex = 0;
     private bool waitForInput;
-    private bool isProcessed = false;
     [SerializeField] KeyCode continueTextInput;
     [SerializeField] string waitForInputPrompt;
 

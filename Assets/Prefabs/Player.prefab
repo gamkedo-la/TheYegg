@@ -252,6 +252,7 @@ MonoBehaviour:
   lockpickCountAtStartOfLevel: 2
   door: {fileID: 0}
   key: {fileID: 0}
+  isOpened: 0
 --- !u!82 &6005565623511686678
 AudioSource:
   m_ObjectHideFlags: 0
@@ -577,6 +578,7 @@ MonoBehaviour:
   interactLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  hasInteracted: 0
 --- !u!114 &3321952404266471977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,6 +609,7 @@ MonoBehaviour:
   interactLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  hasSwitchedOff: 0
 --- !u!114 &2683927788839099885
 MonoBehaviour:
   m_ObjectHideFlags: 0

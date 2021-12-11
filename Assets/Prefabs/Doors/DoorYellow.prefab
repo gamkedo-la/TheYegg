@@ -621,6 +621,7 @@ MonoBehaviour:
   interactionAreaCollider: {fileID: 713544648544677057}
   parentCollider: {fileID: 713544648369697804}
   doorTimer: {fileID: 2731221738645277057}
+  spawnWhenOpened: {fileID: 0}
 --- !u!65 &713544648544677057
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -715,9 +716,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2973771475817153104, guid: dfd30be2141a5443ea3b2983dc5dc5c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dfd30be2141a5443ea3b2983dc5dc5c8, type: 3}
       propertyPath: m_Name
       value: OfficeDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfd30be2141a5443ea3b2983dc5dc5c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3821693662381070618, guid: dfd30be2141a5443ea3b2983dc5dc5c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -923,9 +932,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2973771475817153104, guid: dfd30be2141a5443ea3b2983dc5dc5c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dfd30be2141a5443ea3b2983dc5dc5c8, type: 3}
       propertyPath: m_Name
       value: OfficeDoor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dfd30be2141a5443ea3b2983dc5dc5c8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfd30be2141a5443ea3b2983dc5dc5c8, type: 3}

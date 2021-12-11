@@ -55,7 +55,6 @@ public class SurveillanceCamera : MonoBehaviour
     public void DisableCamera(){
         isDisabled = true;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
-        Debug.Log("Camera "+ gameObject.name + " has been set to disabled");
     }
 
     IEnumerator FindTargetsWithDelay(float delay){
@@ -77,7 +76,6 @@ public class SurveillanceCamera : MonoBehaviour
                         //Debug.Log("Player has been detected, moving to alerted state");
                         lastKnownPlayerLocation = playerActionController.transform.position;
                         //start alerted state for guards in the vicinity of the camera
-                        Debug.Log("Camera spotted player and tries to alert");
                         //TODO subtract points if the player is spotted by the cameras!
                         if(scoreKeeper.GetIsDetectedByCameras() == false){
                             scoreKeeper.SetIsDetectedByCameras(true);
@@ -88,8 +86,7 @@ public class SurveillanceCamera : MonoBehaviour
                 } else if(t.TryGetComponent<NPC>(out nPC)){
                     if(nPC.isNPCDown == true){
                         //saw a downed NPC
-                        //get rid of the NPC in the scene, or mark them as "seen" so that the NPC does not fall into a loop of detecting the same downed NPC
-                        Debug.Log("An incapacitated NPC detected, moving to alerted state");
+                        //get rid of the NPC in the scene, or mark them as "seen" so that the NPC does not fall into a loop of detecting the same downed NPCs
                         AlertGuards(nPC.transform.position);
                     }
                 }

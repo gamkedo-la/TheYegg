@@ -19,6 +19,7 @@ public class FieldOfView : MonoBehaviour
     [SerializeField] float edgeDistanceThreshold;
 
     [SerializeField] MeshFilter fovMeshFilter;
+    [SerializeField] Material fovMaterial;
 
     [Header("Interface to GuardFSM")]
     [SerializeField] GuardFSM guardFSM;
@@ -34,6 +35,7 @@ public class FieldOfView : MonoBehaviour
     private AlarmSystemSwitch alarmSystemSwitch;
 
     private void Start() {
+        GetComponent<MeshRenderer>().material = fovMaterial;
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         fovMeshFilter.mesh = viewMesh;

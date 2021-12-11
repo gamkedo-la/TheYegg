@@ -100,7 +100,6 @@ public class LevelManager : MonoBehaviour
     }
 
     public void ResetOpenedDoors(){
-        Debug.Log("ResetOpenedDoors Called!");
         openedDoors.Clear();
     }
 
@@ -156,6 +155,7 @@ public class LevelManager : MonoBehaviour
     public void LevelCompleted(){
         //trigger event that level is cleared
         OnLevelCleared();
+        Time.timeScale = 0f;
         //display score
         //show option UI to move to next level
         if(currentLevelIndex < 3)
@@ -180,6 +180,7 @@ public class LevelManager : MonoBehaviour
     public void StartGameOver(){
         //set event that game is over
         OnGameOver();
+        Time.timeScale = 0f;
         //show option UI to reset to level
         loseUI.SetActive(true);
         HUDHandler hUDHandler = FindObjectOfType<HUDHandler>();
@@ -213,6 +214,7 @@ public class LevelManager : MonoBehaviour
         currentLevelConditionsCleared = 0;
         isExitEnabled = false;
         isLevelChanging = true;
+        Time.timeScale = 1f;
 
     }
 
@@ -241,6 +243,7 @@ public class LevelManager : MonoBehaviour
         ResetOpenedDoors();
         scoreKeeper.ResetScoreKeeper();
         scoreKeeper.StartLevelTimer();
+        Time.timeScale = 1f;
     }
 
     private void PrintLevelIntro()
@@ -261,6 +264,7 @@ public class LevelManager : MonoBehaviour
         loseUI.SetActive(false);
         FadeToLevel(mainMenuSceneIndex);
         levelAudioHandler.StopLevelBackgroundMusic();
+        Time.timeScale = 1f;
     }
 
     public void FadeToLevel(int levelIndex){

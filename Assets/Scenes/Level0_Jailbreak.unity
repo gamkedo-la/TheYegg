@@ -573,6 +573,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guard (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8304663008673374452, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8304663008673374453, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: patrolPointParent
       value: 
@@ -23272,6 +23276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guard
       objectReference: {fileID: 0}
+    - target: {fileID: 8304663008673374452, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8304663008673374453, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: patrolPointParent
       value: 
@@ -23902,6 +23910,10 @@ PrefabInstance:
     - target: {fileID: 8304663008673374452, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: m_Name
       value: Guard (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304663008673374452, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8304663008673374453, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: patrolPointParent
@@ -72778,6 +72790,10 @@ PrefabInstance:
     - target: {fileID: 8304663008673374452, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: m_Name
       value: Guard (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304663008673374452, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8304663008673374453, guid: 5a7e3d659ec02e74d8ea41310f873ed3, type: 3}
       propertyPath: patrolPointParent

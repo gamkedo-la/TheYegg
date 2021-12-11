@@ -10,7 +10,8 @@ public class GuardStateAlerted : GuardState
     public Vector3 lastKnownLocation;
     public bool isAlertedByAnother;
     [SerializeField] float alertRadius;
-    [SerializeField] LayerMask alertLayerMask;
+    [SerializeField] LayerMask alertIgnoreLayerMask;
+    [SerializeField] LayerMask catchCheckLayerMask;
     [SerializeField] [Range(0f, 30f)] float alertMaxTime;
     [SerializeField] float allowedDistanceFromPlayer = 1f;
 
@@ -27,6 +28,7 @@ public class GuardStateAlerted : GuardState
     private float alertStartTime;
     private LevelManager levelManager;
     private AlarmSystemSwitch alarmSystemSwitch;
+
 
 
     public override void StartGuardState()
@@ -65,7 +67,6 @@ public class GuardStateAlerted : GuardState
         base.RunGuardState();
         MoveToLastKnownLocation();
         HandleAlertTimer();
-        TryCatchPlayer();
         RotateToWorldZ(alertedSignalObject);
     }
 
@@ -86,10 +87,11 @@ public class GuardStateAlerted : GuardState
         GuardFSM[] allGuards = FindObjectsOfType<GuardFSM>();
         foreach(GuardFSM g in allGuards){
             if(Vector3.Distance(g.transform.position, lastKnownLocation) <= alertRadius){
+                
                 //raycast to the guard in the radius to see if there is a wall in between
                 Vector3 dirToGuard = g.transform.position - transform.position;
                 Ray ray = new Ray(transform.position, (dirToGuard));
-                if(Physics.Raycast(ray, alertRadius, alertLayerMask)){
+                if(Physics.Raycast(ray, alertRadius, alertIgnoreLayerMask)){
                     //alert others
                     if(g.activeState != g.alertState){
                         g.gameObject.GetComponent<GuardStateAlerted>().SetIsAlertedByAnother(true);
@@ -132,28 +134,35 @@ public class GuardStateAlerted : GuardState
             animationController.SetIsWalking(true);
             distanceSFXPlayer.SetPlayAudio(true);
             navMeshAgent.destination = lastKnownLocation;
-            if(navMeshAgent.remainingDistance <= allowedDistanceFromPlayer){
-                //move to new state where the player is caught or game over
-                navMeshAgent.isStopped = true;
-                animationController.SetIsWalking(false);
+            float distToPlayer = Vector3.Distance(FindObjectOfType<PlayerMovement>().transform.position, this.transform.position);
+            if(Vector3.Distance(FindObjectOfType<PlayerMovement>().transform.position, this.transform.position) <= allowedDistanceFromPlayer){
+                //raycast to check if there are walls between
                 TryCatchPlayer();
             } else {
                 navMeshAgent.isStopped = false;
             }
         }
     }
-
+    
     private void TryCatchPlayer()
     {
-        //tell level manager that game is over
-        if(Vector3.Distance(FindObjectOfType<PlayerMovement>().transform.position, this.transform.position) <= allowedDistanceFromPlayer){
-            Debug.Log("Player is caught!");
+        
+        Vector3 startVector = transform.position;
+        Vector3 endVector = FindObjectOfType<PlayerMovement>().transform.position;
+        Vector3 dirVector = endVector - startVector;
+        Ray ray = new Ray(startVector, dirVector);
+        RaycastHit hit;
+        //not hitting walls or interactables (doors)
+        if(!Physics.Raycast(ray, out hit, allowedDistanceFromPlayer, catchCheckLayerMask))
+        { 
+           //tell level manager that game is over
             LevelManager levelManager = FindObjectOfType<LevelManager>();
             levelManager.StartGameOver();
-        }
+        }         
     }
 
     private void RotateToWorldZ(GameObject g){
         g.transform.SetPositionAndRotation(g.transform.position, Quaternion.LookRotation(Vector3.down, Vector3.up));
     }
+
 }

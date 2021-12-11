@@ -28,7 +28,6 @@ public class SurveillanceCameraSwitcher : MonoBehaviour
 
         // spawn an optional prefab
         if (spawnWhenSwitchedOff) {
-            Debug.Log("Spawning camera off fx at "+transform.position.ToString());
             Instantiate(spawnWhenSwitchedOff, transform.position, Quaternion.Euler(90f,0f,0f));
         }
 
