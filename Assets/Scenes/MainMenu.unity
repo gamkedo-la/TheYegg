@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44117153, g: 0.48994273, b: 0.570014, a: 1}
+  m_IndirectSpecularColor: {r: 0.4411714, g: 0.48994243, b: 0.5700134, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3318,29 +3318,52 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-    in culpa qui officia deserunt mollit anim id est laborum.
+  m_Text: 'Antti Lipsanen: Project lead, core gameplay, objectives system, AI, level
+    design, main writing, story presentation, costume change mechanic, characters,
+    line of sight and patrol logic, environment interactions, lockpick system, level
+    transitions, additional environment and prop models (incl. office desks, jail
+    beds, bar, office exterior), heartbeat sound, bug fixes, alarms, scoring system,
+    tutorial, outline shader, interaction highlight, font selection and integration
 
 
-    Lorem ipsum dolor
-    sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-    id est laborum.
+    Michael
+    Monty Tanner: Models (forklift, shipping container, chain link fence, van, garbage
+    truck, fancy car, food truck, workbench, industrial machine, slot machine, crate),
+    mute toggle
 
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+    Fahad Muntaz: Mouse movement, lose music, level manager persistence,
+    initial player animation states, main menu functionality, scene loading improvement,
+    pause feature
+
+
+    Christer "McFunkypants" Kaitila: Minimap, door unlocked /
+    camer hacked UI effect, environment UV lightmapping, models (bulletin board,
+    lightswitch, wall outlet, picnic table, poster, doormat, assorted props), decoration
+    placement
+
+
+    Chris DeLeon: Models (cubicle, cabinet, fax machine, tray, betamax
+    rack, CCTV set, door, wall safe, street kiosk, luxury car), guard voices, wall
+    materials, sounds (run, safe, shuffling), main menu background scene, button
+    style, doors vanish when opened
+
+
+    Rodrigo Bonzerr Lopez: Audio (door lock,
+    security cameras, walkie talkie beep, additional walkie talkie voice, mission
+    1 story initial draft)
+
+
+    H Trayford: Models (office chair, security camera,
+    2 poker table styles, craps table)
+
+
+    Sabir Foux: Streamlined internal scene
+    testing process, set up player action interactables list
+
+
+    This game was
+    developed by members collaborating in HomeTeamGameDev Lighthouse'
 --- !u!222 &1690016173
 CanvasRenderer:
   m_ObjectHideFlags: 0
