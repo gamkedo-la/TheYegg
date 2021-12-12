@@ -9,6 +9,23 @@ public abstract class GuardState : MonoBehaviour
     public GuardFSM guardFSM;
     public AudioClip[] enterStateSayings;
     public AudioClip[] exitStateSayings;
+    private AudioClip playAfterStaggeredDelay; // uses to queue up start/end sayings so they won't all be in exact sync between guards
+
+    private void Start() {
+        StartCoroutine(PlayDelayedVoiceIfQueued());
+    }
+
+    IEnumerator PlayDelayedVoiceIfQueued() {
+        while(true) {
+            if(playAfterStaggeredDelay) {
+                AudioSource.PlayClipAtPoint(playAfterStaggeredDelay, transform.position);
+                // Debug.Log("Playing delayed transition voice sound");
+                playAfterStaggeredDelay = null;
+            }
+            // randomized update interval to stagger when guards say their phrases, up to a few seconds later than each other
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.25f,3.0f));
+        }
+    }
 
     public virtual void RunGuardState()
     {
@@ -18,13 +35,13 @@ public abstract class GuardState : MonoBehaviour
     public virtual void StartGuardState()
     {
         if(enterStateSayings.Length>0) {
-            AudioSource.PlayClipAtPoint(enterStateSayings[UnityEngine.Random.Range(0, enterStateSayings.Length)], transform.position);
+            playAfterStaggeredDelay = enterStateSayings[UnityEngine.Random.Range(0, enterStateSayings.Length)];
         }
     }
 
     public virtual void EndGuardState(){
         if (exitStateSayings.Length > 0) {
-            AudioSource.PlayClipAtPoint(exitStateSayings[UnityEngine.Random.Range(0, exitStateSayings.Length)], transform.position);
+            playAfterStaggeredDelay = exitStateSayings[UnityEngine.Random.Range(0, exitStateSayings.Length)];
         }
         guardFSM.PopState(this);
         //protect against having no state
