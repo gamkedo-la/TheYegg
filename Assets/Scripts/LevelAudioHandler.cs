@@ -33,6 +33,7 @@ public class LevelAudioHandler : MonoBehaviour
         } else {
             levelAudioSource.Stop();
             levelAudioSource.clip = audioClips[index];
+            levelAudioSource.volume = (index == 3 ? 0.15f : 0.6f); // casino music is a bit louder, this ensures voices/sfx still audible
             levelAudioSource.Play();
         }        
     }
