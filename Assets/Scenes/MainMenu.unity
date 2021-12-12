@@ -4894,6 +4894,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 622627547}
     m_Modifications:
+    - target: {fileID: 5087295742696082464, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
+      propertyPath: m_text
+      value: 'Controls:
+
+        Movement - WASD
+
+        Use items - E
+
+        Subdue
+        Guards, Take Outfit - Q
+
+        Pause Menu - P
+
+        Show minimap - V
+
+        Mute
+        Audio - M'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087295742696082464, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
+      propertyPath: m_fontSize
+      value: 20.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087295742696082464, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082470, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_Name
       value: Instructions
@@ -4912,27 +4938,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.625
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.33885187
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.44400004
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.122259244
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0.00036621094
+      value: 533.0076
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1.7234001
+      value: 184.5593
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4964,11 +4990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0002746582
+      value: 132.3
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 76
+      value: 103.25
       objectReference: {fileID: 0}
     - target: {fileID: 5087295742696082471, guid: d132b0342f867ed4a83425770bd145f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
