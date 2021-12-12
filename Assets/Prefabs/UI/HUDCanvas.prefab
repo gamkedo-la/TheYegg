@@ -224,7 +224,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.8
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -793,7 +793,7 @@ MonoBehaviour:
   timeText: {fileID: 707145839141778632}
   keysTextStart: 'Keys Collected: '
   lockPickTextStart: 'Lockpicks: '
-  disguiseCompromisedText: Disguise compromised
+  disguiseCompromisedText: Outfit is Suspicious
   disguiseSafeText: Disguise OK
 --- !u!1 &5687759824829290261
 GameObject:
